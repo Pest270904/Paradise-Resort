@@ -56,6 +56,11 @@
     font-size: 12px;
     border-radius: 8px;
     cursor: pointer;
+    border: 2px solid rgb(234, 208, 12);
+}
+.desc-button-detail:hover{
+    background-color: white;
+    color: black;
 }
 .desc-img{
     height: 150px;
