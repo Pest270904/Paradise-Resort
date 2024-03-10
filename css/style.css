@@ -1,6 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap");
+:root {
+  --primary-color: #e0b973;
+}
 * {
   padding: 0;
   margin: 0;
@@ -12,10 +14,18 @@
   margin-top: 0%;
   margin-left: 30px;
 }
+.logo-wrapper {
+  width: 280px;
+  height: auto;
+}
+.slogan {
+  color: black;
+  font-weight: bold;
+}
 body {
   background: white;
   color: black;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 header {
   position: fixed;
@@ -27,20 +37,20 @@ header {
   align-items: center;
   justify-content: space-between;
   background: transparent;
-  transition: ease .40s;
+  transition: ease 0.4s;
 }
 .navlinks {
   display: flex;
 }
-.navlinks a{
-    display: inline-block;
-    text-transform: uppercase;
-    color: black;
-    margin: 0 10px;
-    transition: 0.1s;
+.navlinks a {
+  display: inline-block;
+  text-transform: uppercase;
+  color: black;
+  margin: 0 10px;
+  transition: 0.1s;
 }
 .navlinks a:hover {
-  color: #E0B973;
+  color: #e0b973;
   text-decoration: underline;
 }
 .navlinks li {
@@ -55,14 +65,15 @@ header {
   cursor: pointer;
   display: none;
 }
-h1, h2 {
+h1,
+h2 {
   font-family: sans-serif;
   font-weight: 400;
+  color: var(--primary-color);
 }
 a {
   text-decoration: none;
 }
-
 
 button {
   border: none;
@@ -75,10 +86,10 @@ button {
   display: inline-block;
   font-size: 16px;
   padding: 15px 30px;
-  background: #E0B973;
+  background: #e0b973;
   color: white;
   border-radius: 4px;
-  transition: ease .40s;
+  transition: ease 0.4s;
 }
 .primary-btn:hover {
   transform: scale(1.1);
@@ -106,9 +117,10 @@ section {
 .home-text h1 {
   font-size: 5rem;
   line-height: 1.2;
-  color: white;
+  color: #d09c3a;
   letter-spacing: 4px;
   margin-bottom: 20px;
+  font-weight: 600;
 }
 .home-text p {
   color: white;
@@ -122,10 +134,10 @@ section {
   display: inline-block;
   font-size: 16px;
   padding: 15px 30px;
-  background: #E0B973;
+  background: #e0b973;
   color: white;
   border-radius: 4px;
-  transition: ease .40s;
+  transition: ease 0.4s;
 }
 .book-btn:hover {
   transform: scale(1.1);
