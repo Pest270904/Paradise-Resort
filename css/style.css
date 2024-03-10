@@ -28,8 +28,9 @@ body {
   font-family: "Poppins", sans-serif;
 }
 header {
+  background-color: rgb(255, 255, 255);
   height: 10vh;
-  line-height: 10vh;
+  line-height: 6vh;
   position: fixed;
   top: 0;
   right: 0;
@@ -38,7 +39,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: transparent;
+  /* background: transparent; */
   transition: ease 0.4s;
 }
 .navlinks {
@@ -53,10 +54,10 @@ header {
   text-decoration: none;
 }
 .navlinks i:hover {
-  color: white;
+  color: var(--primary-color);
 }
 .navlinks a:hover {
-  color: white;
+  color: var(--primary-color);
   text-decoration: underline;
 }
 .navlinks li {
