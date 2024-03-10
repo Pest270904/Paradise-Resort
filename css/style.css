@@ -12,7 +12,7 @@
   max-width: 149px;
   height: 256;
   margin-top: 0%;
-  margin-left: 30px;
+  margin-left: 50px;
 }
 .logo-wrapper {
   width: 280px;
@@ -28,6 +28,8 @@ body {
   font-family: "Poppins", sans-serif;
 }
 header {
+  height: 10vh;
+  line-height: 10vh;
   position: fixed;
   top: 0;
   right: 0;
@@ -42,20 +44,23 @@ header {
 .navlinks {
   display: flex;
 }
-.navlinks a {
+.navlinks a{
   display: inline-block;
   text-transform: uppercase;
   color: black;
   margin: 0 10px;
   transition: 0.1s;
+  text-decoration: none;
+}
+.navlinks i:hover {
+  color: white;
 }
 .navlinks a:hover {
-  color: #e0b973;
+  color: white;
   text-decoration: underline;
 }
 .navlinks li {
   list-style: none;
-  justify-content: space-between;
   padding: 10px 20px;
 }
 .menu {
@@ -65,16 +70,11 @@ header {
   cursor: pointer;
   display: none;
 }
-h1,
-h2 {
+h1, h2 {
   font-family: sans-serif;
   font-weight: 400;
   color: var(--primary-color);
 }
-a {
-  text-decoration: none;
-}
-
 button {
   border: none;
   background: none;
@@ -84,8 +84,8 @@ button {
 }
 .primary-btn {
   display: inline-block;
-  font-size: 16px;
-  padding: 15px 30px;
+  font-size: 15px;
+  padding: 10px 20px;
   background: #e0b973;
   color: white;
   border-radius: 4px;
@@ -94,12 +94,7 @@ button {
 .primary-btn:hover {
   transform: scale(1.1);
 }
-header i {
-  margin: 0;
-}
-header button {
-  padding: 13px 40px;
-}
+
 section {
   padding: 80px 18%;
 }
@@ -107,7 +102,7 @@ section {
   position: relative;
   width: 100%;
   height: 100vh;
-  background: url(../img/banner1.jpg);
+  background: url(../img/banner-lammo.jpg);
   background-size: cover;
   background-position: center;
   display: grid;
@@ -117,7 +112,7 @@ section {
 .home-text h1 {
   font-size: 5rem;
   line-height: 1.2;
-  color: #d09c3a;
+  color: white;
   letter-spacing: 4px;
   margin-bottom: 20px;
   font-weight: 600;
