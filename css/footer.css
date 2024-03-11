@@ -125,6 +125,37 @@ hr {
   left: 10px;
   /* animation: moving 2s linear infinite; */
 }
+.col
+{
+  width: 25%;
+  padding: 10px;
+}
+.logo-wrapper
+{
+  font-size: 12px;
+  transform:translateX(-50px);
+}
+.information-footer
+{
+  font-size: 14px;
+  margin-top: 8px;
+  /* Address, Phone, Email */
+}
+.information-link
+{
+  font-size: 15px; 
+  /* Font-size link điều khoản và quy định */
+}
+.information-link i:hover {
+  color:white;
+  /* Hover link Điều khoản và quy định */
+}
+.information-link a:hover {
+  color: white;
+  text-decoration: underline;
+  /* Hover link Điều khoản và quy định */
+}
+
 .qr-code-wrapper {
   margin-bottom: 15px;
   display: flex;
@@ -141,9 +172,9 @@ hr {
   border-style: none;
 }
 .qr-code-guide-text {
-  margin-top: 20px;
+  margin-top: 40px;
   font-weight: 500;
-  font-size: 14px;
+  font-size: 15px;
   line-height: 22px;
   color: #10100f;
   position: relative;
