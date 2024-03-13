@@ -53,7 +53,7 @@ header {
   transition: 0.1s;
   text-decoration: none;
 }
-.navlinks i:hover {
+.navlinks li > i:hover {
   color: var(--primary-color);
 }
 .navlinks a:hover {
@@ -70,11 +70,6 @@ header {
   z-index: 10001;
   cursor: pointer;
   display: none;
-}
-h1, h2 {
-  font-family: sans-serif;
-  font-weight: 400;
-  color: var(--primary-color);
 }
 button {
   border: none;

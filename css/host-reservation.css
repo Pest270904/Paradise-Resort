@@ -1,0 +1,26 @@
+.body {
+    margin-top: 200px;
+}
+h1 {
+    margin-left: 50px;
+}
+.res-opt {
+    list-style-type: none;
+    overflow: hidden;
+    background-color: white;
+    margin-left: 30px;
+}
+.res-opt li {
+    display: inline;
+    color: black;
+    margin: 0 20px;
+    text-decoration: none;
+    justify-content: space-between;
+}
+.res-opt li:hover {
+    border-bottom: solid; 
+}
+img {
+    margin-left: 50px;
+    border-radius: 4px;
+}
