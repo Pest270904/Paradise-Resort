@@ -20,9 +20,9 @@
             <div class="menu"><i class="fa-solid fa-bars"></i></div>
             <ul class="navlinks">
                 <li><a href="index.html">home</a></li>
-                <li><a href="facilities.html">facilities</a></li>
+                <li><a href="#facilities">facilities</a></li>
                 <li><a href="rooms.html">rooms</a></li>
-                <li><a href="contact.html">contact-us</a></li>
+                <li><a href="#contact">contact-us</a></li>
                 <li style="color: var(--primary-color); text-decoration: underline;"><a href="host-reservation.html">reservation</a></li>
                 <li><a href="wishlist.html"><i class="fa-sharp fa-solid fa-cart-shopping"></i></a>
                 <span>0</span></li>
@@ -31,15 +31,31 @@
             </ul>
     </header>
     <!-- Body -->
-    <div class="body">
-        <h1>Reservation</h1>
-        <ul class="res-opt">
-            <li><a href="#Upcoming"></a>Upcoming</li>
-            <li><a href="#Past"></a>Past</li>
-            <li><a href="#Rejected"></a>Rejected</li>
-        </ul>
-        <img src="img/host-reservation1.jpg" alt="host-reservation1" width="100" height="100">
-    </div>
+    <body>
+        <div class="body">
+            <h1>Reservation</h1>
+            <ul class="res-opt">
+                <li><a href="#Upcoming"></a>Upcoming</li>
+                <li><a href="#Past"></a>Past</li>
+                <li><a href="#Rejected"></a>Rejected</li>
+            </ul>
+        </div>
+        <div class="upcoming-inf">
+            <img class="res-img" src="img/single-room.jpg" alt="single-room" width="100" height="100">
+            <div>
+                <h3>SINGLE ROOM</h3>
+                <p id="firstline">Check In: 13 Mar 2024</p>
+                <p id="firstline">Duration: 2 days</p>
+                <p id="firstline">Guests: 2 Adults</p>
+                <p id="secondline">By: Quoc Ngo Le</p>
+            </div>
+            <div class="btn-res">
+                <button type="button" class="btn-res-app">Approve</button> <br>
+                <button type="button" class="btn-res-rej">Reject</button>
+            </div>
+        </div>
+    </body>
+    
 
     <!-- link to js -->
     <script></script>
