@@ -12,18 +12,18 @@
 
 .rooms-first-description{
     text-align: center;
-    margin: 3% 25% 3% 25%;
+    margin: 3% 20% 3% 20%;
 }
 
 .rooms-first-description-bigtext{
-    font-size: 30px;
+    font-size: 40px;
     font-weight: bold;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .rooms-first-description-smalltext{
-    margin-top: 1%;
-    font-size: 12px;
+    margin-top: 2%;
+    font-size: 14px;
 }
 
 .room-desc{
