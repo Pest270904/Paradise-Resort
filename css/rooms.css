@@ -29,8 +29,8 @@
 .room-desc{
     margin: 3% 13% 5% 13%;
     border: 2px solid rgb(89, 12, 183);
-    border-bottom-left-radius: 12px;
-    border-bottom-right-radius: 12px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
 }
 
 .room-desc-img{
@@ -56,20 +56,20 @@
 .room-desc-detail-button-more{
     display: inline-block;
     border-radius: 50%;
-    border: 2px solid #d8ba49;
+    border: 2px solid #e0b973;
     color:white;
     font-size: 30px;
     text-align: center;
     width: 30px;
     height: 30px;
-    background-color: #d8ba49;
+    background-color: #e0b973;
     margin-left: 18%;
     position: relative;
 }
 
 .room-desc-detail-button-more:hover{
     background-color: white;
-    color: black
+    color: black;
 }
 
 .room-desc-detail-button-more::after{
@@ -86,11 +86,12 @@
     padding-top: 2px;
     font-weight: bold;
     font-size: 15px;
+    width: 200px;
 }
 
 .room-desc-detail-button-cost{
-    border: 2px solid #d8ba49;
-    background-color: #d8ba49;
+    border: 2px solid #e0b973;
+    background-color: #e0b973;
     color: white;
     text-align: center;
     font-weight: bold;

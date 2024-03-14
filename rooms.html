@@ -40,6 +40,9 @@
             <p>Awaken all senses with Paradise's classy coastal resort ecosystem</p>
             <button class="book-btn"><i class="fa-regular fa-calendar"></i> book now</button>
         </div>
+
+        
+        <div id="jumpToRoom""></div>
     </section>
 
 
@@ -59,12 +62,21 @@
 
             <p class="room-desc-name">SINGLE ROOM</p>
             <div class="room-desc-detail">
-                <button class="room-desc-detail-button-more"></button>
-                <p class="room-desc-detail-text">VIEW ROOM DETAILS</p>
+                <button class="room-desc-detail-button-more" id="btn-desc-1" onclick="expand('expd1','view1');"></button>
+                <p class="room-desc-detail-text" id="view1">VIEW ROOM DETAILS</p>
 
-                <button class="room-desc-detail-button-cost">$147   Avg/night</button>
+                <button class="room-desc-detail-button-cost">$147 Avg/night</button>
             </div>
+
+            <!-- Expend/collapse contents -->
+            <div id="expd1" style="display:none;">
+                <span onclick="this.parentElement.style.display='none'" class="closebtn"></span>
+                
+                <p>Details of Room 1</p>
+            </div>
+
         </div>
+
 
         <div class="room-desc">
             <div style="background-color: rgb(45, 28, 86);">                
@@ -73,10 +85,17 @@
 
             <p class="room-desc-name">DOUBLE ROOM</p>
             <div class="room-desc-detail">
-                <button class="room-desc-detail-button-more"></button>
-                <p class="room-desc-detail-text">VIEW ROOM DETAILS</p>
+                <button class="room-desc-detail-button-more" id="btn-desc-2" onclick="expand('expd2','view2');"></button>
+                <p class="room-desc-detail-text" id="view2">VIEW ROOM DETAILS</p>
 
-                <button class="room-desc-detail-button-cost">$147   Avg/night</button>
+                <button class="room-desc-detail-button-cost">$147 Avg/night</button>
+            </div>
+                            
+            <!-- Expend/collapse contents -->
+            <div id="expd2" style="display:none;">
+                <span onclick="this.parentElement.style.display='none'" class="closebtn"></span>
+                
+                <p>Details of Room 2</p>
             </div>
         </div>
         
@@ -87,10 +106,17 @@
 
             <p class="room-desc-name">TWIN ROOM</p>
             <div class="room-desc-detail">
-                <button class="room-desc-detail-button-more"></button>
-                <p class="room-desc-detail-text">VIEW ROOM DETAILS</p>
+                <button class="room-desc-detail-button-more" id="btn-desc-3" onclick="expand('expd3','view3');"></button>
+                <p class="room-desc-detail-text" id="view3">VIEW ROOM DETAILS</p>
 
-                <button class="room-desc-detail-button-cost">$147   Avg/night</button>
+                <button class="room-desc-detail-button-cost">$147 Avg/night</button>
+            </div>
+                            
+            <!-- Expend/collapse contents -->
+            <div id="expd3" style="display:none;">
+                <span onclick="this.parentElement.style.display='none'" class="closebtn"></span>
+                
+                <p>Details of Room 3</p>
             </div>
         </div>
 
@@ -161,3 +187,20 @@
     <hr>
     <p class = "cpr">Copyright © 2024 paradise.com. All rights reserved</p>
     </footer>
+
+
+
+<script>
+    function expand(tabContent, viewID) {
+        if(document.getElementById(tabContent).style.display == 'block')
+            {    
+                document.getElementById(viewID).innerHTML = "View room details"
+                document.getElementById(tabContent).style.display = 'none'
+            }
+        else
+            {    
+                document.getElementById(viewID).innerHTML = "Hide room details"
+                document.getElementById(tabContent).style.display = 'block'
+            }
+    }
+</script>

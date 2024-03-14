@@ -29,7 +29,7 @@
     padding-top: 3%;
 }
 .desc-line{
-    border-left: 3px solid green;
+    border-left: 3px solid #e0b973;
     border-spacing: 10px;
 }
 .desc-header{
@@ -50,13 +50,13 @@
 }
 .desc-button-detail{
     color: black;
-    background-color: rgb(227, 165, 59);
+    background-color: #e0b973;
     padding: 12px 40px;
     text-align: center;
     font-size: 12px;
     border-radius: 8px;
     cursor: pointer;
-    border: 2px solid rgb(234, 208, 12);
+    border: 2px solid #e0b973;
 }
 .desc-button-detail:hover{
     background-color: white;
