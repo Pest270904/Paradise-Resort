@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./css/style.css">
     <script src="https://kit.fontawesome.com/c53df683d9.js" ></script>
     <link rel="stylesheet" href="./css/footer.css">
+    <link rel="stylesheet" href="./css/chat.css">
     <link rel="stylesheet" href="./css/scrollbar.css">
     <link rel="stylesheet" href="./css/wishlist.css">
     <link rel="stylesheet" href="./css/home-body.css">
@@ -263,7 +264,33 @@
             <p class="body-end-text-2">Mr. and Mrs.Baxter, UK</p>
         </div>
     </body>
-
+    <!-- link to js -->
+    <script src="main.js" defer></script>
+    <!-- Chat box -->
+    <div>
+        <button class="chatbox-toggler">
+            <span><i class="fa-regular fa-message"></i></span>
+            <span><i class="fa-solid fa-xmark"></i></span>
+        </button>
+        <div class="chatbox">
+            <div class="chat-head">
+                <h2>Chat</h2>
+            </div>
+            <ul class="message">
+                <li class="chat incoming">
+                    <span><i class="fa-solid fa-user-tie"></i></span>
+                    <p>Hi there! <br>How can i help you today?</p>
+                </li>
+                <li class="chat outgoing">
+                    <p>Thank you</p>
+                </li>
+            </ul>
+            <div class="chat-input">
+                <textarea placeholder="Enter a message..." required></textarea>
+                <span><i class="fa-solid fa-paper-plane"></i></span>
+            </div>
+        </div>
+    </div>
     <footer class="ft">
         <div class="row">
             <div class="col">
