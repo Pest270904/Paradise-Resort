@@ -60,7 +60,7 @@
 
         <p class="room-desc-name">DELUXE DOUBLE ROOM</p>
         <div class="room-desc-detail">
-            <button class="room-desc-detail-button-more" id="btn-desc-1" onclick="expand('expd1','view1');"></button>
+            <button class="room-desc-detail-button-more" id="btn-desc-1" onclick="expand('btn-desc-1','expd1','view1');">+</button>
             <p class="room-desc-detail-text" id="view1">VIEW ROOM DETAILS</p>
 
             <button class="room-desc-detail-button-cost">$147 Avg/night</button>
@@ -68,7 +68,6 @@
 
         <!-- Expend/collapse contents -->
         <div id="expd1" style="display:none;">
-            <span onclick="this.parentElement.style.display='none'" class="closebtn"></span>
             <div class="room-decription">
             <p class="room-decription-bigtext">Description: </p>
             <p class="room-decription-smalltext"> With an area of 32 square meters, the Deluxe Double Room is a modernly 
@@ -111,15 +110,14 @@
 
         <p class="room-desc-name">DELUXE TWIN ROOM</p>
         <div class="room-desc-detail">
-            <button class="room-desc-detail-button-more" id="btn-desc-3" onclick="expand('expd3','view3');"></button>
-            <p class="room-desc-detail-text" id="view3">VIEW ROOM DETAILS</p>
+            <button class="room-desc-detail-button-more" id="btn-desc-2" onclick="expand('btn-desc-2','expd2','view2');">+</button>
+            <p class="room-desc-detail-text" id="view2">VIEW ROOM DETAILS</p>
 
             <button class="room-desc-detail-button-cost">$147 Avg/night</button>
         </div>
                         
         <!-- Expend/collapse contents -->
-        <div id="expd3" style="display:none;">
-            <span onclick="this.parentElement.style.display='none'" class="closebtn"></span>
+        <div id="expd2" style="display:none;">
             <div class="room-decription">
                 <p class="room-decription-bigtext">Description: </p>
                 <p class="room-decription-smalltext"> With an area of 32 square meters, the Deluxe Twin Room is a modernly designed 
@@ -162,15 +160,14 @@
 
         <p class="room-desc-name">GRAND DELUXE DOUBLE ROOM</p>
         <div class="room-desc-detail">
-            <button class="room-desc-detail-button-more" id="btn-desc-2" onclick="expand('expd2','view2');"></button>
-            <p class="room-desc-detail-text" id="view2">VIEW ROOM DETAILS</p>
+            <button class="room-desc-detail-button-more" id="btn-desc-3" onclick="expand('btn-desc-3','expd3','view3');">+</button>
+            <p class="room-desc-detail-text" id="view3">VIEW ROOM DETAILS</p>
 
             <button class="room-desc-detail-button-cost">$147 Avg/night</button>
         </div>
                         
         <!-- Expend/collapse contents -->
-        <div id="expd2" style="display:none;">
-            <span onclick="this.parentElement.style.display='none'" class="closebtn"></span>
+        <div id="expd3" style="display:none;">
             <div class="room-decription">
                 <p class="room-decription-bigtext">Description: </p>
                 <p class="room-decription-smalltext"> With an area of 42 square meters, the Grand Deluxe Double Room is a modernly 
@@ -276,15 +273,17 @@
 
 
 <script>
-    function expand(tabContent, viewID) {
+    function expand(btnID, tabContent, viewID) {
         if(document.getElementById(tabContent).style.display == 'block')
             {    
-                document.getElementById(viewID).innerHTML = "View room details"
+                document.getElementById(viewID).innerHTML = "VIEW ROOM DETAILS"
+                document.getElementById(btnID).innerText="+"
                 document.getElementById(tabContent).style.display = 'none'
             }
         else
             {    
-                document.getElementById(viewID).innerHTML = "Hide room details"
+                document.getElementById(viewID).innerHTML = "HIDE ROOM DETAILS"
+                document.getElementById(btnID).innerText="-"
                 document.getElementById(tabContent).style.display = 'block'
             }
     }

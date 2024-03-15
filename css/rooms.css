@@ -58,7 +58,8 @@
     border-radius: 50%;
     border: 2px solid #e0b973;
     color:white;
-    font-size: 30px;
+    font-size: 25px;
+    font-weight: bold;
     text-align: center;
     width: 30px;
     height: 30px;
@@ -72,14 +73,14 @@
     color: black;
 }
 
-.room-desc-detail-button-more::after{
-    content: "+";
+/* .room-desc-detail-button-more::after{
+    content: var(--btn-content);
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     transition: opacity 0.3s ease-in-out;
-}
+} */
 
 .room-desc-detail-text{
     padding-left: 3%;
