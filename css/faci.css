@@ -2,7 +2,7 @@
     position: relative;
     width: 100%;
     height: 100vh;
-    background: linear-gradient(rgba(55, 61, 130, 0.5), rgba(30, 30, 30, 0.5)),  url(../img/faci.jpg);
+    background: linear-gradient(rgba(55, 61, 130, 0.5), rgba(30, 30, 30, 0.5)),  url(../img/facilities/faci.jpg);
     background-size: cover;
     background-position: center;
     display: grid;
@@ -10,7 +10,7 @@
     align-items: center;
 }
 .faci-first-description{
-    text-align: center;
+    text-align: center; 
     margin: 3% 20% 3% 20%;
 }
 
@@ -46,37 +46,37 @@
 }
 
 .faci-background-gym{
-    background: url(../img/faci-gym.jpg);
+    background: url(../img/facilities/faci-gym.jpg);
     background-size: cover;  
     background-position: center;
  }
 
  .faci-background-poolsidebar{
-    background: url(../img/faci-poolside_bar.jpg);
+    background: url(../img/facilities/faci-poolside_bar.jpg);
     background-size: cover;  
     background-position: center;
  }
 
  .faci-background-spa{
-    background: url(../img/faci-spa.jpg);
+    background: url(../img/facilities/faci-spa.jpg);
     background-size: cover;  
     background-position: center;
  }
 
  .faci-background-swimmingpool{
-    background: url(../img/faci-swimming_pool.jpg);
+    background: url(../img/facilities/faci-swimming_pool.jpg);
     background-size: cover;  
     background-position: center;
  }
 
  .faci-background-restaurant{
-    background: url(../img/faci-restaurant.jpg);
+    background: url(../img/facilities/faci-restaurant.jpg);
     background-size: cover;  
     background-position: center;
  }
 
  .faci-background-laundry{
-    background: url(../img/faci-laundry.jpg);
+    background: url(../img/facilities/faci-laundry.jpg);
     background-size: cover;  
     background-position: center;
  }
