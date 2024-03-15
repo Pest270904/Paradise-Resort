@@ -2,7 +2,7 @@
     position: relative;
     width: 100%;
     height: 100vh;
-    background: linear-gradient(rgba(21, 21, 21, 0.5), rgba(30, 30, 30, 0.5)),  url(../img/room-bg.jpg);
+    background: linear-gradient(rgba(21, 21, 21, 0.5), rgba(30, 30, 30, 0.5)),  url(../img/room-background.webp);
     background-size: cover;
     background-position: center;
     display: grid;
@@ -12,18 +12,18 @@
 
 .rooms-first-description{
     text-align: center;
-    margin: 3% 20% 3% 20%;
+    margin: 3% 25% 3% 25%;
 }
 
 .rooms-first-description-bigtext{
-    font-size: 40px;
+    font-size: 30px;
     font-weight: bold;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .rooms-first-description-smalltext{
-    margin-top: 2%;
-    font-size: 14px;
+    margin-top: 1%;
+    font-size: 12px;
 }
 
 .room-desc{
@@ -105,4 +105,24 @@
 .room-desc-detail-button-cost:hover{
     background-color: white;
     color: black;   
+}
+.room-decription-bigtext
+{
+    font-size: 18px;
+    font-weight: 700;
+    padding-left: 10px;
+}
+.room-decription-smalltext
+{
+    font-size: 17px;
+    padding: 13px;
+}
+.room-decription-icon
+{
+    margin-top: 5px;
+    margin-left: 70px;
+    width: 17%;
+    font-size: 17px;
+    display: inline-block;
+    padding: 10px;
 }
