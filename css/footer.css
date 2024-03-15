@@ -177,7 +177,8 @@ hr {
   font-size: 15px;
   line-height: 22px;
   color: #10100f;
-  position: relative;
+  position:absolute;
+  margin-left: 120px;
 }
 .footer-wrapper .qr-wrapper .qr-code .qr-code-guide-text::after {
   content: "";
