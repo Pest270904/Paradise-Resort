@@ -24,12 +24,17 @@ h1 {
     margin-left: 50px;
     border-radius: 4px;
 }
-.upcoming-inf {
+.upcoming-inf-line1 {
     margin-top: 20px;
     display: inline-flex;
-    /* width: 100vh; */
+    width: 100%;
 }
-h3 {
+.upcoming-inf-line2 {
+    margin-top: 20px;
+    display: inline-flex;
+    width: 100%;
+}
+.name-room  {
     padding-left: 20px;
 }
 #firstline
@@ -42,29 +47,21 @@ h3 {
     padding-left: 20px;
 }
 .btn-res {
-    display: inline-flex;
-    right: 0;
+    position: absolute;
+    right: 150px;
+    margin-top: 30px;
 }
-
-.btn-res button {
-    margin-left: 30px;
+.btn-res-cancel {
     height: 30px;
-    width: 90px;
-}
-.btn-res-app {
+    width: 160px;
     background-color: #e0b973;
     color: white;
     padding: 1px;
     font-size: 16px;
-    border-radius: 5px;
-    
+    border-radius: 20px;
+    border: 2px solid #e0b973;
 }
-.btn-res-rej {
-    background-color: #c9c9c9;
-    color: white;
-    padding: 1px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    border-radius: 5px;
+.btn-res-cancel:hover {
+    background-color: white;
+    color: black;
 }
