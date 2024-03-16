@@ -44,7 +44,7 @@
 input, textarea {
     width: 100%;
     padding: 10px;
-    border-radius: 6px;
+    border-radius: 5px;
     
 }
 input:focus, textarea:focus {
@@ -60,9 +60,12 @@ input:focus, textarea:focus {
     transition: 0.3s ease;
     text-align: center;
     width: 100%;
+    font-family:Arial, Helvetica, sans-serif;
+    border-radius: 3px;
 }
 .button-send-message:hover{
 background-color: #c49237;
+
 }
 .contact-info {
     text-align: left;
@@ -77,4 +80,12 @@ background-color: #c49237;
 }
 .contact-info i {
     margin-right: 7px;
+}
+@media screen and (max-width:768px) {
+    .container {
+        padding: 20px;
+    }
+    .contact-wrapper {
+        grid-template-columns: 1fr;
+    }
 }
