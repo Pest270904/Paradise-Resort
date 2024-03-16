@@ -1,0 +1,21 @@
+.contact-us-title {
+    width: 100%;
+    justify-content: center;
+    display: block;
+    align-items: center;
+    padding-top: 100px; 
+    padding-bottom: 30px;
+    font-size: 30px;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    background-color: #e0b973;
+    border-radius: 10px;
+}
+.section-contact-us-paragraph {
+    width: 100%;
+}
+.section-contact-us-paragraph .paragraph {
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 20px;
+}
