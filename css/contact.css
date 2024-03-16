@@ -11,11 +11,19 @@
     font-weight: bold;
     background-color: #e0b973;
     border-radius: 10px;
+    box-sizing: border-box;
 }
 .section-contact-us-paragraph {
     width: 100%;
+    padding: 50px;
+    text-align: center;
 }
 .section-contact-us-paragraph .paragraph {
     font-family: 'Roboto', sans-serif;
     margin-bottom: 20px;
+    box-sizing: border-box;
+}
+.contact-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
 }
