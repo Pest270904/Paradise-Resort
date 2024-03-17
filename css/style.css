@@ -120,6 +120,26 @@ section {
   line-height: 38px;
   margin-bottom: 50px;
 }
+
+.body-end{
+  padding: 3% 0;
+  background-color: white;
+  text-align: center;
+}
+.body-end-header{
+  font-weight: bold;
+  font-size: 26px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.body-end-text-1{
+  padding-top: 3px;
+  font-size: 18px;
+}
+.body-end-text-2{
+  font-size: 14px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
 .book-btn {
   text-transform: uppercase;
   display: inline-block;
