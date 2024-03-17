@@ -40,11 +40,13 @@
 }
 .form-group {
     margin-bottom: 20px;
+    
 }
 input, textarea {
     width: 100%;
     padding: 10px;
     border-radius: 5px;
+    resize: none;
     
 }
 input:focus, textarea:focus {
