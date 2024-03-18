@@ -29,20 +29,22 @@
     position: relative;
     width: 70%;
     height: 80vh;
-    display: grid;
-    align-items: flex-end;
     margin: 5% 15%;
+    border-radius: 15px;
 }
 
 .faci-detail-text{
     background-color: white;
     color: black;
-    font-size: 22px;
+    font-size: 20px;
     font-weight: bold;
     text-align: center;
     letter-spacing: 2px;
     position: absolute;
-    padding: 1% 10% 0 10%;
+    padding-top: 1%;
+    width: 40%;
+    bottom: 0;
+    left: 308px;
 }
 
 .faci-background-gym{
