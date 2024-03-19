@@ -1,6 +1,4 @@
 # Đồ án thiết kế Web App 
-
-## Nhóm 5
 Thành viên:
 
 - Lê Quốc Ngô - 22520951
