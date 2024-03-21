@@ -1,0 +1,63 @@
+@import url('https://fonts.cdnfonts.com/css/google-sans');
+
+
+.terms-path{
+    margin: 15% 10% 3%;
+    font-size: 15px;
+    color: gray;
+}
+b > a {
+    text-decoration: none;
+}
+
+.terms-header{
+    margin: 0 30% 3%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 26px;
+}
+
+.terms-desc{
+    margin: 0 25% 5%;
+    font-size: 16px;
+    font-family: 'Product Sans Light', sans-serif;
+    line-height: 1.5;
+}
+
+.terms-desc-list{
+    margin-left: 4%;
+}
+
+ol > li{
+    padding-left: 5px;
+    padding-bottom: 5px;
+}
+
+ol > li > i p, p{
+    padding-left: 15px;
+}
+
+li > ul{
+    padding-left: 15px;
+}
+
+.terms-desc-table{
+    margin: 4% 0;
+}
+
+table, th, td {
+    border:1px solid black;
+    border-collapse: collapse;
+    letter-spacing: 0.5px;
+    padding: 1% 0;
+}
+
+td:nth-child(1), td:nth-child(2) {
+    text-align: center;
+}
+td {
+    padding: 0 8px;
+}   
+th {
+    text-align: center;
+}
