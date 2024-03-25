@@ -20,7 +20,7 @@ __Giảng viên:__ Trần Tuấn Dũng
 
 ### Công nghệ sử dụng:
 - Ngôn ngữ sử dụng: HTML, CSS, JS, TS
-- Framework: [Next.js](https://nextjs.org/)
+- Framework: [Nest.js](https://nestjs.com/)
 - Database: SQL Server
 
 ## B. Setup và Build
