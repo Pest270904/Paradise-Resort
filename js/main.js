@@ -7,9 +7,7 @@ chatboxToggler.addEventListener("click", () => document.body.classList.toggle("s
 
 const login_display = document.querySelector('.modal');
 const btn__login = document.querySelector('.btn-login');
-const modal_container = document.querySelector('.modal__body')
-// console.log(modal_container)
-// console.log(btn__login);
+const modal_container = document.querySelector('.login-form')
 btn__login.addEventListener("click",function(){
     login_display.classList.add('open__btn');
 })
