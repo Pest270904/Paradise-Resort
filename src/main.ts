@@ -10,9 +10,7 @@ async function bootstrap() {
   app.useStaticAssets(join(__dirname, '..', 'public'));
   app.setBaseViewsDir(join(__dirname, '..', 'views'));
 
-  app.engine(
-    'hbs',
-    hbs({
+  app.engine('hbs', hbs({
       extname: 'hbs',
       partialsDir: join(__dirname, '..', 'views/partials'),
       defaultLayout: 'main.hbs',

@@ -4,14 +4,8 @@ import { Get, Controller, Render } from '@nestjs/common';
 export class AppController {
   @Get('/')
   @Render('home')
-  home1(){
+  root(){
     return {message: 'This is home page from root'}
-  }
-
-  @Get('home')
-  @Render('home')
-  home2(){
-    return {message: 'This is home page'}
   }
 
   @Get('facilities')
