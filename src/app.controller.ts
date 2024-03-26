@@ -55,9 +55,4 @@ export class AppController {
   reservationRegulations(){
     return {message: 'This is reservation regulations page'}
   }
-  @Get('login')
-  @Render('login')
-  Login(){
-    return {message: 'This is payment regulations page'}
-  }
 }
