@@ -1,0 +1,28 @@
+<header>
+  <a href='home' class='logo'><img
+      src='img/header-footer/Group2.svg'
+      alt='logo'
+    /></a>
+  <div class='menu'><i class='fa-solid fa-bars'></i></div>
+  <ul class='navlinks'>
+    <li><a href='home'>home</a></li>
+    <li><a href='/facilities'>facilities</a></li>
+    <li><a href='rooms'>rooms</a></li>
+    <li><a href='contact'>contact-us</a></li>
+    <li><a href='reservation'>reservation </a></li>
+    <li><i class='fa-solid fa-magnifying-glass'></i></li>
+    <li class='login-button'>
+      <a href='login'>
+        <button class='btn-login'>
+          <i class='fa-solid fa-arrow-right-to-bracket'></i>
+          Login
+        </button>
+      </a>
+    </li>
+  </ul>
+</header>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+  document.querySelector('.login-button').addEventListener('click', function() {
+  window.location.href = '/login'; }); });
+</script>

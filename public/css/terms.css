@@ -33,7 +33,7 @@ ol > li{
     padding-bottom: 5px;
 }
 
-ol > li > i p, p{
+ol > li > i p, ol > li > p{
     padding-left: 15px;
 }
 
