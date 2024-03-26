@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Req, Res, Render } from '@nestjs/common';
+import { Controller, Get, Post, Req, Res } from '@nestjs/common';
 import { Request, Response } from 'express';
 
 @Controller('user')
@@ -12,7 +12,7 @@ export class UserController {
 
   @Get('login')
   userLogin(@Res() res: Response) {
-    return res.render('partials/login', {
+    return res.render('login', {
       layout: 'login-layout',
       message: 'Hello world!!',
     });
