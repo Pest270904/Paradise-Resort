@@ -2,7 +2,7 @@
     position: relative;
     width: 100%;
     height: 100vh;
-    background: linear-gradient(rgba(55, 61, 130, 0.5), rgba(30, 30, 30, 0.5)),  url(../img/facilities/faci.jpg);
+    background: linear-gradient(rgba(55, 61, 130, 0.5), rgba(30, 30, 30, 0.5)),  url(https://github.com/Pest270904/StoreImg/blob/main/NT208/facilities/faci.jpg?raw=true);
     background-size: cover;
     background-position: center;
     display: grid;
@@ -48,37 +48,37 @@
 }
 
 .faci-background-gym{
-    background: url(../img/facilities/faci-gym.jpg);
+    background: url(https://github.com/Pest270904/StoreImg/blob/main/NT208/facilities/faci-gym.jpg?raw=true);
     background-size: cover;  
     background-position: center;
  }
 
  .faci-background-poolsidebar{
-    background: url(../img/facilities/faci-poolside_bar.jpg);
+    background: url(https://github.com/Pest270904/StoreImg/blob/main/NT208/facilities/faci-poolside_bar.jpg?raw=true);
     background-size: cover;  
     background-position: center;
  }
 
  .faci-background-spa{
-    background: url(../img/facilities/faci-spa.jpg);
+    background: url(https://github.com/Pest270904/StoreImg/blob/main/NT208/facilities/faci-spa.jpg?raw=true);
     background-size: cover;  
     background-position: center;
  }
 
  .faci-background-swimmingpool{
-    background: url(../img/facilities/faci-swimming_pool.jpg);
+    background: url(https://github.com/Pest270904/StoreImg/blob/main/NT208/facilities/faci-swimming_pool.jpg?raw=true);
     background-size: cover;  
     background-position: center;
  }
 
  .faci-background-restaurant{
-    background: url(../img/facilities/faci-restaurant.jpg);
+    background: url(https://github.com/Pest270904/StoreImg/blob/main/NT208/facilities/faci-restaurant.jpg?raw=true);
     background-size: cover;  
     background-position: center;
  }
 
  .faci-background-laundry{
-    background: url(../img/facilities/faci-laundry.jpg);
+    background: url(https://github.com/Pest270904/StoreImg/blob/main/NT208/facilities/faci-laundry.jpg?raw=true);
     background-size: cover;  
     background-position: center;
  }
