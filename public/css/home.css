@@ -49,17 +49,34 @@
 }
 /* Responsive design */
 /* tablet */
-@media (min-width: 740px) and (max-width: 1023px) {
+@media only screen and (min-width: 740px) and (max-width: 1023px) {
     .home-desc-detail {
-        margin: 0% 10%;
+        margin: 0% 13%;
     }
 }
 /* mobile */
-@media (max-width: 740px) {
-    .home-desc-detail {
-        margin: 0% 10%;
-    }
+@media only screen and (max-width: 739px) {
     .home-desc {
         font-size: small;
+    }
+    .home-text h1 {
+        font-size: 45px;
+    }
+    .home-desc-detail {
+        margin: 0% 8%;
+        align-items: center;
+    }
+    .home-desc-detail-img-style{
+        width: 360px;
+        height: 212px;
+    }
+    .home-desc-detail-text-1{
+        font-weight: bold;
+        font-size: 20px;
+    }
+    .home-desc-detail-text-2{
+        margin-top: 3%;
+        font-size: 11px;
+        padding-right: 22%;
     }
 }
