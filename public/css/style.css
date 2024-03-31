@@ -204,6 +204,11 @@ section {
 .book-btn:hover {
   transform: scale(1.1);
 }
+@media (max-width: 1023px) {
+  .home {
+    height: max-content;
+  }
+}
 /* -------header-------- */
 
 /* ----LOGIN FORM----  */

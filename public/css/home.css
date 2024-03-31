@@ -47,3 +47,19 @@
     width: 450px;
     height: 265px;
 }
+/* Responsive design */
+/* tablet */
+@media (min-width: 740px) and (max-width: 1023px) {
+    .home-desc-detail {
+        margin: 0% 10%;
+    }
+}
+/* mobile */
+@media (max-width: 740px) {
+    .home-desc-detail {
+        margin: 0% 10%;
+    }
+    .home-desc {
+        font-size: small;
+    }
+}
