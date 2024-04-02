@@ -34,7 +34,7 @@
 }
 
 .room-desc-img{
-    width: 100%;
+    width: 100%;    
 }
 
 .room-desc-name{
@@ -132,3 +132,27 @@
     width: 19x;
     height: 18px;
 }
+/* Responsive Design */
+ /* Tablet */
+ @media only screen and (min-width: 740px) and (max-width: 1023px) {
+    .home-rooms {
+      height: max-content;
+    }
+    .room-desc-detail-button-cost {
+        font-size: 15px;
+        border-radius: 8px;
+        padding: 10px 24px;
+        margin-left: 20%;
+    }
+    .room-decription-smalltext {
+        font-size: 14px;
+    }
+    .room-decription-icon {
+        margin-top: 5px;
+        margin-left: 45px;
+        width: 18%;
+        font-size: 13px;
+        display: inline-block;
+        padding: 0px;
+    }
+ }
