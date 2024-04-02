@@ -1,5 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
 :root {
   --primary-color: #e0b973;
 }
@@ -7,6 +7,78 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+}
+/*Scroll bar */
+*::-webkit-scrollbar {
+  height: 10px;
+  width: 10px;
+}
+*::-webkit-scrollbar-track {
+  border-radius: 5px;
+  background-color: #dfe9eb;
+}
+
+*::-webkit-scrollbar-track:hover {
+  background-color: #b8c0c2;
+}
+
+*::-webkit-scrollbar-track:active {
+  background-color: #b8c0c2;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: #397524;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #62a34b;
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background-color: #62a34b;
+}
+/*Slogan annimation*/
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+
+svg {
+  font-family: 'Russo One', sans-serif;
+  width: 110%;
+  height: 100%;
+}
+svg text {
+  animation: stroke 5s infinite alternate;
+  stroke-width: 2;
+  stroke: var(--primary-color);
+  font-size: 100px;
+}
+@keyframes stroke {
+  0% {
+    fill: rgba(72, 138, 204, 0);
+    stroke: var(--primary-color);
+    stroke-dashoffset: 25%;
+    stroke-dasharray: 0 50%;
+    stroke-width: 2;
+  }
+  70% {
+    fill: rgba(72, 138, 204, 0);
+    stroke: rgb(194, 169, 26);
+  }
+  80% {
+    fill: rgba(72, 138, 204, 0);
+    stroke: rgb(194, 169, 26);
+    stroke-width: 3;
+  }
+  100% {
+    fill: rgb(194, 169, 26);
+    stroke: rgba(54, 95, 160, 0);
+    stroke-dashoffset: -25%;
+    stroke-dasharray: 50% 0;
+    stroke-width: 0;
+  }
+}
+.home-text-signature {
+  text-align: left;
 }
 .logo img {
   max-height: 75px;
@@ -17,11 +89,12 @@
 .slogan {
   color: black;
   font-weight: bold;
+  margin-left: 10px;
 }
 body {
   background: white;
   color: black;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 header {
   background-color: rgb(255, 255, 255);
@@ -43,23 +116,25 @@ header {
   align-items: center;
   justify-content: space-between;
 }
-.navbar .navlinks {
+/*Menu Style*/
+.navlinks {
   display: flex;
 }
-.navbar .navlinks a{
+.navlinks a {
   display: inline-block;
   text-transform: uppercase;
   color: black;
   margin: 0 10px;
-  transition: 0.1s;
+  transition: 0.2s;
   text-decoration: none;
 }
-.navbar .navlinks li > i:hover {
+
+.navlinks li > i:hover {
   color: var(--primary-color);
 }
 .navbar .navlinks a:hover {
   color: var(--primary-color);
-  text-decoration: underline;
+  text-decoration: overline;
 }
 .navbar .navlinks li {
   list-style: none;
@@ -173,21 +248,21 @@ section {
   margin-bottom: 50px;
 }
 
-.body-end{
+.body-end {
   padding-bottom: 5%;
   background-color: white;
   text-align: center;
 }
-.body-end-header{
+.body-end-header {
   font-weight: bold;
   font-size: 26px;
   font-family: Arial, Helvetica, sans-serif;
 }
-.body-end-text-1{
+.body-end-text-1 {
   padding-top: 3px;
   font-size: 18px;
 }
-.body-end-text-2{
+.body-end-text-2 {
   font-size: 14px;
   font-family: 'Times New Roman', Times, serif;
 }
@@ -211,124 +286,3 @@ section {
   }
 }
 /* -------header-------- */
-
-/* ----LOGIN FORM----  */
-    /* CSS Layout */
-    .modal
-    {
-      position: fixed;
-      top:0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      display: none;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0,0,0,0.4);
-      z-index: 1;
-    }
-    .modal__body
-    {
-      width: 750px;
-      height: 500px;
-      background-color: white;
-      margin: auto;
-      position: relative;
-      border-radius: 5px;
-    }
-      /* CSS Form */
-    .auth-form
-    {
-      width: 750px;
-    }
-    .auth-form__container
-    {
-      padding: 0 40px;
-    }
-    .auth-form__header
-    {
-      display: flex; 
-      align-items: center; 
-      justify-content: space-between;
-      margin-top: 20px;
-      padding: 0 12px;
-    }
-    .auth-form__heading
-    {
-      font-size: 20px;
-      font-weight: 600;
-      color:rgb(32, 42, 42);
-      /* background-color: #e0b973; */
-    }
-    .auth-form__switch-btn 
-    {
-      font-size: 18px;
-      font-weight: 500;
-      color:rgb(32, 42, 42);
-      /* background-color: #e0b973; */
-    }
-    .auth-form__input
-    {
-      width: 100%;
-      height: 60px;
-      margin-top: 30px;
-      padding: 0 13px;
-      font-size: 18px;
-      font-weight: 100;
-      border: 1px solid var(--border--color);
-      border-radius: 3px;
-      outline:none;
-    }
-    .auth-form__input:focus
-    {
-      border-color: #777;
-    }
-    .auth-form__aside
-    {
-      margin-top: 60px;
-    }
-    .auth-form__policy-text
-    {
-      font-size: 19px;
-      font-weight: 400;
-      text-align: center;
-      padding: 0 12px;
-    }
-    .auth-form__policy-link
-    {
-      text-decoration: none;
-      color: var(--primary-color);
-    }
-    .auth-form__policy-link:hover
-    {
-      text-decoration: underline;
-      font-weight: 600;
-    }
-    .auth-form__controls
-    {
-      width: 100%;
-      margin-top: 50px;
-      border: 1px solid #e0b973;
-      background-color: #e0b973;
-      color: white;
-      text-align: center;
-      border-radius: 8px;
-      padding: 10px 24px;
-    }
-    .auth-form__controls:hover{
-      background-color: white;  
-    }
-    .auth-form__controls__btn
-    {
-      width: 100%;
-      font-size: 20px;
-      font-weight: 600;
-    }
-    .auth-form__controls__btn:hover
-    {
-      color:rgb(255, 213, 0);
-    }
-    .open__btn
-    {
-      display: flex;
-    }
