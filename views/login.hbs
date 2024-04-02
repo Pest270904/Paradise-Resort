@@ -4,30 +4,21 @@
     <img src='https://github.com/Pest270904/StoreImg/blob/main/NT208/header-footer/Group2.svg?raw=true' alt='' />
     <div class='login-form'>
       <form action='' method='post' class='form' id='form-1'>
-        <h2 class='heading'>ĐĂNG KÝ TÀI KHOẢN</h2>
+        <h2 class='heading'>ĐĂNG NHẬP TÀI KHOẢN</h2>
         <div class='spacer'></div>
+        {{!-- username --}}
         <div class='form-group'>
-          <label for='fullName' class='form-label'>Tên đầy đủ</label>
-          <input
-            id='fullName'
-            name='fullName'
-            type='text'
-            placeholder='VD: Nguyen Van A'
-            class='form-control'
-          />
-          <span class='form-message'></span>
+            <label for='username' class='form-label'>Username</label>
+            <input
+              id='username'
+              name='username'
+              type='text'
+              placeholder='VD: username1'
+              class='form-control'
+            />
+            <span class='form-message'></span>
         </div>
-        <div class='form-group'>
-          <label for='email' class='form-label'>Email</label>
-          <input
-            id='email'
-            name='email'
-            type='text'
-            placeholder='VD: abc@gmail.com'
-            class='form-control'
-          />
-          <span class='form-message'></span>
-        </div>
+        {{!-- password --}}
         <div class='form-group'>
           <label for='password' class='form-label'>Mật khẩu</label>
           <input
@@ -39,21 +30,11 @@
           />
           <span class='form-message'></span>
         </div>
+        {{!-- button for submit --}}
         <div class='form-group'>
-          <label for='password-confirmation' class='form-label'>Nhập lại mật
-            khẩu</label>
-          <input
-            id='password_confirmation'
-            name='password_confirmation'
-            type='text'
-            placeholder='VD: Lê Quốc Ngô'
-            class='form-control'
-          />
-          <span class='form-message'></span>
+          <button class='form-submit'>Log in</button>
         </div>
-        <div class='form-group'>
-          <button class='form-submit'>Đăng ký</button>
-        </div>
+        <a href="register">Don't have an account?</a>
       </form>
     </div>
     <script src='/js/form-validation.js'></script>
