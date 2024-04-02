@@ -81,14 +81,10 @@ svg text {
   text-align: left;
 }
 .logo img {
+  max-height: 75px;
   max-width: 149px;
-  height: 256;
   margin-top: 0%;
-  margin-left: 50px;
-}
-.logo-wrapper {
-  width: 280px;
-  height: auto;
+  margin-left: 20px;
 }
 .slogan {
   color: black;
@@ -102,18 +98,23 @@ body {
 }
 header {
   background-color: rgb(255, 255, 255);
-  height: 10vh;
+  height: 60px;
   line-height: 6vh;
   position: fixed;
   top: 0;
   right: 0;
   width: 100%;
   z-index: 1000;
+  transition: ease 0.4s;
+}
+.navbar {
+  width: 100%;
+  height: 60px;
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* background: transparent; */
-  transition: ease 0.4s;
 }
 /*Menu Style*/
 .navlinks {
@@ -131,17 +132,17 @@ header {
 .navlinks li > i:hover {
   color: var(--primary-color);
 }
-.navlinks a:hover {
+.navbar .navlinks a:hover {
   color: var(--primary-color);
   text-decoration: overline;
 }
-.navlinks li {
+.navbar .navlinks li {
   list-style: none;
   padding: 10px 20px;
 }
-.menu {
+.navbar .menu {
   color: black;
-  font-size: 30px;
+  font-size: 2rem;
   z-index: 10001;
   cursor: pointer;
   display: none;
@@ -165,7 +166,58 @@ button {
 .btn-login:hover {
   transform: scale(1.1);
 }
-
+/* Dropdown menu */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 2rem;
+  top: 60px;
+  height: 0;
+  width: 300px;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: height 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.dropdown-menu.open{
+  height: max-content;
+}
+.dropdown-menu li {
+  list-style: none;
+  text-transform: uppercase;
+  padding: 0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dropdown-menu li a:hover {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+.dropdown-menu li a {
+  text-decoration: none;
+  color: black;
+}
+/* Responsive design */
+@media only screen and (max-width: 1024px) {
+  .navbar .navlinks, .navbar .btn-login {
+    display: none;
+  }
+  .navbar .menu {
+    display: block;
+    padding-right: 2rem;
+  }
+  .dropdown-menu {
+    display: block;
+  }
+} 
+@media only screen and (max-width: 740px) {
+  .dropdown-menu {
+    left: 2rem;
+    width: unset;
+  }
+  
+}
 section {
   padding: 80px 18%;
 }
@@ -173,7 +225,7 @@ section {
   position: relative;
   width: 100%;
   height: 100vh;
-  background: url(../img/index/banner-lammo.jpg);
+  background: url(https://github.com/Pest270904/StoreImg/blob/main/NT208/index/banner-lammo.jpg?raw=true);
   background-size: cover;
   background-position: center;
   display: grid;
@@ -227,5 +279,10 @@ section {
 }
 .book-btn:hover {
   transform: scale(1.1);
+}
+@media only screen and (max-width: 1023px) {
+  .home {
+    height: max-content;
+  }
 }
 /* -------header-------- */
