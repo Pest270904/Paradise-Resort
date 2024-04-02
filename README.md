@@ -14,7 +14,7 @@
 
 ## A. Mô tả đề tài
 
-![](/public/img/general/mindmap.jpg)
+![](https://github.com/Pest270904/StoreImg/blob/main/NT208/general/mindmap.jpg?raw=true)
 
 - Một trang web khách sạn cung cấp những chức năng cơ bản: đăng ký/đăng nhập, hiển thị danh sách phòng, cơ sở vật chất, chat,...
 - Chủ khách sạn: giới thiệu phòng, lên bài quảng cáo, quản lý phòng, kết nối với hệ thống hoạt động xung quanh(du lịch, nhà hàng, di chuyển).
@@ -23,8 +23,8 @@
 ### Công nghệ sử dụng:
 
 - Ngôn ngữ sử dụng: HTML, CSS, JS, TS
-- Framework: [Nest.js](https://nestjs.com/), [Express-handlebars](https://www.npmjs.com/package/express-handlebars)
-- Database: SQL Server
+- Framework: [Nest.js](https://nestjs.com/), [Express-handlebars](https://www.npmjs.com/package/express-handlebars), [ExpressJS](https://expressjs.com/)
+- Database: PostgreSQL with Docker and [Prisma](https://www.prisma.io/)
 
 ## B. Setup và Build
 
@@ -32,27 +32,45 @@
 
 1.  Hệ điều hành: Window, Linux, MacOS
 2.  Runtime enviroment [Nodejs](https://nodejs.org/en)
+3.  [Docker](https://www.docker.com/) for hosting database
 
 ### B.2 Setup
 - Git clone
 ```console
     $ git clone https://github.com/Pest270904/Project-Web-App.git
 ```
+
 - Change Directory
 ```console
     $ cd .\Project-Web-App\
 ```
-- Dowload package
+
+- Dowload package needed for the project
 ```console
-    $ npm install
+    $ npm i
 ```
-- Compile/Run/Dev
+
+- Set up database (using docker with prisma)
 ```console
+        ------ 1. Start Postgres in Docker and push migrations of database ------
+            (Run this command in new terminal when changing code in database)
+
+    $ npm run db:dev:restart
+
+        ------ 2. Host database ------
+
+    $ npx prisma studio
+```
+
+- Compile and build
+```console
+    ---- (!) Open new terminal seperate from terminal running database (!) ----
+
     $ npm run start
 
-            ------ hoặc ------
+            ------ Or ------
             
-    $ npm run start:dev (vừa compile/build/run trong lúc dev)
+    $ npm run start:dev (start api in dev mode)
 ```
 
 - Lên browser vào link: http://localhost:3000/ để vào website
