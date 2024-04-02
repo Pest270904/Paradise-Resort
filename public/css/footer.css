@@ -26,7 +26,6 @@ footer {
 .ft .row .col #lg {
   width: 100%;
   height: 100%;
-  border-radius: 50%;
 }
 .col h3 {
   width: fit-content;
@@ -125,29 +124,25 @@ hr {
   left: 10px;
   /* animation: moving 2s linear infinite; */
 }
-.col
-{
+.col {
   width: 25%;
   padding: 10px;
 }
-.logo-wrapper
-{
+.logo-wrapper {
   font-size: 15px;
-  transform:translateX(-70px);
+  transform: translateX(-40px);
 }
-.information-footer
-{
+.information-footer {
   font-size: 14px;
   margin-top: 8px;
   /* Address, Phone, Email */
 }
-.information-link
-{
-  font-size: 15px; 
+.information-link {
+  font-size: 15px;
   /* Font-size link điều khoản và quy định */
 }
 .information-link i:hover {
-  color:white;
+  color: white;
   /* Hover link Điều khoản và quy định */
 }
 .information-link a:hover {
@@ -177,11 +172,11 @@ hr {
   font-size: 15px;
   line-height: 22px;
   color: #10100f;
-  position:absolute;
+  position: absolute;
   margin-left: 120px;
 }
 .footer-wrapper .qr-wrapper .qr-code .qr-code-guide-text::after {
-  content: "";
+  content: '';
   position: absolute;
   width: 45px;
   height: 45px;
