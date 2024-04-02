@@ -82,3 +82,38 @@
     background-size: cover;  
     background-position: center;
  }
+ /* Responsive Design */
+ /* Tablet */
+ @media only screen and (min-width: 740px) and (max-width: 1023px) {
+    .home-faci {
+      height: max-content;
+    }
+    .faci-first-description-bigtext {
+        font-size: 30px;
+    }
+    .faci-first-description-smalltext {
+        font-size: 10px;
+    }
+    .faci-background-gym {
+        height: 500px;
+    }
+    .faci-background-poolsidebar {
+        height: 500px;
+    }
+    .faci-background-spa {
+        height: 500px;
+    }
+    .faci-background-swimmingpool {
+        height: 500px;
+    }
+    .faci-background-restaurant {
+        height: 500px;
+    }
+    .faci-background-laundry {
+        height: 500px;
+    }
+    .faci-detail-text {
+        font-size: 20px;
+        left: 30%;
+    }
+}
