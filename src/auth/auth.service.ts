@@ -5,12 +5,18 @@ import * as argon from 'argon2'
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
 import { LoginUserDto } from './dto/user_login.dto';
 import { Response } from 'express';
+import { JwtService } from '@nestjs/jwt';
+import { ConfigService } from '@nestjs/config';
+import { HttpService } from '@nestjs/axios';
 
 @Injectable()
-export class UserService {
-    constructor(private prisma : PrismaService) {
-        
-    }
+export class AuthService {
+    constructor(
+        private prisma : PrismaService, 
+        private jwt : JwtService, 
+        private config : ConfigService,
+        private readonly httpService: HttpService,
+    ) {}
 
     async signUp(userData : CreateUserDto, res: Response) {
         try {
@@ -27,10 +33,10 @@ export class UserService {
             })
 
             // remove hash of returned password
-            delete user.hash
+            //delete user.hash
 
             res.redirect(`${userData.username}`); // Redirect to /user/{username}
-            return user;
+            return this.signToken(user.username, user.email)
         }
         catch(error) {
             if(error instanceof PrismaClientKnownRequestError)
@@ -40,9 +46,10 @@ export class UserService {
         }
     }
 
-    async signIn(userData : LoginUserDto, res: Response) {
+    //async signIn(userData : LoginUserDto, res: Response)
+    async signIn(userData : LoginUserDto) {
         // find the user by username
-        const user = await this.prisma.user.findFirst({
+        const user = await this.prisma.user.findUnique({
             where: {
                 username: userData.username
             }
@@ -56,9 +63,28 @@ export class UserService {
         if (!pwMatches) throw new ForbiddenException('Credentials incorrect')
 
         // send back user
-        delete user.hash
+        // delete user.hash
+        
+        //res.redirect(`/auth/${userData.username}`);  // Redirect to /user/{username}
+        return this.signToken(user.username, user.email)
+    }
 
-        res.redirect(`${userData.username}`);  // Redirect to /user/{username}
-        return user
+    async signToken(username: string, email: string) : Promise<{access_token : string}>{
+        const payload = {
+            sub: username,
+            email
+        }
+
+        const secret = this.config.get('JWT_SECRET')
+
+        const token = await this.jwt.signAsync(payload, {
+              expiresIn: '15m',
+              secret: secret,
+            },
+          );
+
+        return {
+            access_token: token,
+        }
     }
 }

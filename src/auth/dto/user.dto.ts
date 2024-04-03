@@ -2,7 +2,9 @@ import { IsAscii, IsEmail, IsLowercase, IsNotEmpty, IsString, Matches} from "cla
 
 export class CreateUserDto {
     @IsNotEmpty()
-    @Matches(/^[a-z]+$/)
+    @Matches(/^(?!^\d)(?!.*\d{2})[a-z0-9]+$/, {
+        message: "Username can only contain lowercase letters from 'a' to 'z' and numbers, but not at the start."
+    })
     username: string
 
     @IsNotEmpty()
