@@ -14,7 +14,7 @@
 
 ## A. Mô tả đề tài
 
-![](https://github.com/Pest270904/StoreImg/blob/main/NT208/general/mindmap.jpg?raw=true)
+![](/public/img/general/mindmap.jpg)
 
 - Một trang web khách sạn cung cấp những chức năng cơ bản: đăng ký/đăng nhập, hiển thị danh sách phòng, cơ sở vật chất, chat,...
 - Chủ khách sạn: giới thiệu phòng, lên bài quảng cáo, quản lý phòng, kết nối với hệ thống hoạt động xung quanh(du lịch, nhà hàng, di chuyển).

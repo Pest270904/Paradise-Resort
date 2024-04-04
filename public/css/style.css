@@ -230,7 +230,7 @@ section {
   position: relative;
   width: 100%;
   height: 100vh;
-  background: url(https://github.com/Pest270904/StoreImg/blob/main/NT208/index/banner-lammo.jpg?raw=true);
+  background: url(/img/index/banner-lammo.jpg);
   background-size: cover;
   background-position: center;
   display: grid;
