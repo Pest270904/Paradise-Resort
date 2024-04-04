@@ -2,7 +2,7 @@
 
 # Website quản lý đặt phòng khách sạn
 
-**Nhóm 3: **
+**Nhóm 3:**
 
 - **Trưởng nhóm:** Lê Quốc Ngô - 22520951 ([@lengo0951](https://github.com/lengo0951))
 - Trần Tiễn Nhật - 22521030 ([@tnh47](https://github.com/tnh47))
