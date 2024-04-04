@@ -74,10 +74,11 @@
 ```
 
 - Lên browser vào link: http://localhost:3000/ để vào website
+  
 #fix prisma/client
 
 npx prisma generate
 
 npm i --save-dev prisma@latest  
-│
+
 npm i @prisma/client@latest
