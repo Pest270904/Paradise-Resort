@@ -53,13 +53,18 @@
 - Set up database (using docker with prisma)
 ```console
         ------ 1. Start Postgres in Docker and push migrations of database ------
-            (Run this command in new terminal when changing code in database)
+            (Run this command in new terminal if you want to reset the databases)
 
     $ npm run db:dev:restart
 
         ------ 2. Host database ------
 
     $ npx prisma studio
+
+        ---------------------------- FOR DEV ----------------------------
+            (Run this command when you change the code in databases)
+
+    $ npx prisma migrate dev
 ```
 
 - Compile and build
@@ -74,11 +79,3 @@
 ```
 
 - Lên browser vào link: http://localhost:3000/ để vào website
-  
-#fix prisma/client
-
-npx prisma generate
-
-npm i --save-dev prisma@latest  
-
-npm i @prisma/client@latest
