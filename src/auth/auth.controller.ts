@@ -1,15 +1,15 @@
-import { Body, ConsoleLogger, Controller, Get, Param, Post, Req, Res } from '@nestjs/common';
-import { Request, Response } from 'express';
+import { Body, Controller, Get, Post, Res } from '@nestjs/common';
+import { Response } from 'express';
 import { CreateUserDto } from './dto/user.dto';
 import { AuthService } from './auth.service';
 import { LoginUserDto } from './dto/user_login.dto';
-import { AppService } from 'src/app.service';
+import { FuncService } from 'src/func/func.service';
 
 @Controller('auth')
 export class AuthController {
   constructor(
     private authService: AuthService,
-    private appService: AppService
+    private funcService: FuncService
   ) {}
 
   // @Get()
@@ -33,9 +33,11 @@ export class AuthController {
     const token = await this.authService.signUp(userData).then((data)=>{return data;})
     res.cookie('jwt',  token )
 
-    console.log("Token: ", this.appService.getTokenFromHeaderResponse(res))
+    console.log("Token: ", this.funcService.getTokenFromHeader_Res(res))
 
     res.redirect(`/`);
+    
+    console.log("Register completed!!")
   }
 
   // Login
@@ -52,9 +54,18 @@ export class AuthController {
     const token = await this.authService.signIn(userData).then((data)=>{return data;})
     res.cookie('jwt', token)
 
-    console.log("Token: ", this.appService.getTokenFromHeaderResponse(res))
+    console.log("Token: ", this.funcService.getTokenFromHeader_Res(res))
 
     res.redirect(`/`);
+
+    console.log("Login completed!!")
+  }
+
+  // Logout
+  @Get('logout')
+  userLogout(@Res() res: Response) {
+    res.clearCookie('jwt').redirect('/');
+    console.log("Logout completed")
   }
 
   // @Get(':id')

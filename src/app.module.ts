@@ -6,6 +6,8 @@ import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { JwtService } from '@nestjs/jwt';
 import { AppService } from './app.service';
+import { FuncModule } from './func/func.module';
+import { FuncService } from './func/func.service';
 
 @Module({
   imports: [
@@ -14,9 +16,10 @@ import { AppService } from './app.service';
     ConfigModule.forRoot({
       isGlobal: true
     }),
-    UserModule
+    UserModule,
+    FuncModule,
   ],
   controllers: [AppController],
-  providers: [JwtService, AppService],
+  providers: [JwtService, AppService, FuncService],
 })
 export class AppModule {}

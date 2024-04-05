@@ -1,64 +1,65 @@
 import { Get, Controller, Render, Res, Req } from '@nestjs/common';
 import { Request, Response } from 'express';
-import { AppService } from './app.service';
+import { FuncService } from './func/func.service';
 
 @Controller()
 export class AppController {
-  constructor(private appService: AppService) {}
-
+  constructor(
+    private funcService: FuncService,
+  ) {}
 
   @Get('/')
   @Render('home')
-  root(@Res() res: Response, @Req() req: Request){
-    this.appService.getTokenFromHeaderRequest(req);
-    return {message: 'This is home page from root'}
+  root(@Req() req: Request, @Res() res: Response) {
+
+    return this.funcService.getUsernameFromJwt_Req(req)
   }
 
   @Get('facilities')
   @Render('facilities')
-  facilities(){
-    return {message: 'This is facilities page'}
+  facilities(@Req() req: Request) {
+    return this.funcService.getUsernameFromJwt_Req(req)
   }
 
   @Get('rooms')
   @Render('rooms')
-  rooms(){
-    return {message: 'This is rooms page'}
+  rooms(@Req() req: Request) {
+    return this.funcService.getUsernameFromJwt_Req(req)
   }
 
   @Get('contact')
   @Render('contact')
-  contact(){
-    return {message: 'This is contact page'}
+  contact(@Req() req: Request) {
+    return this.funcService.getUsernameFromJwt_Req(req)
   }
 
   @Get('reservation')
   @Render('reservation')
-  reservation(){
-    return {message: 'This is reservation page'}
+  reservation(@Req() req: Request) {
+    return this.funcService.getUsernameFromJwt_Req(req)
   }
 
   @Get('general-terms')
   @Render('general-terms')
-  generalTerms(){
-    return {message: 'This is general terms page'}
+  generalTerms(@Req() req: Request) {
+    return this.funcService.getUsernameFromJwt_Req(req)
   }
 
   @Get('general-regulations')
   @Render('general-regulations')
-  generalRegulations(){
-    return {message: 'This is general regulations page'}
+  generalRegulations(@Req() req: Request) {
+    return this.funcService.getUsernameFromJwt_Req(req)
   }
 
   @Get('payment-regulations')
   @Render('payment-regulations')
-  paymentRegulations(){
-    return {message: 'This is payment regulations page'}
+  paymentRegulations(@Req() req: Request) {
+    return this.funcService.getUsernameFromJwt_Req(req)
   }
 
   @Get('reservation-regulations')
   @Render('reservation-regulations')
-  reservationRegulations(){
-    return {message: 'This is reservation regulations page'}
+  reservationRegulations(@Req() req: Request) {
+    return this.funcService.getUsernameFromJwt_Req(req)
   }
 }
