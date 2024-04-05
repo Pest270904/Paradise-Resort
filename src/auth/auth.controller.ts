@@ -1,19 +1,23 @@
-import { Body, Controller, Get, Param, Post, Req, Res } from '@nestjs/common';
+import { Body, ConsoleLogger, Controller, Get, Param, Post, Req, Res } from '@nestjs/common';
 import { Request, Response } from 'express';
 import { CreateUserDto } from './dto/user.dto';
 import { AuthService } from './auth.service';
 import { LoginUserDto } from './dto/user_login.dto';
+import { AppService } from 'src/app.service';
 
 @Controller('auth')
 export class AuthController {
-  constructor(private userService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private appService: AppService
+  ) {}
 
-  @Get()
-  root(@Res() res: Response) {
-    return res.render('home', {
-      message: 'Hello world!!',
-    });
-  }
+  // @Get()
+  // root(@Res() res: Response) {
+  //   return res.render('home', {
+  //     message: 'Hello world!!',
+  //   });
+  // }
 
   // Register
   @Get('register')
@@ -23,9 +27,15 @@ export class AuthController {
       message: 'Hello world!!',
     });
   }
+
   @Post('register')
-  createUser(@Body() userData : CreateUserDto, @Res() res: Response) {
-    return this.userService.signUp(userData, res);
+  async createUser(@Body() userData : CreateUserDto, @Res() res: Response) {
+    const token = await this.authService.signUp(userData).then((data)=>{return data;})
+    res.cookie('jwt',  token )
+
+    console.log("Token: ", this.appService.getTokenFromHeaderResponse(res))
+
+    res.redirect(`/`);
   }
 
   // Login
@@ -38,17 +48,17 @@ export class AuthController {
   }
   
   @Post('login')
-  //userSignIn(@Body() userData : LoginUserDto, @Req() req: Request, @Res() res: Response)
-  userSignIn(@Body() userData : LoginUserDto, @Req() req: Request) {
-      const body = req.body;
+  async userSignIn(@Body() userData : LoginUserDto, @Res() res: Response){
+    const token = await this.authService.signIn(userData).then((data)=>{return data;})
+    res.cookie('jwt', token)
 
-      console.log(body)
-      //return this.userService.signIn(userData, res)
-      return this.userService.signIn(userData)
+    console.log("Token: ", this.appService.getTokenFromHeaderResponse(res))
+
+    res.redirect(`/`);
   }
 
-  @Get(':id')
-  renderId(@Res() res: Response, @Param() id){
-    res.render('home')
-  }
+  // @Get(':id')
+  // renderId(@Res() res: Response, @Param() id){
+  //   res.render('home')
+  // }
 }

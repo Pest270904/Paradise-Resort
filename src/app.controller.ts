@@ -1,10 +1,16 @@
-import { Get, Controller, Render } from '@nestjs/common';
+import { Get, Controller, Render, Res, Req } from '@nestjs/common';
+import { Request, Response } from 'express';
+import { AppService } from './app.service';
 
 @Controller()
 export class AppController {
+  constructor(private appService: AppService) {}
+
+
   @Get('/')
   @Render('home')
-  root(){
+  root(@Res() res: Response, @Req() req: Request){
+    this.appService.getTokenFromHeaderRequest(req);
     return {message: 'This is home page from root'}
   }
 

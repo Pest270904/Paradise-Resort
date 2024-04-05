@@ -4,10 +4,8 @@ import { CreateUserDto } from './dto/user.dto';
 import * as argon from 'argon2'
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
 import { LoginUserDto } from './dto/user_login.dto';
-import { Response } from 'express';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
-import { HttpService } from '@nestjs/axios';
 
 @Injectable()
 export class AuthService {
@@ -15,10 +13,9 @@ export class AuthService {
         private prisma : PrismaService, 
         private jwt : JwtService, 
         private config : ConfigService,
-        private readonly httpService: HttpService,
     ) {}
 
-    async signUp(userData : CreateUserDto, res: Response) {
+    async signUp(userData : CreateUserDto) {
         try {
             // generate hashed password
             const hash = await argon.hash(userData.password)
@@ -31,11 +28,8 @@ export class AuthService {
                     hash
                 },
             })
-
-            // remove hash of returned password
-            //delete user.hash
-
-            res.redirect(`${userData.username}`); // Redirect to /user/{username}
+            
+            // return access token if signup completed
             return this.signToken(user.username, user.email)
         }
         catch(error) {
@@ -46,7 +40,6 @@ export class AuthService {
         }
     }
 
-    //async signIn(userData : LoginUserDto, res: Response)
     async signIn(userData : LoginUserDto) {
         // find the user by username
         const user = await this.prisma.user.findUnique({
@@ -62,16 +55,13 @@ export class AuthService {
         // if password incorrect throw exception
         if (!pwMatches) throw new ForbiddenException('Credentials incorrect')
 
-        // send back user
-        // delete user.hash
-        
-        //res.redirect(`/auth/${userData.username}`);  // Redirect to /user/{username}
+        // return access token if signin completed
         return this.signToken(user.username, user.email)
     }
 
-    async signToken(username: string, email: string) : Promise<{access_token : string}>{
+    async signToken(username: string, email: string){
         const payload = {
-            sub: username,
+            username: username,
             email
         }
 
@@ -83,8 +73,6 @@ export class AuthService {
             },
           );
 
-        return {
-            access_token: token,
-        }
+        return  token
     }
 }
