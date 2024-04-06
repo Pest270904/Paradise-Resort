@@ -20,15 +20,15 @@ export class AuthController {
   // }
 
   // Register
-  @Get('register')
+  @Get('signup')
   userRegister(@Res() res: Response) {
-    return res.render('register', {
+    return res.render('signup', {
       layout: 'login-layout',
       message: 'Hello world!!',
     });
   }
 
-  @Post('register')
+  @Post('signup')
   async createUser(@Body() userData : CreateUserDto, @Res() res: Response) {
     const token = await this.authService.signUp(userData).then((data)=>{return data;})
     res.cookie('jwt',  token )
@@ -54,7 +54,7 @@ export class AuthController {
     const token = await this.authService.signIn(userData).then((data)=>{return data;})
     res.cookie('jwt', token)
 
-    console.log("Token: ", this.funcService.getTokenFromHeader_Res(res))
+    //console.log("Token: ", this.funcService.getTokenFromHeader_Res(res))
 
     res.redirect(`/`);
 

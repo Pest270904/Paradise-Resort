@@ -1,54 +1,46 @@
 <!-- LOGIN FORM -->
 <html>
   <body>
-    <!--<img src='/img/header-footer/Group2.svg' alt='' />-->
-    <section class='container forms'>
-      <div class='form login'>
-        <div class='form-content'>
-          <header>Login</header>
-          <form action='#'>
-            <div class='field input-field'>
-              <input type='email' placeholder='Email' class='input' />
-            </div>
-
-            <div class='field input-field'>
-              <input type='password' placeholder='Password' class='password' />
-              <i class='bx bx-hide eye-icon'></i>
-            </div>
-
-            <div class='form-link'>
-              <a href='#' class='forgot-pass'>Forgot password?</a>
-            </div>
-
-            <div class='field button-field'>
-              <button>Login</button>
-            </div>
-          </form>
-
-          <div class='form-link'>
-            <span>Don't have an account?
-              <a href='register' class='link signup-link'>Signup</a>
-            </span>
-          </div>
+    <a href="/"><img src='/img/header-footer/Group2.svg' alt='' /></a>
+    <div class='login-form'>
+      <form action='' method='post' class='form' id='form-1'>
+        <h2 class='heading'>ĐĂNG NHẬP TÀI KHOẢN</h2>
+        <div class='spacer'></div>
+        {{!-- username --}}
+        <div class='form-group'>
+            <label for='username' class='form-label'>Username</label>
+            <input
+              id='username'
+              name='username'
+              type='text'
+              placeholder='VD: username1'
+              class='form-control'
+            />
+            <span class='form-message'></span>
         </div>
-
-        <div class='line'></div>
-
-        <div class='media-options'>
-          <a href='#' class='field facebook'>
-            <i class='bx bxl-facebook facebook-icon'></i>
-            <span>Login with Facebook</span>
-          </a>
+        {{!-- password --}}
+        <div class='form-group'>
+          <label for='password' class='form-label'>Mật khẩu</label>
+          <input
+            id='password'
+            name='password'
+            type='text'
+            placeholder='Nhập mật khẩu'
+            class='form-control'
+          />
+          <span class='form-message'></span>
         </div>
-
-        <div class='media-options'>
-          <a href='#' class='field google'>
-            <img src='/img/icon/logo-google.png' alt='' class='google-img' />
-            <span>Login with Google</span>
-          </a>
+        {{!-- button for submit --}}
+        <div class='form-group'>
+          <button class='form-submit'>Log in</button>
         </div>
-      </div>
-    </section>
+        <a href="signup">Don't have an account?</a>
+      </form>
+    </div>
     <script src='/js/form-validation.js'></script>
+    <script>
+      Validator({ form: '#form-1', rules: [ Validator.isRequired('#fullName'),
+      Validator.isEmail('#email'), ] });
+    </script>
   </body>
 </html>

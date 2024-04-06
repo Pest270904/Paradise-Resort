@@ -17,9 +17,7 @@ export class FuncService {
      * - `returns`: JWT Token
      */
     getTokenFromHeader_Req(req : Request) {
-        if(req.rawHeaders.find(header => header.startsWith('jwt')) != undefined)
-          return req.rawHeaders.find(header => header.startsWith('jwt')).split('=')[1];
-        return null
+          return req.cookies.jwt;
       }
     
     /**
@@ -42,33 +40,11 @@ export class FuncService {
      */
     getUsernameFromJwt_Req(req : Request) {
         const userToken = this.getTokenFromHeader_Req(req);
-        if (userToken != null) {
+        if (userToken != undefined) {
           const decoded = jwt.verify( userToken, this.config.get('JWT_SECRET')) as DecodedToken;
           return { username: decoded.username };
-        }
-        else
-        return { username: null }
-    }
-
-    /**
-     *  -------------------------------IN DEV-------------------------------
-     */
-    isExpiredJwt(req: Request) {
-        try {
-            const decoded = jwt.verify(this.getTokenFromHeader_Req(req), this.config.get('JWT_SECRET')) as DecodedToken
-            const expirationTime = decoded.exp;
-            const currentTime = Math.floor(Date.now() / 1000);
-            if (currentTime >= expirationTime) {
-                // Token has expired
-                return true;
-            } else {
-                // Token is still valid
-                return false;
-            }
-        }
-        catch {
-            return true
-        }
+        } else
+            return { username: null }
     }
 }
 
