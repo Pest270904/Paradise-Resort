@@ -107,18 +107,18 @@
     background-color: white;
     color: black;   
 }
-.room-decription-bigtext
+.room-description-bigtext
 {
     font-size: 18px;
     font-weight: 700;
     padding-left: 10px;
 }
-.room-decription-smalltext
+.room-description-smalltext
 {
     font-size: 17px;
     padding: 13px;
 }
-.room-decription-icon
+.room-description-icon
 {
     margin-top: 5px;
     margin-left: 70px;
@@ -127,7 +127,7 @@
     display: inline-block;
     padding: 10px;
 }
-.room-decription-smallicon
+.room-description-smallicon
 {
     width: 19x;
     height: 18px;
@@ -144,10 +144,10 @@
         padding: 10px 24px;
         margin-left: 20%;
     }
-    .room-decription-smalltext {
+    .room-description-smalltext {
         font-size: 14px;
     }
-    .room-decription-icon {
+    .room-description-icon {
         margin-top: 5px;
         margin-left: 45px;
         width: 18%;
