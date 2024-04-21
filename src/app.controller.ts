@@ -11,18 +11,13 @@ export class AppController {
   @Get('/')
   @Render('home')
   root(@Req() req: Request, @Res() res: Response) {
+    console.log(this.funcService.getUsernameFromJwt_Req(req))
     return this.funcService.getUsernameFromJwt_Req(req)
   }
 
   @Get('facilities')
   @Render('facilities')
   facilities(@Req() req: Request) {
-    return this.funcService.getUsernameFromJwt_Req(req)
-  }
-
-  @Get('rooms')
-  @Render('rooms')
-  rooms(@Req() req: Request) {
     return this.funcService.getUsernameFromJwt_Req(req)
   }
 

@@ -9,15 +9,8 @@ import { FuncService } from 'src/func/func.service';
 export class AuthController {
   constructor(
     private authService: AuthService,
-    private funcService: FuncService
+    private funcService: FuncService,
   ) {}
-
-  // @Get()
-  // root(@Res() res: Response) {
-  //   return res.render('home', {
-  //     message: 'Hello world!!',
-  //   });
-  // }
 
   // Register
   @Get('signup')
@@ -29,15 +22,17 @@ export class AuthController {
   }
 
   @Post('signup')
-  async createUser(@Body() userData : CreateUserDto, @Res() res: Response) {
-    const token = await this.authService.signUp(userData).then((data)=>{return data;})
-    res.cookie('jwt',  token )
+  async createUser(@Body() userData: CreateUserDto, @Res() res: Response) {
+    const token = await this.authService.signUp(userData).then((data) => {
+      return data;
+    });
+    res.cookie('jwt', token);
 
-    console.log("Token: ", this.funcService.getTokenFromHeader_Res(res))
+    console.log('Token: ', this.funcService.getTokenFromHeader_Res(res));
 
     res.redirect(`/`);
-    
-    console.log("Register completed!!")
+
+    console.log('Register completed!!');
   }
 
   // Login
@@ -48,28 +43,23 @@ export class AuthController {
       message: 'Hello world!!',
     });
   }
-  
-  @Post('login')
-  async userSignIn(@Body() userData : LoginUserDto, @Res() res: Response){
-    const token = await this.authService.signIn(userData).then((data)=>{return data;})
-    res.cookie('jwt', token)
 
-    //console.log("Token: ", this.funcService.getTokenFromHeader_Res(res))
+  @Post('login')
+  async userSignIn(@Body() userData: LoginUserDto, @Res() res: Response) {
+    const token = await this.authService.signIn(userData).then((data) => {
+      return data;
+    });
+    res.cookie('jwt', token);
 
     res.redirect(`/`);
 
-    console.log("Login completed!!")
+    console.log('Login completed!!');
   }
 
   // Logout
   @Get('logout')
   userLogout(@Res() res: Response) {
     res.clearCookie('jwt').redirect('/');
-    console.log("Logout completed")
+    console.log('Logout completed');
   }
-
-  // @Get(':id')
-  // renderId(@Res() res: Response, @Param() id){
-  //   res.render('home')
-  // }
 }

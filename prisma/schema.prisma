@@ -23,3 +23,17 @@ model User {
 
   @@map("user")
 }
+
+model Room {
+  id Int @id @default(autoincrement())
+  roomName String @unique
+  description String
+  cost Int
+  imgSrc String
+
+  btnExpId String
+  parExpId String
+  divExpId String
+
+  @@map("room")
+}
