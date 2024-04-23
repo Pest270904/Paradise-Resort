@@ -11,7 +11,6 @@ export class AppController {
   @Get('/')
   @Render('home')
   root(@Req() req: Request, @Res() res: Response) {
-    console.log(this.funcService.getUsernameFromJwt_Req(req))
     return this.funcService.getUsernameFromJwt_Req(req)
   }
 

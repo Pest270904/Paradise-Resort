@@ -31,6 +31,17 @@ img {
 .spacer {
   margin: 36px;
 }
+
+.error {
+  margin: 3% 0;
+  padding: 2% 1%;
+  color: black;
+  font-size: 1rem;
+  font-style: italic;
+  background-color: rgb(228, 146, 162);
+  border-radius: 4px;
+}
+
 .form-group {
   text-align: start;
   display: flex;

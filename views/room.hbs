@@ -22,56 +22,60 @@
         comfort isn’t our only objective, we also value good design, sleek contemporary furnishing complemented 
         by the rich tones of nature’s palette as visible from our rooms’ sea-view windows and terraces. </p>
     </div>
+    
+    {{#if room}}
+        {{#each room}}
+        <!-- {{this.roomName}} -->
+        <div class="room-desc">
+            <div style="background-color: rgb(45, 28, 86);height:"><img src="{{this.imgSrc}}" alt="" class="room-desc-img"></div>
 
-    {{#each room}}
-    <!-- {{this.roomName}} -->
-    <div class="room-desc">
-        <div style="background-color: rgb(45, 28, 86);height:"><img src="{{this.imgSrc}}" alt="" class="room-desc-img"></div>
+            <p class="room-desc-name">{{this.roomName}}</p>
+            <div class="room-desc-detail">
+                <button class="room-desc-detail-button-more" id="{{this.btnExpId}}" onclick="roomExpand('{{this.btnExpId}}', '{{this.divExpId}}', '{{this.parExpId}}');">+</button>
+                <p class="room-desc-detail-text" id="{{this.parExpId}}">VIEW ROOM DETAILS</p>
+                <button class="room-desc-detail-button-cost">${{this.cost}} Avg/night</button>
+            </div>
 
-        <p class="room-desc-name">{{this.roomName}}</p>
-        <div class="room-desc-detail">
-            <button class="room-desc-detail-button-more" id="{{this.btnExpId}}" onclick="roomExpand('{{this.btnExpId}}', '{{this.divExpId}}', '{{this.parExpId}}');">+</button>
-            <p class="room-desc-detail-text" id="{{this.parExpId}}">VIEW ROOM DETAILS</p>
-            <button class="room-desc-detail-button-cost">${{this.cost}} Avg/night</button>
-        </div>
+            <!-- Expend/collapse contents -->
+            <div id="{{this.divExpId}}" style="display:none;">
+                <div class="room-description">
+                    <p class="room-description-bigtext">Description: </p>
+                    <p class="room-description-smalltext"> {{this.description}} </p>
+                    <p class="room-description-bigtext">Convenient:</p>
+                    <div class="room-description-icon">
+                        <div><img class="room-description-smallicon" src="/img/icon/air-conditioner.png" alt=""> Air-conditioning</div>
+                        <div><img class="room-description-smallicon" src="/img/icon/television.png" alt=""> Tivi</div>
+                        <div><img class="room-description-smallicon" src="/img/icon/minibar.png" alt=""> Mini-fridge</div>
+                        <div><img class="room-description-smallicon" src="/img/icon/ceiling-fan.png" alt=""> Ceiling-fan</div>
+                    </div>
 
-        <!-- Expend/collapse contents -->
-        <div id="{{this.divExpId}}" style="display:none;">
-            <div class="room-description">
-                <p class="room-description-bigtext">Description: </p>
-                <p class="room-description-smalltext"> {{this.description}} </p>
-                <p class="room-description-bigtext">Convenient:</p>
-                <div class="room-description-icon">
-                    <div><img class="room-description-smallicon" src="/img/icon/air-conditioner.png" alt=""> Air-conditioning</div>
-                    <div><img class="room-description-smallicon" src="/img/icon/television.png" alt=""> Tivi</div>
-                    <div><img class="room-description-smallicon" src="/img/icon/minibar.png" alt=""> Mini-fridge</div>
-                    <div><img class="room-description-smallicon" src="/img/icon/ceiling-fan.png" alt=""> Ceiling-fan</div>
-                </div>
+                    <div class="room-description-icon">
+                        <div><img class="room-description-smallicon" src="/img/icon/desk.png" alt=""> Desk</div>
+                        <div><img class="room-description-smallicon" src="/img/icon/wardrobe.png" alt=""> Wardrobe</div>
+                        <div><img class="room-description-smallicon" src="/img/icon/bed.png" alt=""> King size bed</div>
+                        <div><img class="room-description-smallicon" src="/img/icon/safe-deposit.png" alt=""> Safe</div>
+                    </div>
 
-                <div class="room-description-icon">
-                    <div><img class="room-description-smallicon" src="/img/icon/desk.png" alt=""> Desk</div>
-                    <div><img class="room-description-smallicon" src="/img/icon/wardrobe.png" alt=""> Wardrobe</div>
-                    <div><img class="room-description-smallicon" src="/img/icon/bed.png" alt=""> King size bed</div>
-                    <div><img class="room-description-smallicon" src="/img/icon/safe-deposit.png" alt=""> Safe</div>
-                </div>
+                    <div class="room-description-icon">
+                        <div><img class="room-description-smallicon" src="/img/icon/wifi-signal.png" alt=""> Wifi</div>
+                        <div><img class="room-description-smallicon" src="/img/icon/telephone.png" alt=""> Telephone</div>
+                        <div><img class="room-description-smallicon" src="/img/icon/floor-lamp.png" alt=""> Lamp</div>
+                        <div><img class="room-description-smallicon" src="/img/icon/hair-dryer.png" alt=""> Hair dryer</div>
+                    </div>
 
-                <div class="room-description-icon">
-                    <div><img class="room-description-smallicon" src="/img/icon/wifi-signal.png" alt=""> Wifi</div>
-                    <div><img class="room-description-smallicon" src="/img/icon/telephone.png" alt=""> Telephone</div>
-                    <div><img class="room-description-smallicon" src="/img/icon/floor-lamp.png" alt=""> Lamp</div>
-                    <div><img class="room-description-smallicon" src="/img/icon/hair-dryer.png" alt=""> Hair dryer</div>
-                </div>
-
-                <div class="room-description-icon">
-                    <div><img class="room-description-smallicon" src="/img/icon/bathtub.png" alt=""> Bathub</div>
-                    <div><img class="room-description-smallicon" src="/img/icon/shower.png" alt=""> Shower</div>
-                    <div><img class="room-description-smallicon" src="/img/icon/bathrobe.png" alt=""> Bathrobe</div>
-                    <div><img class="room-description-smallicon" src="/img/icon/towel.png" alt=""> Towel</div>
+                    <div class="room-description-icon">
+                        <div><img class="room-description-smallicon" src="/img/icon/bathtub.png" alt=""> Bathub</div>
+                        <div><img class="room-description-smallicon" src="/img/icon/shower.png" alt=""> Shower</div>
+                        <div><img class="room-description-smallicon" src="/img/icon/bathrobe.png" alt=""> Bathrobe</div>
+                        <div><img class="room-description-smallicon" src="/img/icon/towel.png" alt=""> Towel</div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-   {{/each}}
+        {{/each}}
+    {{else}}
+        <p style="margin: 0 10%;">0 room found, click <a href="/room/create">here</a> to create room</p>
+    {{/if}}
 
     <div class="body-end">
         <b><p class="body-end-header">Testimonials</p></b>

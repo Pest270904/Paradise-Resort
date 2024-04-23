@@ -6,6 +6,7 @@ import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
 import { LoginUserDto } from './dto/user_login.dto';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
+import { Response, Request } from 'express';
 
 @Injectable()
 export class AuthService {
@@ -15,11 +16,37 @@ export class AuthService {
         private config : ConfigService,
     ) {}
 
-    async signUp(userData : CreateUserDto) {
+    // --------------------------------- Main functions ---------------------------------
+    getSignup(req : Request, res : Response) {
+        const error = req.cookies.error
+        res.clearCookie('error').render('signup', {
+            layout: 'login-layout',
+            error: error
+        })
+    }
+
+    getLogin(req : Request, res : Response) {
+        const error = req.cookies.error
+        res.clearCookie('error').render('login', {
+            layout: 'login-layout',
+            error: error
+        })
+    }
+
+    async signUp(userData : CreateUserDto, res : Response) {
         try {
+            if(userData.username === "" || userData.fullName === "" || userData.email === "" || userData.password === "" || userData.password_confirmation === "")
+                throw new ForbiddenException("Look like you are missing something")
+
+            if(!userData.username.match(/^(?=.{5,20}$)(?![_.])(?!.*[_.]{2})[a-z0-9._]+(?<![_.])$/))
+                throw new ForbiddenException("Username must has at least 5 letters, can only contain lowercase letters and numbers")
+
+            if(userData.password !== userData.password_confirmation) 
+                throw new ForbiddenException("Your confirm password is not correct")
+
             // generate hashed password
             const hash = await argon.hash(userData.password)
-            // save the user to db
+            // save the user to db  
             const user = await this.prisma.user.create({
                 data: {
                     username: userData.username,
@@ -30,35 +57,50 @@ export class AuthService {
             })
             
             // return access token if signup completed
-            return this.signToken(user.username, user.email)
-        }
-        catch(error) {
-            if(error instanceof PrismaClientKnownRequestError)
-                if(error.code === 'P2002')
-                    throw new ForbiddenException('Credentials taken')
-            throw error
+            res.cookie('jwt', await this.signToken(user.username, user.email)).redirect(`/`)
+        } // if signup failed
+        catch (err) {
+            if(err instanceof PrismaClientKnownRequestError && err.code === 'P2002')
+                err.message = 'Credentials incorrect'
+
+            res.cookie('error', err.message).redirect(`/auth/signup`)
         }
     }
 
-    async signIn(userData : LoginUserDto) {
-        // find the user by username
-        const user = await this.prisma.user.findUnique({
-            where: {
-                username: userData.username
-            }
-        })
-        // throw exception if no username exists
-        if (!user) throw new ForbiddenException('Credentials incorrect')
+    async signIn(userData : LoginUserDto, res : Response) {
+        try {
+            if(userData.username === "" || userData.password === "")
+                throw new ForbiddenException("Look like you are missing something")
+    
+            // find the user by username
+            const user = await this.prisma.user.findUnique({
+                where: {
+                    username: userData.username
+                }
+            })
 
-        // compare password
-        const pwMatches = await argon.verify(user.hash, userData.password)
-        // if password incorrect throw exception
-        if (!pwMatches) throw new ForbiddenException('Credentials incorrect')
+            // throw exception if no username exists
+            if (!user) throw new ForbiddenException('Credentials incorrect')
+    
+            // compare password
+            const pwMatches = await argon.verify(user.hash, userData.password)
 
-        // return access token if signin completed
-        return this.signToken(user.username, user.email)
+            // if password incorrect throw exception
+            if (!pwMatches) throw new ForbiddenException('Credentials incorrect')
+    
+            // return access token if signin completed
+            res.cookie('jwt', await this.signToken(user.username, user.email)).redirect(`/`)
+        } // if login failed
+        catch (err) {
+            res.cookie('error', err.message).redirect(`/auth/login`)
+        }
     }
 
+    logOut(res : Response) {
+        res.clearCookie('jwt').redirect('/')
+    }
+
+    // --------------------------------- Other functions ---------------------------------
     async signToken(username: string, email: string){
         const payload = {
             username: username,
@@ -71,7 +113,7 @@ export class AuthService {
               expiresIn: '15m',
               secret: secret,
             },
-          );
+          )
 
         return  token
     }
