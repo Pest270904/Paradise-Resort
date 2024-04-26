@@ -62,9 +62,9 @@
 
 }
 .chatbox .message {
-    height: 400px;
+    height: 350px;
     overflow-y: auto;
-    padding: 15px 20px 70px;
+    padding: 15px 20px 5px;
 }
 .chatbox .chat {
     display: flex;
@@ -99,7 +99,7 @@
     border-radius: 10px 10px 10px 0px;
 }
 .chatbox .chat-input {
-    position: absolute;
+    /* position: absolute; */
     border-radius: 0px 0px 15px 15px;
     bottom: 0;
     width: 100%;

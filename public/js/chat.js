@@ -62,6 +62,10 @@ const handleChat = async () => {
     } catch (error) {
         console.error('Error sending message:', error);
         // Xử lý lỗi (nếu cần)
+        chatInput.value = "";
+        chatInput.style.height = `${inputInitHeight}px`;
+        chatbox.appendChild(createChatli(userMessage, "outgoing"));
+        chatbox.scrollTo(0, chatbox.scrollHeight);
         // Thêm tin nhắn thông báo lỗi đăng nhập
         chatbox.appendChild(createChatli("Vui lòng đăng nhập trước khi gửi tin nhắn!", "incoming"));
         chatbox.scrollTo(0, chatbox.scrollHeight);

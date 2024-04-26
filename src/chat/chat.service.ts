@@ -24,11 +24,13 @@ export class ChatService {
           id: true,
         },
       });
+      const createdDate = new Date(); // Tạo đối tượng Date với múi giờ mặc định (UTC)
+      const localDate = new Date(createdDate.getTime() + (7 * 60 * 60 * 1000)); // Chuyển đổi sang GMT+7
       return await this.prisma.message.create({
         data: {
           user_id: user.id, // Sử dụng user_id từ dữ liệu tin nhắn
           content: content,
-          timestamp: new Date(),
+          timestamp: localDate,
         },
       });
     } catch (error) {
