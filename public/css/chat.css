@@ -91,6 +91,7 @@
     color: #fff;
     border-radius: 10px 10px 0px 10px;
     background: #e0b973;
+    word-wrap: break-word;
 }
 .chatbox .incoming p {
     color: black;
@@ -116,6 +117,7 @@
     font-size: 0.95rem;
     resize: none;
     padding: 16px 15px 16px 0px;
+    max-height: 180px;
 }
 .chat-input span {
     align-self: flex-end;

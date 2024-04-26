@@ -21,6 +21,7 @@ model User {
   isAdmin Boolean @default(false)
   hash String
 
+  messages Message[]
   @@map("user")
 }
 
@@ -36,4 +37,14 @@ model Room {
   divExpId String
 
   @@map("room")
+}
+
+model Message {
+  message_id  Int      @id @default(autoincrement())
+  user_id     Int
+  content     String
+  timestamp   DateTime @default(now())
+  user        User     @relation(fields: [user_id], references: [id])
+
+  @@map("messages")
 }

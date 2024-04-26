@@ -49,7 +49,7 @@ export class FuncService {
             return { username: null }
     }
 }
-
+    
 interface DecodedToken {
     username: string
     email: string

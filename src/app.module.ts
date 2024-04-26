@@ -11,6 +11,7 @@ import { CheckTokenMiddleware } from './middleware/checkToken.middleware';
 import { RoomModule } from './room/room.module';
 import { RoomController } from './room/room.controller';
 import { AdminModule } from './admin/admin.module';
+import { ChatModule } from './chat/chat.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { AdminModule } from './admin/admin.module';
     FuncModule,
     RoomModule,
     AdminModule,
+    ChatModule,
   ],
   controllers: [AppController],
   providers: [JwtService, AppService, FuncService],
