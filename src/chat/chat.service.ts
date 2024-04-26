@@ -1,5 +1,5 @@
 // chat.service.ts
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { Prisma, Message } from '@prisma/client';
 import { FuncService } from 'src/func/func.service';
@@ -13,6 +13,9 @@ export class ChatService {
   async createMessage(req: Request, userId: number, content: string): Promise<Message> {
     try {
       const { username } = await this.funcService.getUsernameFromJwt_Req(req);      
+      if (!username) {
+        throw new BadRequestException('Please log in before chatting');
+      }
       const user = await this.prisma.user.findUnique({
         where: {
           username,
@@ -44,10 +47,23 @@ export class ChatService {
     }
   }
 
-  async getChatHistory(): Promise<Message[]> {
+  async getChatHistory(req: Request): Promise<Message[]> {
     try {
+      const { username } = await this.funcService.getUsernameFromJwt_Req(req);      
+      const user = await this.prisma.user.findUnique({
+        where: {
+          username,
+        },
+        select: {
+          id: true,
+        },
+      });
       // Đọc lịch sử tin nhắn từ cơ sở dữ liệu sử dụng Prisma
-      return await this.prisma.message.findMany();
+      return await this.prisma.message.findMany({
+        where: {
+          user_id: user.id,
+        },
+      });
     } catch (error) {
       throw new Error(`Failed to fetch chat history: ${error.message}`);
     }

@@ -59,13 +59,15 @@ const handleChat = async () => {
         chatInput.style.height = `${inputInitHeight}px`;
         chatbox.appendChild(createChatli(userMessage, "outgoing"));
         chatbox.scrollTo(0, chatbox.scrollHeight);
-        // chatbox.appendChild(createChatli("Vui lòng đăng nhập trước khi gửi tin nhắn!", "incoming"));
-        // chatbox.scrollTo(0, chatbox.scrollHeight);
     } catch (error) {
         console.error('Error sending message:', error);
         // Xử lý lỗi (nếu cần)
+        // Thêm tin nhắn thông báo lỗi đăng nhập
+        chatbox.appendChild(createChatli("Vui lòng đăng nhập trước khi gửi tin nhắn!", "incoming"));
+        chatbox.scrollTo(0, chatbox.scrollHeight);
     }
 }
+
 
 chatInput.addEventListener("input", () => {
     chatInput.style.height = `${inputInitHeight}px`

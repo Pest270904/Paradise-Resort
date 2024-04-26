@@ -8,8 +8,8 @@ export class ChatController {
   constructor(private readonly chatService: ChatService) {}
   
   @Get('history')
-  async getChatHistory(): Promise<Message[]> {
-    return await this.chatService.getChatHistory();
+  async getChatHistory(@Req() req: Request): Promise<Message[]> {
+    return await this.chatService.getChatHistory(req);
   }
 
   @Post('chat')
