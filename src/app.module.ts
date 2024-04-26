@@ -10,6 +10,7 @@ import { FuncService } from './func/func.service';
 import { CheckTokenMiddleware } from './middleware/checkToken.middleware';
 import { RoomModule } from './room/room.module';
 import { RoomController } from './room/room.controller';
+import { AdminModule } from './admin/admin.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { RoomController } from './room/room.controller';
     }),
     FuncModule,
     RoomModule,
+    AdminModule,
   ],
   controllers: [AppController],
   providers: [JwtService, AppService, FuncService],

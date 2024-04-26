@@ -3,9 +3,9 @@ import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()
 export class RoomService {
-    constructor(
-        private prisma : PrismaService,
-      ) {}
+constructor(
+    private prisma : PrismaService,
+    ) {}
 
     async getAllRoom() {
         const room = await this.prisma.room.findMany()

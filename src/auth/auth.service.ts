@@ -67,10 +67,10 @@ export class AuthService {
         }
     }
 
-    async signIn(userData : LoginUserDto, res : Response) {
+    async signIn(userData: LoginUserDto, res: Response) {
         try {
-            if(userData.username === "" || userData.password === "")
-                throw new ForbiddenException("Look like you are missing something")
+            if (userData.username === "" || userData.password === "")
+                throw new ForbiddenException("Looks like you are missing something")
     
             // find the user by username
             const user = await this.prisma.user.findUnique({
@@ -78,23 +78,26 @@ export class AuthService {
                     username: userData.username
                 }
             })
-
+    
             // throw exception if no username exists
             if (!user) throw new ForbiddenException('Credentials incorrect')
     
             // compare password
             const pwMatches = await argon.verify(user.hash, userData.password)
-
+    
             // if password incorrect throw exception
             if (!pwMatches) throw new ForbiddenException('Credentials incorrect')
     
+            // Determine the redirection path based on isAdmin
+            const redirectionPath = user.isAdmin ? '/admin' : '/';
+    
             // return access token if signin completed
-            res.cookie('jwt', await this.signToken(user.username, user.email)).redirect(`/`)
-        } // if login failed
-        catch (err) {
+            res.cookie('jwt', await this.signToken(user.username, user.email)).redirect(redirectionPath);
+        } catch (err) {
             res.cookie('error', err.message).redirect(`/auth/login`)
         }
     }
+    
 
     logOut(res : Response) {
         res.clearCookie('jwt').redirect('/')
