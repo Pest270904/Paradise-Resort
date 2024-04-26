@@ -1,3 +1,28 @@
+// script chatbox
+function openChatBox(){
+    document.body.classList.toggle('show-chatbox');
+    // Gửi yêu cầu GET khi click vào nút chatbox-toggler
+    fetch('history') // Thay đổi đường dẫn tương ứng với điểm cuối của bạn
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to load chat history');
+            }
+            return response.json();
+        })
+        .then(data => {
+            data.forEach(message => {
+                const userMessage = message.content; // Lấy nội dung tin nhắn
+                const chatbox = document.querySelector('.message');
+                chatbox.appendChild(createChatli(userMessage, "outgoing"));
+                chatbox.scrollTo(0, chatbox.scrollHeight);
+            });
+        })
+        .catch(error => {
+            console.error(error.message);
+        });
+  }
+
+
 const chatInput = document.querySelector(".chat-input textarea");
 const sendChatBtn = document.querySelector(".chat-input span");
 const chatbox = document.querySelector(".message");

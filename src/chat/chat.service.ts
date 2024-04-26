@@ -43,4 +43,13 @@ export class ChatService {
       throw new Error(`Error sending message: ${error.message}`);
     }
   }
+
+  async getChatHistory(): Promise<Message[]> {
+    try {
+      // Đọc lịch sử tin nhắn từ cơ sở dữ liệu sử dụng Prisma
+      return await this.prisma.message.findMany();
+    } catch (error) {
+      throw new Error(`Failed to fetch chat history: ${error.message}`);
+    }
+  }
 }

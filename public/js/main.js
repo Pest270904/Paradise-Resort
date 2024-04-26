@@ -1,13 +1,3 @@
-// script chatbox
-function openChatBox(){
-    document.body.classList.toggle('show-chatbox')
-}
-
-// const chatboxToggler = document.querySelector('.chatbox-toggler');
-// chatboxToggler.addEventListener('click', () =>
-//         document.body.classList.toggle('show-chatbox')
-// );
-
 // srcipt register/login box
 const login_display = document.querySelector('.modal');
 const btn__login = document.querySelector('.btn-login');
