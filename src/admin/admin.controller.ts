@@ -1,8 +1,8 @@
-import { Controller, Get, Req, Res } from '@nestjs/common';
+import { Controller, Get, Req, Res } from '@nestjs/common'; 
 import { AdminService } from './admin.service';
 import { FuncService } from 'src/func/func.service';
 import { Response, Request } from 'express'
-
+ 
 @Controller('admin')
 export class AdminController {
     constructor (
@@ -23,4 +23,11 @@ export class AdminController {
         // console.log('aa')
       return await this.adminService.createAdmin(); 
     }
+    @Get('admin-chat')
+    adminChatPage(@Req() req: Request, @Res() res: Response) {
+    res.render('admin-chat', {
+      layout: 'admin-layout'
+    })
+    return this.funcService.getUsernameFromJwt_Req(req)
+  }
 }
