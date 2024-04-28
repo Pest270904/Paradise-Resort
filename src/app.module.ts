@@ -12,6 +12,7 @@ import { RoomModule } from './room/room.module';
 import { RoomController } from './room/room.controller';
 import { AdminModule } from './admin/admin.module';
 import { ChatModule } from './chat/chat.module';
+import { AdminchatModule } from './adminchat/adminchat.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { ChatModule } from './chat/chat.module';
     RoomModule,
     AdminModule,
     ChatModule,
+    AdminchatModule,
   ],
   controllers: [AppController],
   providers: [JwtService, AppService, FuncService],

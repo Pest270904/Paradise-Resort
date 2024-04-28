@@ -18,3 +18,4 @@ export class ChatController {
     return { success: true, message: 'Message sent successfully' };
   }
 }
+

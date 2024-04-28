@@ -12,7 +12,7 @@
         </div>
         <!-- CHAT LIST -->
         <div class="chatlist">
-                <div class="block active">
+                <div class="block">
                     <div class="details">
                         <div class="listHead">
                             <h4>lengo0951</h4>
@@ -50,23 +50,23 @@
             </div>
         </div>        
     <div class="rightSide">
-        <div class="header">
+        <div class="header" style="display: none;">
             <div class="imgText">
-                <h4>lengo0951</h4>
+                <h4></h4>
             </div>
         </div>
         <!-- CHAT-BOX -->
         <div class="chatbox">
-            <div class="message my_msg">
-                <p>Hi <br><span>12:18</span></p>
-            </div>
-            <div class="message friend_msg">
-                <p>How are you doing? <br><span>10:56</span></p>
-            </div>   
-            <div class="chat_input">
-                <input type="text" placeholder="Type a message">
-                <span><i class="fa-solid fa-paper-plane"></i></span>
-            </div>             
+            <div class="no-content">                
+            <i class="fa-regular fa-comments"></i>
+            <h2>Select Chat</h2> 
+            </div>                           
+        </div>
+        <div class="chat_input" style="display: none;">
+            <input type="text" placeholder="Type a message">
+            <span><i class="fa-solid fa-paper-plane"></i></span>
         </div>
     </div>
 </div>
+<script src="/js/admin-chat.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
