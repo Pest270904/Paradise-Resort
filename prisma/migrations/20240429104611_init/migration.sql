@@ -4,6 +4,7 @@ CREATE TABLE "user" (
     "username" TEXT NOT NULL,
     "fullName" TEXT NOT NULL,
     "email" TEXT NOT NULL,
+    "phoneNumber" TEXT NOT NULL,
     "isAdmin" BOOLEAN NOT NULL DEFAULT false,
     "hash" TEXT NOT NULL,
 
@@ -17,6 +18,7 @@ CREATE TABLE "room" (
     "description" TEXT NOT NULL,
     "cost" INTEGER NOT NULL,
     "imgSrc" TEXT NOT NULL,
+    "available" INTEGER NOT NULL,
     "btnExpId" TEXT NOT NULL,
     "parExpId" TEXT NOT NULL,
     "divExpId" TEXT NOT NULL,
@@ -34,6 +36,21 @@ CREATE TABLE "messages" (
     CONSTRAINT "messages_pkey" PRIMARY KEY ("message_id")
 );
 
+-- CreateTable
+CREATE TABLE "reservation" (
+    "res_id" SERIAL NOT NULL,
+    "user_id" INTEGER NOT NULL,
+    "room_id" INTEGER NOT NULL,
+    "fullName" TEXT NOT NULL,
+    "phoneNumber" TEXT NOT NULL,
+    "booking_time" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "start" TIMESTAMP(3) NOT NULL,
+    "days" INTEGER NOT NULL,
+    "kind_of_payment" BOOLEAN NOT NULL,
+
+    CONSTRAINT "reservation_pkey" PRIMARY KEY ("res_id")
+);
+
 -- CreateIndex
 CREATE UNIQUE INDEX "user_username_key" ON "user"("username");
 
@@ -41,7 +58,16 @@ CREATE UNIQUE INDEX "user_username_key" ON "user"("username");
 CREATE UNIQUE INDEX "user_email_key" ON "user"("email");
 
 -- CreateIndex
+CREATE UNIQUE INDEX "user_phoneNumber_key" ON "user"("phoneNumber");
+
+-- CreateIndex
 CREATE UNIQUE INDEX "room_roomName_key" ON "room"("roomName");
 
 -- AddForeignKey
 ALTER TABLE "messages" ADD CONSTRAINT "messages_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "user"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "reservation" ADD CONSTRAINT "reservation_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "user"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "reservation" ADD CONSTRAINT "reservation_room_id_fkey" FOREIGN KEY ("room_id") REFERENCES "room"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

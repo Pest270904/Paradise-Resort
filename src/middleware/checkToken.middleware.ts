@@ -13,7 +13,7 @@ export class CheckTokenMiddleware implements NestMiddleware {
         const decodedToken = this.jwtService.decode(token);
         if (decodedToken.exp <= Math.floor(Date.now() / 1000)) {
           // Token has expired
-          res.clearCookie('jwt')//.redirect('/auth/login')  
+          res.clearCookie('jwt').redirect('/auth/login')  
           
           console.log(`\n${decodedToken.username}'s token has expired at ` + new Date().toLocaleString())
 

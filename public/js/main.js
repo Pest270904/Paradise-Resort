@@ -13,20 +13,3 @@ login_display.addEventListener('click', function () {
 modal_container.addEventListener('click', function (event) {
   event.stopPropagation();
 });
-
-
-// Expand button for "rooms"
-function roomExpand(btnID, tabContent, viewID) {
-    if(document.getElementById(tabContent).style.display == 'block')
-        {    
-            document.getElementById(viewID).innerHTML = "VIEW ROOM DETAILS"
-            document.getElementById(btnID).innerText="+"
-            document.getElementById(tabContent).style.display = 'none'
-        }
-    else
-        {    
-            document.getElementById(viewID).innerHTML = "HIDE ROOM DETAILS"
-            document.getElementById(btnID).innerText="-"
-            document.getElementById(tabContent).style.display = 'block'
-        }
-}

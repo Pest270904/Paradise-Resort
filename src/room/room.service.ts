@@ -3,13 +3,26 @@ import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()
 export class RoomService {
-constructor(
-    private prisma : PrismaService,
-    ) {}
+    constructor(
+        private prisma : PrismaService,
+        ) {}
 
     async getAllRoom() {
-        const room = await this.prisma.room.findMany()
-        return {room : room}
+        const foundRoom = await this.prisma.room.findMany()
+        return {room : foundRoom}
+    }
+
+    async getRoomById(roomId : any) {
+        const foundRoom = await this.prisma.room.findUnique({
+            where: {
+                id : Number(roomId)
+            }
+        })
+        
+        if(!foundRoom)
+            return {error_noRoom : "Room not found"}
+
+        return {room : foundRoom}
     }
 
     async createRoom() {
@@ -22,7 +35,8 @@ constructor(
                 imgSrc : "/img/rooms/deluxe-double-room.webp",
                 btnExpId : "btn-desc-1",
                 parExpId : "expd1",
-                divExpId : "view1"
+                divExpId : "view1",
+                available : 3
             }, 
             {
                 roomName : "DELUXE TWIN ROOM",
@@ -31,7 +45,8 @@ constructor(
                 imgSrc : "/img/rooms/twin-room.webp",
                 btnExpId : "btn-desc-2",
                 parExpId : "expd2",
-                divExpId : "view2"
+                divExpId : "view2",
+                available : 3
             },
             {
                 roomName : "GRAND DELUXE DOUBLE ROOM",
@@ -40,7 +55,8 @@ constructor(
                 imgSrc : "/img/rooms/grand-double-room.webp",
                 btnExpId : "btn-desc-3",
                 parExpId : "expd3",
-                divExpId : "view3"
+                divExpId : "view3",
+                available : 3
             },
             {
                 roomName : "THE BEACHFRONT VILLA",
@@ -49,7 +65,8 @@ constructor(
                 imgSrc : "/img/rooms/The-frontbeach-villa.webp",
                 btnExpId : "btn-desc-4",
                 parExpId : "expd4",
-                divExpId : "view4"
+                divExpId : "view4",
+                available : 3
             }]
         })
     }

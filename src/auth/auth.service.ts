@@ -52,6 +52,7 @@ export class AuthService {
                     username: userData.username,
                     fullName: userData.fullName,
                     email: userData.email,
+                    phoneNumber: userData.phoneNumber,
                     hash
                 },
             })

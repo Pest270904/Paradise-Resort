@@ -16,6 +16,7 @@ export class AdminService {
                     username: 'admin',
                     fullName: 'Admin User',
                     email: 'admin@example.com',
+                    phoneNumber: null,
                     hash: hashedPassword,
                     isAdmin: true
             } })

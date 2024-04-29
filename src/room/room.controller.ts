@@ -1,4 +1,4 @@
-import { Controller, Get, Redirect, Render, Req , Res} from '@nestjs/common';
+import { Controller, Get, Param, Redirect, Render, Req , Res} from '@nestjs/common';
 import { Request } from 'express'
 import { RoomService } from './room.service';
 import { FuncService } from 'src/func/func.service';
@@ -20,5 +20,11 @@ export class RoomController {
     @Redirect('/room')
     async createRoom() {
       await this.roomService.createRoom()
+    }
+
+    @Get(':id') 
+    @Render('booking')
+    async getId(@Param() param : any, @Req() req: Request) {
+      return {...this.funcService.getUsernameFromJwt_Req(req), ...await this.roomService.getRoomById(param.id), ...await this.funcService.getUserFromUsername(req)}
     }
 }

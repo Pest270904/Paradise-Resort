@@ -14,37 +14,60 @@ datasource db {
 }
 
 model User {
-  id Int @id @default(autoincrement())
-  username String @unique
-  fullName String
-  email String @unique
-  isAdmin Boolean @default(false)
-  hash String
+  id          Int     @id @default(autoincrement())
+  username    String  @unique
+  fullName    String
+  email       String  @unique
+  phoneNumber String  @unique
+  isAdmin     Boolean @default(false)
+  hash        String
 
-  messages Message[]
+  messages    Message[]
+  Reservation Reservation[]
+
   @@map("user")
 }
 
 model Room {
-  id Int @id @default(autoincrement())
-  roomName String @unique
+  id          Int    @id @default(autoincrement())
+  roomName    String @unique
   description String
-  cost Int
-  imgSrc String
+  cost        Int
+  imgSrc      String
+  available   Int
 
-  btnExpId String
-  parExpId String
-  divExpId String
+  btnExpId    String
+  parExpId    String
+  divExpId    String
+  Reservation Reservation[]
 
   @@map("room")
 }
 
 model Message {
-  message_id  Int      @id @default(autoincrement())
-  user_id     Int
-  content     String
-  timestamp   DateTime @default(now())
-  user        User     @relation(fields: [user_id], references: [id])
+  message_id Int      @id @default(autoincrement())
+  user_id    Int
+  content    String
+  timestamp  DateTime @default(now())
+  user       User     @relation(fields: [user_id], references: [id])
 
   @@map("messages")
+}
+
+model Reservation {
+  res_id          Int      @id @default(autoincrement())
+  user_id         Int
+  room_id         Int
+  fullName        String
+  phoneNumber     String
+  booking_time    DateTime @default(now())
+  start           String
+  days            Int
+  kind_of_payment Boolean
+  status          Int
+
+  user User @relation(fields: [user_id], references: [id])
+  room Room @relation(fields: [room_id], references: [id])
+
+  @@map("reservation")
 }

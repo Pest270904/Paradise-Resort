@@ -16,14 +16,14 @@
 
 <!-- Body -->
 <body>
-    <div class="rooms-first-description">
-    <p class="rooms-first-description-bigtext">ROOMS AND RATES</p>
-    <p class="rooms-first-description-smalltext">Each of our bright, light-flooded rooms come with everything you could possibly need for a comfortable stay. And yes, 
-        comfort isn’t our only objective, we also value good design, sleek contemporary furnishing complemented 
-        by the rich tones of nature’s palette as visible from our rooms’ sea-view windows and terraces. </p>
-    </div>
-    
     {{#if room}}
+        <div class="rooms-first-description">
+        <p class="rooms-first-description-bigtext">ROOMS AND RATES</p>
+        <p class="rooms-first-description-smalltext">Each of our bright, light-flooded rooms come with everything you could possibly need for a comfortable stay. And yes, 
+            comfort isn’t our only objective, we also value good design, sleek contemporary furnishing complemented 
+            by the rich tones of nature’s palette as visible from our rooms’ sea-view windows and terraces. </p>
+        </div>
+
         {{#each room}}
         <!-- {{this.roomName}} -->
         <div class="room-desc">
@@ -33,7 +33,10 @@
             <div class="room-desc-detail">
                 <button class="room-desc-detail-button-more" id="{{this.btnExpId}}" onclick="roomExpand('{{this.btnExpId}}', '{{this.divExpId}}', '{{this.parExpId}}');">+</button>
                 <p class="room-desc-detail-text" id="{{this.parExpId}}">VIEW ROOM DETAILS</p>
-                <button class="room-desc-detail-button-cost">${{this.cost}} Avg/night</button>
+                <div class="room-desc-detail-booking">
+                    <button class="room-desc-detail-button-cost" onclick="room_booking('{{this.id}}')">${{this.cost}} Avg/night</button>
+                    <p class="room-desc-detail-available">Available: {{this.available}}</p>
+                </div>
             </div>
 
             <!-- Expend/collapse contents -->
@@ -72,14 +75,17 @@
                 </div>
             </div>
         </div>
-        {{/each}}
-    {{else}}
-        <p style="margin: 0 10%;">0 room found, click <a href="/room/create">here</a> to create room</p>
-    {{/if}}
 
-    <div class="body-end">
-        <b><p class="body-end-header">Testimonials</p></b>
-        <p class="body-end-text-1">"Calm, Serene, Retro - What a way to relax and enjoy"</p>
-        <p class="body-end-text-2">Mr. and Mrs.Baxter, UK</p>
-    </div>
+        
+        {{/each}}
+
+        
+        <div class="body-end">
+            <b><p class="body-end-header">Testimonials</p></b>
+            <p class="body-end-text-1">"Calm, Serene, Retro - What a way to relax and enjoy"</p>
+            <p class="body-end-text-2">Mr. and Mrs.Baxter, UK</p>
+        </div>
+    {{else}}
+        <p style="margin: 10% 10%;">0 room found, click <a href="/room/create">here</a> to create room</p>
+    {{/if}}
 </body>

@@ -13,6 +13,8 @@ import { RoomController } from './room/room.controller';
 import { AdminModule } from './admin/admin.module';
 import { ChatModule } from './chat/chat.module';
 import { AdminchatModule } from './adminchat/adminchat.module';
+import { BookingModule } from './booking/booking.module';
+import { BookingController } from './booking/booking.controller';
 
 @Module({
   imports: [
@@ -26,12 +28,13 @@ import { AdminchatModule } from './adminchat/adminchat.module';
     AdminModule,
     ChatModule,
     AdminchatModule,
+    BookingModule,
   ],
   controllers: [AppController],
   providers: [JwtService, AppService, FuncService],
 })
 export class AppModule implements NestModule{
   configure(consumer: MiddlewareConsumer) {
-      consumer.apply(CheckTokenMiddleware).forRoutes(AppController, RoomController)
+      consumer.apply(CheckTokenMiddleware).forRoutes(AppController, RoomController, BookingController)
   }
 }

@@ -90,6 +90,12 @@
     width: 200px;
 }
 
+.room-desc-detail-booking {
+    padding-top: 1%;
+    margin: auto;
+    align-items: center;
+}
+
 .room-desc-detail-button-cost{
     border: 2px solid #e0b973;
     background-color: #e0b973;
@@ -100,7 +106,12 @@
     font-size: 15px;
     border-radius: 8px;
     padding: 10px 24px;
-    margin-left: 30%;
+}
+
+.room-desc-detail-available {
+    text-align: center;
+    font-size: 12px;
+    font-style: italic;
 }
 
 .room-desc-detail-button-cost:hover{

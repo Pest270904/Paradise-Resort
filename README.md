@@ -65,6 +65,7 @@
             (Run this command when you change the code in databases)
 
     $ npx prisma migrate dev
+    $ npx prisma generate
 ```
 
 - Compile and build
@@ -79,6 +80,3 @@
 ```
 
 - Lên browser vào link: http://localhost:3000/ để vào website
-
-### B.3 Others
-- Go to http://localhost:3000/room/create to create data for rooms
