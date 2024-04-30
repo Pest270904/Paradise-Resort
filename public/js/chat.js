@@ -1,4 +1,3 @@
-// script chatbox
 function openChatBox(){
     document.body.classList.toggle('show-chatbox');
     // Gửi yêu cầu GET khi click vào nút chatbox-toggler
@@ -10,12 +9,14 @@ function openChatBox(){
             return response.json();
         })
         .then(data => {
+            const chatbox = document.querySelector('.message');
+            // Xóa hết các tin nhắn trong hộp chat trước khi thêm tin nhắn mới
+            chatbox.innerHTML = '';
             data.forEach(message => {
                 const userMessage = message.content; // Lấy nội dung tin nhắn
-                const chatbox = document.querySelector('.message');
                 chatbox.appendChild(createChatli(userMessage, "outgoing"));
-                chatbox.scrollTo(0, chatbox.scrollHeight);
             });
+            chatbox.scrollTo(0, chatbox.scrollHeight);
         })
         .catch(error => {
             console.error(error.message);

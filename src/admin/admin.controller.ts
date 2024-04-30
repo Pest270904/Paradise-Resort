@@ -1,7 +1,8 @@
-import { Controller, Get, Req, Res } from '@nestjs/common'; 
+import { Body, Controller, Get, Post, Req, Res } from '@nestjs/common'; 
 import { AdminService } from './admin.service';
 import { FuncService } from 'src/func/func.service';
 import { Response, Request } from 'express'
+import { Message } from '@prisma/client';
  
 @Controller('admin')
 export class AdminController {
@@ -29,5 +30,11 @@ export class AdminController {
       layout: 'admin-layout'
     })
     return this.funcService.getUsernameFromJwt_Req(req)
+  }
+  
+  @Post('admin-chat')
+  async sendMessage(@Req() req: Request, @Body() messageData: any) {
+    await this.adminService.sendMessage(req, messageData);
+    return { success: true, message: 'Message sent successfully' };
   }
 }

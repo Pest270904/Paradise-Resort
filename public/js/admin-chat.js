@@ -54,7 +54,6 @@ const blocks = document.querySelectorAll('.chatlist .block');
     // Lặp qua từng block và thêm sự kiện click
     blocks.forEach(block => {
         block.addEventListener('click', () => {
-            console.log('a');
             blocks.forEach(b => {
                 b.classList.remove('active');
             });

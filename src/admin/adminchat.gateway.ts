@@ -9,21 +9,21 @@ import {
 import { Server, Socket } from 'socket.io';
 import { Prisma, Message } from '@prisma/client';
 import { Request } from 'express';
-import { AdminchatService } from './adminchat.service';
+import { AdminService } from './admin.service';
 
 
 @WebSocketGateway()
 export class AdminchatGateway
   implements OnGatewayInit, OnGatewayConnection, OnGatewayDisconnect
 {
-  constructor(private readonly adminchatService: AdminchatService) {}
+  constructor(private readonly adminService: AdminService) {}
   @WebSocketServer() server: Server;
 
   @SubscribeMessage('sendMessage')
   async handleSendMessage(req: Request, client: Socket, messageData: any): Promise<void> {
     try {
       // Gửi dữ liệu tin nhắn vào phương thức sendMessage của ChatService để xử lý
-      const createdMessage = await this.adminchatService.sendMessage(req, messageData);
+      const createdMessage = await this.adminService.sendMessage(req, messageData);
 
       // Gửi tin nhắn đã tạo đến tất cả client
       this.server.emit('recMessage', createdMessage);

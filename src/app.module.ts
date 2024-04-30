@@ -12,7 +12,6 @@ import { RoomModule } from './room/room.module';
 import { RoomController } from './room/room.controller';
 import { AdminModule } from './admin/admin.module';
 import { ChatModule } from './chat/chat.module';
-import { AdminchatModule } from './adminchat/adminchat.module';
 import { BookingModule } from './booking/booking.module';
 import { BookingController } from './booking/booking.controller';
 
@@ -27,7 +26,6 @@ import { BookingController } from './booking/booking.controller';
     RoomModule,
     AdminModule,
     ChatModule,
-    AdminchatModule,
     BookingModule,
   ],
   controllers: [AppController],
