@@ -2,11 +2,13 @@ import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { Request, Response } from 'express';
 import * as jwt from 'jsonwebtoken';
+import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()
 export class FuncService {
     constructor(
         private config: ConfigService,
+        private prisma : PrismaService,
       ) {}
 
     /**
@@ -17,7 +19,7 @@ export class FuncService {
      * - `returns`: JWT Token
      */
     getTokenFromHeader_Req(req : Request) {
-          return req.cookies.jwt;
+        return req.cookies.jwt;
       }
     
     /**
@@ -28,7 +30,7 @@ export class FuncService {
      * - `returns`: JWT Token
      */
     getTokenFromHeader_Res(res : Response) {
-        return res.getHeaders()['set-cookie'].toString().split('=')[1].split(';')[0];
+      return res.getHeaders()['set-cookie'].toString().split('=')[1].split(';')[0];
     }
 
     /**
@@ -39,15 +41,27 @@ export class FuncService {
      * - `returns`: object {username}
      */
     getUsernameFromJwt_Req(req : Request) {
-        const userToken = this.getTokenFromHeader_Req(req);
-        if (userToken != undefined) {
-          const decoded = jwt.verify( userToken, this.config.get('JWT_SECRET')) as DecodedToken;
-          return { username: decoded.username };
-        } else
-            return { username: null }
+      const userToken = this.getTokenFromHeader_Req(req);
+      if (userToken != undefined) {
+        const decoded = jwt.verify( userToken, this.config.get('JWT_SECRET')) as DecodedToken;
+        return { username: decoded.username };
+      } else
+          return { username: null }
+    }
+
+    async getUserFromUsername(req : Request) {
+      const username_token = await this.getUsernameFromJwt_Req(req).username
+      if(username_token !== null) {
+        const user = await this.prisma.user.findFirst({
+          where: {
+            username : username_token
+          }
+        })
+        return {user : user}
+      }
     }
 }
-
+    
 interface DecodedToken {
     username: string
     email: string

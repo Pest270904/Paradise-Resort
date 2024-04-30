@@ -1,0 +1,100 @@
+.booking{
+    margin: 10% 10% 5% 10%;
+    border: 2px solid rgb(89, 12, 183);
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.booking-room-img {
+    width: 100%;
+    height: 70%;
+}
+
+.booking-room-name {
+    margin: 2% 0;
+    text-align: center;
+    font-weight: bold;
+    font-size: 26px;
+}
+
+.booking-input {
+    display: flex;
+    margin: 3% 5%;
+}
+
+.booking-input-first {
+    margin: 0 5%;
+}
+
+.booking-input-second {
+    margin-left: 4%;
+    width: 50%;
+    align-items: center;
+    place-content: center;
+    place-items: center;
+}
+
+.booking-accept-term {
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    margin-top: 1%;
+}
+
+.minus, .plus {
+    border-radius: 50%;
+    border: 1px solid #e0b973;
+    background-color: #e0b973;
+    width: 25px;
+    height: 25px;
+    font-size: large;
+    font-weight: bold;
+    color: white;
+}
+
+#number-date {
+    border: 1px solid black;
+    padding: 0 1%;
+    width: 25px; /* Set a fixed width */
+    display: inline-block; /* Make sure it behaves like a block element */
+}
+
+#booking-payment {
+    padding: 1%;
+}
+
+.booking-btn-post {
+    display: block;
+    margin: auto;
+    border: 2px solid #e0b973;
+    background-color: #e0b973;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 15px;
+    border-radius: 8px;
+    padding: 10px 24px;
+}
+
+.booking-vl {
+    border-left: 1px solid gray;
+}
+
+.error {
+    margin: 10% 10%;
+}
+
+.error-text {
+    margin-top: 5%;
+    font-weight: bold;
+    font-size: 30px;
+    text-align: center;
+}
+
+.error-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 10%;
+}

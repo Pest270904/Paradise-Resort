@@ -90,6 +90,12 @@
     width: 200px;
 }
 
+.room-desc-detail-booking {
+    padding-top: 1%;
+    margin: auto;
+    align-items: center;
+}
+
 .room-desc-detail-button-cost{
     border: 2px solid #e0b973;
     background-color: #e0b973;
@@ -100,25 +106,30 @@
     font-size: 15px;
     border-radius: 8px;
     padding: 10px 24px;
-    margin-left: 30%;
+}
+
+.room-desc-detail-available {
+    text-align: center;
+    font-size: 12px;
+    font-style: italic;
 }
 
 .room-desc-detail-button-cost:hover{
     background-color: white;
     color: black;   
 }
-.room-decription-bigtext
+.room-description-bigtext
 {
     font-size: 18px;
     font-weight: 700;
     padding-left: 10px;
 }
-.room-decription-smalltext
+.room-description-smalltext
 {
     font-size: 17px;
     padding: 13px;
 }
-.room-decription-icon
+.room-description-icon
 {
     margin-top: 5px;
     margin-left: 70px;
@@ -127,7 +138,7 @@
     display: inline-block;
     padding: 10px;
 }
-.room-decription-smallicon
+.room-description-smallicon
 {
     width: 19x;
     height: 18px;
@@ -144,10 +155,10 @@
         padding: 10px 24px;
         margin-left: 20%;
     }
-    .room-decription-smalltext {
+    .room-description-smalltext {
         font-size: 14px;
     }
-    .room-decription-icon {
+    .room-description-icon {
         margin-top: 5px;
         margin-left: 45px;
         width: 18%;

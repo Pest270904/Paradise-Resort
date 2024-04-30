@@ -5,29 +5,23 @@
     <div class='login-form'>
       <form action='' method='post' class='form' id='form-1'>
         <h2 class='heading'>ĐĂNG NHẬP TÀI KHOẢN</h2>
-        <div class='spacer'></div>
+
+        {{#if error}}
+            <div class='error'>{{error}}, please try again.</div>
+        {{else}}
+            <div class='spacer'></div>
+        {{/if}}
+
         {{!-- username --}}
         <div class='form-group'>
             <label for='username' class='form-label'>Username</label>
-            <input
-              id='username'
-              name='username'
-              type='text'
-              placeholder='VD: username1'
-              class='form-control'
-            />
+            <input id='username' name='username' type='text' placeholder='VD: username1' class='form-control' />
             <span class='form-message'></span>
         </div>
         {{!-- password --}}
         <div class='form-group'>
           <label for='password' class='form-label'>Mật khẩu</label>
-          <input
-            id='password'
-            name='password'
-            type='text'
-            placeholder='Nhập mật khẩu'
-            class='form-control'
-          />
+          <input id='password' name='password' type='text' placeholder='Nhập mật khẩu' class='form-control' />
           <span class='form-message'></span>
         </div>
         {{!-- button for submit --}}

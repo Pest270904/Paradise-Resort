@@ -65,6 +65,7 @@
             (Run this command when you change the code in databases)
 
     $ npx prisma migrate dev
+    $ npx prisma generate
 ```
 
 - Compile and build
