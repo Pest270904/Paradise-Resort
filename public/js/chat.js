@@ -84,7 +84,7 @@ const handleChat = async () => {
             },
             body: JSON.stringify({ content: userMessage }),
         });
-        console.log(roomName);
+        socket.emit('loadlist', userMessage);
         socket.emit('message', { content: userMessage, roomName: roomName, username: username });
         // Kiểm tra xem gửi tin nhắn qua POST có thành công không
         if (!response.ok) {

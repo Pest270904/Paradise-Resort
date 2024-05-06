@@ -55,6 +55,7 @@ const handleChat = async (username) => {
             },
             body: JSON.stringify({ content: userMessage }),
         });
+        socket.emit('loadlist', userMessage);
         socket.emit('message', { content: userMessage, roomName: roomName, username: 'admin' });
         if (!response.ok) {
             throw new Error('Failed to send message');

@@ -11,7 +11,7 @@ import {
   import { Server, Socket } from 'socket.io'; 
   import { Request } from 'express';
   import { FuncService } from 'src/func/func.service';
-   
+  import { AdminService } from 'src/admin/admin.service';
   @WebSocketGateway({
     cors: {
       origin: '*',
@@ -20,7 +20,7 @@ import {
   export class Gateway
     implements OnGatewayInit, OnGatewayConnection, OnGatewayDisconnect
   {
-    constructor(private readonly funcService: FuncService) {}
+    constructor(private adminService : AdminService, private readonly funcService: FuncService) {}
     @WebSocketServer() server: Server;
   
     @SubscribeMessage('joinRoom')
@@ -44,6 +44,15 @@ import {
         }
     }
 
+    @SubscribeMessage('loadlist')
+    async loadChatList(@MessageBody() data: any){
+        try {
+          const chatList = await this.adminService.getChatList();
+          this.server.emit('receichatlist', chatList);
+        } catch (error) {
+            console.error(error);
+        }
+    }
 
     afterInit(server: any) {
       console.log(server) 
