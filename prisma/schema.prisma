@@ -22,7 +22,8 @@ model User {
   isAdmin     Boolean @default(false)
   hash        String
 
-  messages    Message[]
+  sentMessages   Message[] @relation("SentMessages") 
+  receivedMessages Message[] @relation("ReceivedMessages")
   Reservation Reservation[]
 
   @@map("user")
@@ -45,11 +46,13 @@ model Room {
 }
 
 model Message {
-  message_id Int      @id @default(autoincrement())
-  user_id    Int
-  content    String
-  timestamp  DateTime @default(now())
-  user       User     @relation(fields: [user_id], references: [id])
+  message_id    Int       @id @default(autoincrement())
+  sender_id     Int
+  receiver_id   Int
+  content       String
+  timestamp     DateTime  @default(now())
+  sender        User      @relation("SentMessages", fields: [sender_id], references: [id])
+  receiver      User      @relation("ReceivedMessages", fields: [receiver_id], references: [id])
 
   @@map("messages")
 }

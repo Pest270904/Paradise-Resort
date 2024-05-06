@@ -29,7 +29,8 @@ CREATE TABLE "room" (
 -- CreateTable
 CREATE TABLE "messages" (
     "message_id" SERIAL NOT NULL,
-    "user_id" INTEGER NOT NULL,
+    "sender_id" INTEGER NOT NULL,
+    "receiver_id" INTEGER NOT NULL,
     "content" TEXT NOT NULL,
     "timestamp" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
@@ -44,9 +45,10 @@ CREATE TABLE "reservation" (
     "fullName" TEXT NOT NULL,
     "phoneNumber" TEXT NOT NULL,
     "booking_time" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "start" TIMESTAMP(3) NOT NULL,
+    "start" TEXT NOT NULL,
     "days" INTEGER NOT NULL,
     "kind_of_payment" BOOLEAN NOT NULL,
+    "status" INTEGER NOT NULL,
 
     CONSTRAINT "reservation_pkey" PRIMARY KEY ("res_id")
 );
@@ -64,7 +66,10 @@ CREATE UNIQUE INDEX "user_phoneNumber_key" ON "user"("phoneNumber");
 CREATE UNIQUE INDEX "room_roomName_key" ON "room"("roomName");
 
 -- AddForeignKey
-ALTER TABLE "messages" ADD CONSTRAINT "messages_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "user"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "messages" ADD CONSTRAINT "messages_sender_id_fkey" FOREIGN KEY ("sender_id") REFERENCES "user"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "messages" ADD CONSTRAINT "messages_receiver_id_fkey" FOREIGN KEY ("receiver_id") REFERENCES "user"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "reservation" ADD CONSTRAINT "reservation_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "user"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

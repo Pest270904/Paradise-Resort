@@ -1,22 +1,21 @@
-// chat.service.ts
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { Prisma, Message } from '@prisma/client';
 import { FuncService } from 'src/func/func.service';
-import { NextFunction, Request, Response } from 'express';
+import { Request } from 'express';
 
 @Injectable()
 export class ChatService {
   constructor(private readonly prisma: PrismaService, private readonly funcService: FuncService) {}
   
   
-  async createMessage(req: Request, userId: number, content: string): Promise<Message> {
+  async createMessage(req: Request, content: string): Promise<Message> {
     try {
-      const { username } = await this.funcService.getUsernameFromJwt_Req(req);      
+      const { username } = this.funcService.getUsernameFromJwt_Req(req);      
       if (!username) {
         throw new BadRequestException('Please log in before chatting');
       }
-      const user = await this.prisma.user.findUnique({
+      const sender = await this.prisma.user.findUnique({
         where: {
           username,
         },
@@ -24,11 +23,23 @@ export class ChatService {
           id: true,
         },
       });
-      const createdDate = new Date(); // Tạo đối tượng Date với múi giờ mặc định (UTC)
-      const localDate = new Date(createdDate.getTime() + (7 * 60 * 60 * 1000)); // Chuyển đổi sang GMT+7
+      const receiver = await this.prisma.user.findUnique({
+        where: {
+          id: 1,
+        },
+        select: {
+          id: true,
+        },
+      });
+      if (!receiver) {
+        throw new BadRequestException('Recipient receiver Id not found.');
+      }
+      const createdDate = new Date();
+      const localDate = new Date(createdDate.getTime() + (7 * 60 * 60 * 1000));
       return await this.prisma.message.create({
         data: {
-          user_id: user.id, // Sử dụng user_id từ dữ liệu tin nhắn
+          sender_id: sender.id,
+          receiver_id: receiver.id,
           content: content,
           timestamp: localDate,
         },
@@ -38,36 +49,46 @@ export class ChatService {
     }
   }
 
-  async sendMessage(req: Request, messageData: any): Promise<any> {
+  async sendMessage(req: Request, messageData: any): Promise<Message> {
     try {
-      const { userId, content } = messageData; // Trích xuất userId và content từ dữ liệu tin nhắn
-      const createdMessage = await this.createMessage(req, userId, content); // Gọi phương thức createMessage với userId và content
+      const { content } = messageData; 
+      const createdMessage = await this.createMessage(req, content);
 
-      return createdMessage; // Trả về tin nhắn đã được tạo thành công
+      return createdMessage; 
     } catch (error) {
       throw new Error(`Error sending message: ${error.message}`);
     }
   }
-
+  async getUsername(req: Request){
+    try {
+      return this.funcService.getUsernameFromJwt_Req(req);
+    } catch (error) {
+      throw new Error('Error sending message: Please log in before chatting');
+    }
+  }
   async getChatHistory(req: Request): Promise<Message[]> {
     try {
       const { username } = await this.funcService.getUsernameFromJwt_Req(req);      
       const user = await this.prisma.user.findUnique({
-        where: {
+        where: { 
           username,
         },
         select: {
           id: true,
         },
       });
-      // Đọc lịch sử tin nhắn từ cơ sở dữ liệu sử dụng Prisma
       return await this.prisma.message.findMany({
         where: {
-          user_id: user.id,
+          OR: [
+            { sender_id: user.id },
+            { receiver_id: user.id },
+          ],
         },
       });
     } catch (error) {
       throw new Error(`Failed to fetch chat history: ${error.message}`);
     }
   }
+  
+  
 }

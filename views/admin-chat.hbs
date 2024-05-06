@@ -12,43 +12,9 @@
         </div>
         <!-- CHAT LIST -->
         <div class="chatlist">
-                <div class="block">
-                    <div class="details">
-                        <div class="listHead">
-                            <h4>lengo0951</h4>
-                            <p class="time">10:56</p>
-                        </div>
-                        <div class="message_p">
-                            <p>How are you doing?</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="block unread">
-                    <div class="details">
-                        <div class="listHead">
-                            <h4>tnh47</h4>
-                            <p class="time">12:34</p>
-                        </div>
-                        <div class="message_p">
-                            <p>I love you!</p>
-                            <b>1</b>
-                        </div>
-                    </div>
-                </div>                               
-                <div class="block">
-                    <div class="details">
-                        <div class="listHead">
-                            <h4>anhkhoi312</h4>
-                            <p class="time">Yesterday</p>
-                        </div>
-                        <div class="message_p">
-                            <p>Hey!</p>                            
-                        </div>
-                    </div>
-                </div>                
-            </div>
-        </div>        
+            <div class="block"></div>        
+        </div>
+    </div>        
     <div class="rightSide">
         <div class="header" style="display: none;">
             <div class="imgText">
@@ -56,7 +22,7 @@
             </div>
         </div>
         <!-- CHAT-BOX -->
-        <div class="chatbox">
+        <div class="chatbox">   
             <div class="no-content">                
             <i class="fa-regular fa-comments"></i>
             <h2>Select Chat</h2> 
@@ -68,5 +34,64 @@
         </div>
     </div>
 </div>
+<script>
+    const chatLists = {{{ chatList }}};
+    function renderChatList(chatList) {
+    const chatlistContainer = document.querySelector('.chatlist');
+
+    chatlistContainer.innerHTML = ''; // Xóa nội dung hiện tại của chatlist trước khi render lại
+
+    chatList.forEach(item => {
+      const block = document.createElement('div');
+      block.classList.add('block');
+
+      const details = document.createElement('div');
+      details.classList.add('details');
+
+      const listHead = document.createElement('div');
+      listHead.classList.add('listHead');
+
+      const username = document.createElement('h4');
+      username.textContent = item.user.username; // Thay username bằng trường tương ứng trong đối tượng user
+
+      const time = document.createElement('p');
+      time.classList.add('time');
+      // Thực hiện xử lý định dạng thời gian nếu cần thiết
+      time.textContent = item.latestMessage.timestamp; // Thay timestamp bằng trường tương ứng trong đối tượng tin nhắn
+
+      listHead.appendChild(username);
+      listHead.appendChild(time);
+
+      const messageP = document.createElement('div');
+      messageP.classList.add('message_p');
+
+      const messageContent = document.createElement('p');
+      messageContent.textContent = item.latestMessage.content; // Thay content bằng trường tương ứng trong đối tượng tin nhắn
+
+      // Tạo một thẻ <b> cho số tin nhắn chưa đọc (nếu có)
+      if (item.latestMessage.unreadCount) {
+        const unreadCount = document.createElement('b');
+        unreadCount.textContent = item.latestMessage.unreadCount;
+        messageP.appendChild(unreadCount);
+      }
+
+      messageP.appendChild(messageContent);
+
+      details.appendChild(listHead);
+      details.appendChild(messageP);
+
+      block.appendChild(details);
+
+      // Kiểm tra và thêm class 'unread' nếu có tin nhắn chưa đọc
+      if (item.latestMessage.unreadCount) {
+        block.classList.add('unread');
+      }
+
+      chatlistContainer.appendChild(block);
+    });
+  }
+  renderChatList(chatLists); 
+</script>
 <script src="/js/admin-chat.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.1/socket.io.js"></script>

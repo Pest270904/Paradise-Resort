@@ -14,9 +14,11 @@ import { AdminModule } from './admin/admin.module';
 import { ChatModule } from './chat/chat.module';
 import { BookingModule } from './booking/booking.module';
 import { BookingController } from './booking/booking.controller';
+import { GatewayModule } from './gateway/gateway.module';
 
 @Module({
   imports: [
+    GatewayModule,
     AuthModule, 
     PrismaModule,
     ConfigModule.forRoot({

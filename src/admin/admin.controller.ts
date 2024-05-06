@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Req, Res } from '@nestjs/common'; 
+import { Body, Controller, Get, Param, Post, Req, Res } from '@nestjs/common'; 
 import { AdminService } from './admin.service';
 import { FuncService } from 'src/func/func.service';
 import { Response, Request } from 'express'
@@ -10,7 +10,6 @@ export class AdminController {
         private adminService : AdminService,
         private funcService : FuncService
     ) {}
-
     @Get()
     admin(@Req() req: Request, @Res() res: Response) {
     res.render('admin', {
@@ -21,20 +20,27 @@ export class AdminController {
 
     @Get('create')
     async createAdmin() {
-        // console.log('aa')
       return await this.adminService.createAdmin(); 
     }
+
     @Get('admin-chat')
-    adminChatPage(@Req() req: Request, @Res() res: Response) {
+    async adminChatPage(@Req() req: Request, @Res() res: Response) {
+    try {
+    const chatList = await this.adminService.getChatList();
     res.render('admin-chat', {
-      layout: 'admin-layout'
-    })
-    return this.funcService.getUsernameFromJwt_Req(req)
+      layout: 'admin-layout',
+      chatList: JSON.stringify(chatList) // Truyền dữ liệu chatlist dưới dạng JSON string để sử dụng trong script của trang HTML
+    });
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to load chat list' });
   }
-  
-  @Post('admin-chat')
-  async sendMessage(@Req() req: Request, @Body() messageData: any) {
-    await this.adminService.sendMessage(req, messageData);
-    return { success: true, message: 'Message sent successfully' };
+} 
+  @Get('/admin-chat/:username')
+  async getChatHistory(@Param('username') username: string): Promise<Message[]> {
+      return await this.adminService.getChatHistoryByUsername(username);
+  }
+  @Post('admin-message/:username')
+  async sendMessage(@Param('username') username: string ,@Req() req: Request, @Body() messageData: any) {
+    await this.adminService.sendMessage(req, messageData, username);
   }
 }
