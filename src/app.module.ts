@@ -14,6 +14,7 @@ import { AdminModule } from './admin/admin.module';
 import { ChatModule } from './chat/chat.module';
 import { BookingModule } from './booking/booking.module';
 import { BookingController } from './booking/booking.controller';
+import { PaymentModule } from './payment/payment.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { BookingController } from './booking/booking.controller';
     AdminModule,
     ChatModule,
     BookingModule,
+    PaymentModule
   ],
   controllers: [AppController],
   providers: [JwtService, AppService, FuncService],
