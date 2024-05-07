@@ -25,7 +25,7 @@ export class AdminService {
 
   async createMessage(req: Request, senderId: number, receiverUsername: string, content: string, username_receiver: string): Promise<Message> {
     try {
-      const { username } = await this.funcService.getUsernameFromJwt_Req(req);      
+      const { username } = await this.funcService.getUsernameFromJwt_Req(req);  
       if (!username) {
         throw new BadRequestException('Please log in before chatting');
       }

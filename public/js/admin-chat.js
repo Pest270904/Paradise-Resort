@@ -1,4 +1,5 @@
 const socket = io('http://localhost:3000');
+let currentUsername = '';
 let roomName = '';
 const chatInput = document.querySelector(".chat_input input");
 const sendChatBtn = document.querySelector(".chat_input span");
@@ -17,6 +18,7 @@ const createChatMessage = (message, className) => {
 const handleBlockClick = (username) => {
     // Thay đổi tên phòng dựa trên username
     roomName = `admin_${username}`;
+    currentUsername = username;
     // Gửi yêu cầu tham gia vào phòng với tên phòng là roomName
     socket.emit('joinRoom', roomName);
 
@@ -47,7 +49,8 @@ const handleChat = async (username) => {
     userMessage = chatInput.value.trim();
     if (!userMessage) return;
     try {
-
+        //console.log(username)
+        //console.log(roomName)
         const response = await fetch(`/admin/admin-message/${username}`, {
             method: 'POST',
             headers: {
@@ -75,7 +78,6 @@ chatInput.addEventListener("input", () => {
     chatInput.style.height = `${chatInput.scrollHeight}px`
 });
 //
-let currentUsername = '';
 const blocks = document.querySelectorAll('.chatlist .block');
     
     // Lặp qua từng block và thêm sự kiện click
@@ -92,8 +94,8 @@ const blocks = document.querySelectorAll('.chatlist .block');
         if (bElement) {
             bElement.remove();
         }
-        const username = block.querySelector('.listHead h4').innerText;
-        currentUsername = block.querySelector('.listHead h4').innerText;
+        let username = block.querySelector('.listHead h4').innerText;
+        // currentUsername = block.querySelector('.listHead h4').innerText;
         // Hiển thị tên người dùng trong chatbox
         // const chatbox = document.querySelector('.chatbox');
         // chatbox.innerHTML = '';
