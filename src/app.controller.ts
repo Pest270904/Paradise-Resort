@@ -4,9 +4,6 @@ import { FuncService } from './func/func.service';
 
 @Controller()
 export class AppController {
-  getHello(): any {
-    throw new Error('Method not implemented.');
-  }
   constructor(private funcService: FuncService) {}
 
   @Get('/')
@@ -30,12 +27,6 @@ export class AppController {
   @Get('contact')
   @Render('contact')
   contact(@Req() req: Request) {
-    return this.funcService.getUsernameFromJwt_Req(req);
-  }
-
-  @Get('reservation')
-  @Render('reservation')
-  reservation(@Req() req: Request) {
     return this.funcService.getUsernameFromJwt_Req(req);
   }
 

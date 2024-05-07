@@ -4,7 +4,9 @@ import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()
 export class BookingService {
-    constructor(private readonly prisma: PrismaService) {}
+    constructor(
+        private readonly prisma: PrismaService
+    ) {}
 
     async createReservation(reqData : any, res : Response) {
         try {

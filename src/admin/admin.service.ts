@@ -12,16 +12,17 @@ export class AdminService {
   async createAdmin()  {
       const hashedPassword = await hash('112233');
       await this.prisma.user.create({
-          data:
-              {
+          data: {
                   username: 'admin',
                   fullName: 'Admin User',
                   email: 'admin@example.com',
                   phoneNumber: '0000000000',
                   hash: hashedPassword,
                   isAdmin: true
-          } })
+          } 
+      })
   }
+
   async createMessage(req: Request, senderId: number, receiverUsername: string, content: string, username_receiver: string): Promise<Message> {
     try {
       const { username } = await this.funcService.getUsernameFromJwt_Req(req);      

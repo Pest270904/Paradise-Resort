@@ -1,36 +1,43 @@
 <body>
     <div class="res-body">
         <h1 class="res-header">Reservation</h1>
-        <ul class="res-opt">
-            <li><a href="#Upcoming"></a>Upcoming</li>
-            <li><a href="#Past"></a>Past</li>
-        </ul>
     </div>
-    <div class="upcoming-inf-line1">
-        <img class="res-img" src="/img/rooms/deluxe-double-room.webp" alt="single-room" width="100" height="100">
+
+    {{#each reservations}}
+    <!-- Reservation {{this.res_id}} -->
+    <div class="upcoming-inf-line">
+        <img class="res-img" src="{{this.imgSrc}}" alt="single-room" width="150" height="100">
         <div>
-            <h3 class="name-room">DELUXE DOUBLE ROOM</h3>
-            <p id="firstline">Check In: 13 Mar 2024</p>
-            <p id="firstline">Duration: 2 days</p>
-            <p id="firstline">Guests: 2 Adults</p>
-            <p id="secondline">$ 278</p>
+            <h3 class="name-room">{{this.roomName}}</h3>
+            <p id="firstline">Check In: {{this.start}}</p>
+            <p id="firstline">Duration: {{this.days}} days</p>
+            <p id="secondline">$ {{this.total_cost}}</p>
         </div>
+        {{#if this.Pending}}
         <div class="btn-res">
-            <button type="button" class="btn-res-cancel">Cancel Reservation</button>
+            <button type="button" class="btn-res-pending">Waiting for payment</button>
         </div>
+        {{/if}}
+        
+        {{#if this.Active}}
+        <div class="btn-res">
+            <button type="button" class="btn-res-cancel" onclick="cancel_reservation('{{this.res_id}}')">Cancel Reservation</button>
+        </div>
+        {{/if}}
+
+        {{#if this.End}}
+        <div class="btn-res">
+            <p>This reservation ended.</p>
+        </div>
+        {{/if}}
+
         <br>
     </div>
-    <div class="upcoming-inf-line2">
-        <img class="res-img" src="/img/rooms/twin-room.webp" alt="double-room" width="100" height="100">
-        <div>
-            <h3 class="name-room">DELUXE TWIN ROOM</h3>
-            <p id="firstline">Check In: 13 Mar 2024</p>
-            <p id="firstline">Duration: 1 days</p>
-            <p id="firstline">Guests: 2 Adults</p>
-            <p id="secondline">$ 139</p>
-        </div>
-        <div class="btn-res">
-            <button type="button" class="btn-res-cancel">Cancel Reservation</button>
-        </div>
+    {{/each}}
+    <hr>
+    <div class="body-end" style="margin-top: 3%;">
+        <b><p class="body-end-header">Testimonials</p></b>
+        <p class="body-end-text-1">"Calm, Serene, Retro - What a way to relax and enjoy"</p>
+        <p class="body-end-text-2">Mr. and Mrs.Baxter, UK</p>
     </div>
 </body>

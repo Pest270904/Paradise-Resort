@@ -24,12 +24,7 @@
     margin-left: 50px;
     border-radius: 4px;
 }
-.upcoming-inf-line1 {
-    margin-top: 20px;
-    display: inline-flex;
-    width: 100%;
-}
-.upcoming-inf-line2 {
+.upcoming-inf-line {
     margin-top: 20px;
     display: inline-flex;
     width: 100%;
@@ -62,6 +57,21 @@
     border: 2px solid #e0b973;
 }
 .btn-res-cancel:hover {
+    background-color: white;
+    color: black;
+}
+
+.btn-res-pending {
+    height: 30px;
+    width: 160px;
+    background-color: gray;
+    color: white;
+    padding: 1px;
+    font-size: 16px;
+    border-radius: 20px;
+    border: 2px solid black;
+}
+.btn-res-pending:hover {
     background-color: white;
     color: black;
 }
