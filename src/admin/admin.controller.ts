@@ -39,7 +39,7 @@ export class AdminController {
   async getChatHistory(@Param('username') username: string): Promise<Message[]> {
       return await this.adminService.getChatHistoryByUsername(username);
   }
-  @Post('admin-message/:username')
+  @Post('/admin-message/:username')
   async sendMessage(@Param('username') username: string ,@Req() req: Request, @Body() messageData: any) {
     await this.adminService.sendMessage(req, messageData, username);
   }
