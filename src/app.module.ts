@@ -18,7 +18,7 @@ import { GatewayModule } from './gateway/gateway.module';
 import { PaymentModule } from './payment/payment.module';
 import { CheckLoginMiddleware } from './middleware/checkLogin.middleware';
 import { AdminController } from './admin/admin.controller';
-
+import { AdminService } from './admin/admin.service';
 @Module({
   imports: [
     GatewayModule,
@@ -34,11 +34,11 @@ import { AdminController } from './admin/admin.controller';
     BookingModule,
     PaymentModule
   ],
-  controllers: [AppController],
+  controllers: [AppController,AdminController],
   providers: [
     JwtService, 
     AppService, 
-    FuncService
+    FuncService,AdminService
   ],
 })
 export class AppModule implements NestModule{

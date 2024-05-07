@@ -1,9 +1,10 @@
-import { Body, Controller, Get, Param, Post, Req, Res } from '@nestjs/common'; 
+import { Body, Controller, Get, Param, Post, Req, Res, UseGuards } from '@nestjs/common'; 
 import { AdminService } from './admin.service';
 import { FuncService } from 'src/func/func.service';
 import { Response, Request } from 'express'
 import { Message } from '@prisma/client';
- 
+import { CheckTokenMiddleware } from 'src/middleware/checkToken.middleware';
+import { AdminGuard } from './admin.guard';
 @Controller('admin')
 export class AdminController {
     constructor (
@@ -11,6 +12,7 @@ export class AdminController {
         private funcService : FuncService
     ) {}
     @Get()
+    @UseGuards(AdminGuard)
     admin(@Req() req: Request, @Res() res: Response) {
     res.render('admin', {
       layout: 'admin-layout'
@@ -18,10 +20,7 @@ export class AdminController {
     return this.funcService.getUsernameFromJwt_Req(req)
   }
 
-    @Get('create')
-    async createAdmin() {
-      return await this.adminService.createAdmin(); 
-    }
+    
 
     @Get('admin-chat')
     async adminChatPage(@Req() req: Request, @Res() res: Response) {
