@@ -1,32 +1,30 @@
-import { Controller, Get, Res, HttpStatus } from '@nestjs/common';
-import { Response } from 'express';
+import { Controller, Get, Post, Req, Res } from '@nestjs/common';
+import { Request, Response } from 'express';
 import { PaymentService } from './payment.service';
 
 @Controller('payment')
 export class PaymentController {
-  constructor(private readonly paymentService: PaymentService) {}
+  constructor(private paymentService: PaymentService) {}
 
   @Get('checkout')
-  async redirectToCheckout(@Res() res: Response) {
-    try {
-      const amount = 50000; // Ví dụ: Số tiền thanh toán là 50000 VNĐ
-      const bankCode = 'VNBANK'; // Ví dụ: Mã ngân hàng nếu có
-      const orderDescription = 'Thanh toán đơn hàng'; // Ví dụ: Mô tả đơn hàng
-      const orderType = 'other'; // Ví dụ: Loại đơn hàng
-      const language = 'vn'; // Ví dụ: Ngôn ngữ là tiếng Việt
+  async getCheckoutUrl(@Res() res: Response) {
+    const url = await this.paymentService.VNPayCheckoutUrl();
+    // Trả về URL redirect hoặc thực hiện redirect tại đây
+    return res.redirect(url);
+  }
 
-      const checkoutUrl = await this.paymentService.createPaymentUrl(
-        amount,
-        bankCode,
-        orderDescription,
-        orderType,
-        language,
-      );
-      return res.redirect(checkoutUrl);
-    } catch (error) {
-      return res
-        .status(HttpStatus.INTERNAL_SERVER_ERROR)
-        .json({ error: 'Error occurred while creating payment URL' });
+  @Get('return')
+  async handlerReturn(@Req() req, @Res() res: Response) {
+    const result = await this.paymentService.VNPayReturn(req);
+    // Render ra trang thông báo kết quả dựa vào result
+    if (result.code === '00') {
+      res.render('successpayment', { message: 'Giao dịch thành công' });
+    } else if (result.code === '97') {
+      res.render('failure', { message: 'Chữ ký không hợp lệ' });
+    } else if (result.code === '99') {
+      res.render('failure', { message: 'Dữ liệu không hợp lệ' });
+    } else {
+      res.render('failure', { message: 'Giao dịch thất bại' });
     }
   }
 }

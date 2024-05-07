@@ -20,6 +20,7 @@ import { CheckLoginMiddleware } from './middleware/checkLogin.middleware';
 import { AdminController } from './admin/admin.controller';
 import { ReservationModule } from './reservation/reservation.module';
 import { ReservationController } from './reservation/reservation.controller';
+import { AdminService } from './admin/admin.service';
 
 @Module({
   imports: [
@@ -37,11 +38,11 @@ import { ReservationController } from './reservation/reservation.controller';
     PaymentModule,
     ReservationModule,
   ],
-  controllers: [AppController],
+  controllers: [AppController,AdminController],
   providers: [
     JwtService, 
     AppService, 
-    FuncService
+    FuncService,AdminService
   ],
 })
 export class AppModule implements NestModule{

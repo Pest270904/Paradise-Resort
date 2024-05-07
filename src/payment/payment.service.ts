@@ -5,69 +5,77 @@ import { format } from 'date-fns';
 
 @Injectable()
 export class PaymentService {
-  async createPaymentUrl(amount: number, bankCode: string, orderDescription: string, orderType: string, language: string) {
-    const ipAddr = '127.0.0.1'; // Tạm thời sử dụng localhost làm địa chỉ IP
+  async VNPayCheckoutUrl() {
+    let date = new Date();
 
-    // Các giá trị cần thiết cho thanh toán VNPay từ tệp config
-    const tmnCode = 'I6EZX61U';
-    const secretKey = 'TBWZANCWBXNATETKLUEOLFHTKPNBSPBM';
-    const vnpUrl = 'https://sandbox.vnpayment.vn/paymentv2/vpcpay.html';
-    const returnUrl = 'http://localhost:3000/return';
+    // This should in config file
+    let tmnCode = 'I6EZX61U';
+    let secretKey = 'TBWZANCWBXNATETKLUEOLFHTKPNBSPBM';
+    let vnpUrl = 'https://sandbox.vnpayment.vn/paymentv2/vpcpay.html';
 
-    const date = new Date();
-    const createDate = format(date, 'yyyyMMddHHmmss');
-    const orderId = format(date, 'HHmmss');
+    let returnUrl = 'http://localhost:3000/payment/return';
+    let createDate = format(date, 'yyyyMMddHHmmss');
+    let orderId = date.getTime();
 
-    // Ngôn ngữ mặc định là 'vn' nếu không được chỉ định
-    const locale = language || 'vn';
-    const currCode = 'VND';
+    // The amount need to paid
+    let amount = 50000;
 
-    // Thiết lập các tham số cho URL thanh toán VNPay
-    const vnp_Params: any = {};
+    // VNPAYQR - VNBANK - INTCARD
+    let bankCode = 'VNBANK';
+
+    // vn - en
+    let locale = 'vn';
+
+    if (locale === null || locale === '') {
+      locale = 'vn';
+    }
+    let currCode = 'VND';
+
+    let vnp_Params = {};
+
     vnp_Params['vnp_Version'] = '2.1.0';
     vnp_Params['vnp_Command'] = 'pay';
     vnp_Params['vnp_TmnCode'] = tmnCode;
     vnp_Params['vnp_Locale'] = locale;
     vnp_Params['vnp_CurrCode'] = currCode;
     vnp_Params['vnp_TxnRef'] = orderId;
-    vnp_Params['vnp_OrderInfo'] = orderDescription;
-    vnp_Params['vnp_OrderType'] = orderType;
-    vnp_Params['vnp_Amount'] = amount * 100; // Chuyển đổi số tiền thành đơn vị VNĐ
+    vnp_Params['vnp_OrderInfo'] = 'Thanh toan cho ma GD:' + orderId;
+    vnp_Params['vnp_OrderType'] = 'other';
+    vnp_Params['vnp_Amount'] = amount * 100; // The amount need to mutiple with 100
     vnp_Params['vnp_ReturnUrl'] = returnUrl;
-    vnp_Params['vnp_IpAddr'] = ipAddr;
+    vnp_Params['vnp_IpAddr'] = '118.70.192.52'; // this is ip address of cilent
     vnp_Params['vnp_CreateDate'] = createDate;
-    if (bankCode) {
+    if (bankCode !== null && bankCode !== '') {
       vnp_Params['vnp_BankCode'] = bankCode;
     }
 
-    // Sắp xếp các tham số theo thứ tự alphabet
-    const sortedParams = this.sortObject(vnp_Params);
+    vnp_Params = this.sortObject(vnp_Params);
 
-    // Tạo chuỗi dữ liệu cần ký
-    const signData = querystring.stringify(sortedParams, { encode: false });
+    let signData = querystring.stringify(vnp_Params, { encode: false });
 
-    // Tạo mã ký từ dữ liệu đã được sắp xếp
-    const hmac = crypto.createHmac('sha512', secretKey);
-    const signed = hmac.update(new Buffer(signData, 'utf-8')).digest('hex');
-
-    // Thêm mã ký vào các tham số
+    let hmac = crypto.createHmac('sha512', secretKey);
+    let signed = hmac.update(new Buffer(signData, 'utf-8')).digest('hex');
     vnp_Params['vnp_SecureHash'] = signed;
+    vnpUrl += '?' + querystring.stringify(vnp_Params, { encode: false });
 
-    // Tạo URL thanh toán từ các tham số đã được xử lý
-    const paymentUrl = vnpUrl + '?' + querystring.stringify(vnp_Params, { encode: false });
-
-    return paymentUrl;
+    return vnpUrl;
   }
 
   sortObject(obj) {
-    const sorted = {};
-    const keys = Object.keys(obj).sort();
-    for (const key of keys) {
-      sorted[key] = obj[key];
+    let sorted = {};
+    let str = [];
+    let key;
+    for (key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        str.push(encodeURIComponent(key));
+      }
+    }
+    str.sort();
+    for (key = 0; key < str.length; key++) {
+      sorted[str[key]] = encodeURIComponent(obj[str[key]]).replace(/%20/g, '+');
     }
     return sorted;
   }
-
 
   VNPayReturn(req: any) {
     let vnp_Params = req.query;
@@ -88,10 +96,12 @@ export class PaymentService {
 
     if (secureHash === signed) {
       //Kiem tra xem du lieu trong db co hop le hay khong va thong bao ket qua
-
-      return { code: vnp_Params['vnp_ResponseCode'] };
+      return {
+        code: vnp_Params['vnp_ResponseCode'],
+        message: 'Giao dịch hợp lệ',
+      };
     } else {
-      return { code: 97 };
+      return { code: '97', message: 'Chữ ký không hợp lệ' };
     }
   }
 }
