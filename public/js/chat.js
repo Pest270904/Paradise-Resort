@@ -3,20 +3,7 @@ const socket = io('http://localhost:3000');
 let roomName = '';
 let username = '';
 
-fetch('username-chat')
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Failed to load username');
-        }
-        return response.json();
-      })
-      .then(data => {
-        username = data.username;
-        roomName = `admin_${username}`;
-      })
-      .catch(error => {
-        console.error(error.message);
-      });
+
       
 
 // Xử lý khi mở hộp chat
@@ -52,6 +39,22 @@ function openChatBox() {
       .catch(error => {
         console.error(error.message);
       });
+
+      fetch('username-chat')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Failed to load username');
+        }
+        return response.json();
+      })
+      .then(data => {
+        username = data.username;
+        roomName = `admin_${username}`;
+      })
+      .catch(error => {
+        console.error(error.message);
+      });
+
       socket.emit('joinRoom', roomName);
   }
   

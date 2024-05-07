@@ -41,8 +41,21 @@
     socket.on('receichatlist', (chatList) => {
         renderChatList(chatList);
         attachClickEventToBlocks();
+        if (currentUsernameBlock) {
+    const blocks = document.querySelectorAll('.chatlist .block');
+    blocks.forEach(block => {
+        const blockUsername = block.querySelector('.listHead h4').innerText;
+        if (blockUsername === currentUsernameBlock) {
+            block.classList.add('active');
+        } else {
+            block.classList.remove('active');
+        }
+    });
+}
     });
 
+    let currentUsernameBlock = null;
+    
     const chatLists = {{{ chatList }}};
 
     function attachClickEventToBlocks() {
@@ -61,6 +74,7 @@
             }
             const username = block.querySelector('.listHead h4').innerText;
             handleBlockClick(username);
+            currentUsernameBlock = username;
         });
     });
 }

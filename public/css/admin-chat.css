@@ -155,6 +155,8 @@
     color: #aaa;
     font-size: 0.9em;
     overflow: hidden;
+    width: 300px;
+    display: block;
     text-overflow: ellipsis;
   }
   

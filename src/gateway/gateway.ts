@@ -55,13 +55,13 @@ import {
     }
 
     afterInit(server: any) {
-      console.log(server) 
+      //console.log(server) 
     }
     handleConnection(client: Socket) {
-      console.log(`Connected: ${client.id}`)
+      //console.log(`Connected: ${client.id}`)
     }
   
     handleDisconnect(client: Socket) {
-      console.log(`Disconnected: ${client.id}`) 
+      //console.log(`Disconnected: ${client.id}`) 
     }
   }
