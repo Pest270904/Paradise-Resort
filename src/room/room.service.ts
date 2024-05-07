@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { Response, Request } from 'express';
 
 @Injectable()
 export class RoomService {
@@ -23,6 +24,12 @@ export class RoomService {
             return {error_noRoom : "Room not found"}
 
         return {room : foundRoom}
+    }
+
+    async getError(req: Request, res: Response) {
+        const error = req.cookies.error
+        res.clearCookie('error')
+        return {error : error}
     }
 
     async createRoom() {

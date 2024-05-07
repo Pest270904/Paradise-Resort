@@ -8,7 +8,6 @@ export class BookingService {
 
     async createReservation(reqData : any, res : Response) {
         try {
-
             // Get user references base on reqData.userId
             const user = await this.prisma.user.findFirst({
                 where: {
@@ -26,38 +25,45 @@ export class BookingService {
                 },
                 select: {
                   id: true,
-                  available: true
+                  available: true,
+                  cost: true
                 },
             });
 
-            // Create new reservation
-            await this.prisma.reservation.create({
-                data: {
-                    user_id: user.id,
-                    room_id: room.id,
-                    fullName: reqData.fullName,
-                    phoneNumber: reqData.phoneNumber,
-                    start:  reqData.start,
-                    days: Number(reqData.days),
-                    kind_of_payment: Boolean(reqData.kind_of_payment),
-                    status: 0
-                }
-            })
+            // If there is no available room
+            if(room.available === 0) {
+                res.cookie('error', 'This room is out of stock').redirect(`/room/${room.id}`)
+            }
+            else {
+                // Create new reservation
+                await this.prisma.reservation.create({
+                    data: {
+                        user_id: user.id,
+                        room_id: room.id,
+                        fullName: reqData.fullName,
+                        phoneNumber: reqData.phoneNumber,
+                        start:  reqData.start,
+                        days: Number(reqData.days),
+                        total_cost: Number(reqData.days) * room.cost,
+                        status: 0
+                    }
+                })
 
-            // Update available room
-            await this.prisma.room.update({
-                where: {
-                    id: room.id
-                },
-                data: {
-                    available: --room.available
-                }
-            })
+                // Update available room
+                await this.prisma.room.update({
+                    where: {
+                        id: room.id
+                    },
+                    data: {
+                        available: --room.available
+                    }
+                })
+
+                res.redirect(`/reservation`)
+            }
         }
         catch (err) {
             console.log(err.message)
         }
-        
-        res.redirect(`/room/${reqData.roomId}`)
     }
 }

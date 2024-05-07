@@ -1,4 +1,10 @@
 {{#if room}}
+
+    {{#if error}}
+        <p style="margin: 10% 25% 5%; font-size: 25px">This room is out of stock, please choose another <a href="/room">room</a></p>
+    {{/if}}
+
+
     <div class="booking">
         <img src="{{room .imgSrc}}" alt="" class="booking-room-img">
 
@@ -50,16 +56,16 @@
 
             <div class="booking-input-first">
                 <label for='fullName'><b>Your fullname: &nbsp</b></label>
-                <input id='fullName' name='fullName' type='text' placeholder='VD: Nguyễn Văn A' value="{{user.fullName}}"/> <br>
+                <input id='fullName' name='fullName' type='text' placeholder='VD: Nguyễn Văn A' value="{{user.fullName}}" class='form-control'/> <br>
 
                 <label for='phoneNumber'><b>Phone number: &nbsp</b></label>
-                <input id='phoneNumber' name='phoneNumber' type='text' placeholder='VD: 01234567890' value="{{user.phoneNumber}}"/> <br>
+                <input id='phoneNumber' name='phoneNumber' type='text' placeholder='VD: 01234567890' value="{{user.phoneNumber}}" class="form-control"/> <br>
 
                 <label for='start'><b>Pick your booking date: &nbsp</b></label>
-                <input type="date" name="start" class="booking-input-date" id="booking-date"> <br>
+                <input type="date" name="start" id="booking-date" class='form-control'> <br>
 
                 <label for="days"><b>Number of days you want to stay: &nbsp</b></label>
-                <select id="days" name="days">
+                <select id="days" name="days" class='form-control'>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -75,24 +81,18 @@
                     <option value="13">13</option>
                     <option value="14">14</option>
                 </select> <br>
-
-                <label for="kind_of_payment"><b>Kind of payment: &nbsp</b></label>
-                <select name="kind_of_payment" id="booking-payment">
-                    <option value="0">Paying with real money</option>
-                    <option value="1">Online paying</option>
-                </select>
             </div>
                 
             <div class="booking-vl"></div>
 
             <div class="booking-input-second">
-                <div style="margin-top: 4%;">
-                    <p class="room-desc-detail-available">Available rooms: {{room.available}}</p>
+                <div style="margin-top: 1%;">
+                    <p class="booking-available-room">Available rooms: {{room.available}}</p>
 
-                    <button class="booking-btn-post">Book this room</button>
+                    <button class="booking-btn-post" id="book-btn">Book this room</button>
 
                     <div class="booking-accept-term">
-                        <input type="checkbox" class="booking-input-checkbox">
+                        <input type="checkbox" class="booking-input-checkbox" id="accept-checkbox">
                         <span>&nbsp i accept 
                             <a href="/general-terms">terms</a> 
                             and 
@@ -106,8 +106,10 @@
         </form>
     </div>
 {{else}}
+    {{#if error_noRoom}}
     <div class="error">
         <img src="/img/general/error.png" class="error-img">
         <p class="error-text">{{error_noRoom}}, click <a href="/">here</a> to go back to home</p>
     </div>
+    {{/if}}
 {{/if}}
