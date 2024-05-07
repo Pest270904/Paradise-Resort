@@ -22,3 +22,13 @@ function room_booking(roomId) {
     window.location.href = url
     xhr.send()
 }
+
+// Enable booking button when ticking a checkbox
+document.addEventListener("DOMContentLoaded", function() {
+    var checkbox = document.getElementById("accept-checkbox");
+    var button = document.getElementById("book-btn");
+
+    checkbox.addEventListener("change", function() {
+        button.disabled = !this.checked;
+    });
+});

@@ -66,7 +66,7 @@ model Reservation {
   booking_time    DateTime @default(now())
   start           String
   days            Int
-  kind_of_payment Boolean
+  total_cost      Float
   status          Int
 
   user User @relation(fields: [user_id], references: [id])

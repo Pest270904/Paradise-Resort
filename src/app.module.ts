@@ -1,4 +1,4 @@
-import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule, RequestMethod } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { PrismaModule } from './prisma/prisma.module';
 import { ConfigModule } from '@nestjs/config';
@@ -16,7 +16,9 @@ import { BookingModule } from './booking/booking.module';
 import { BookingController } from './booking/booking.controller';
 import { GatewayModule } from './gateway/gateway.module';
 import { PaymentModule } from './payment/payment.module';
-
+import { CheckLoginMiddleware } from './middleware/checkLogin.middleware';
+import { AdminController } from './admin/admin.controller';
+import { AdminService } from './admin/admin.service';
 @Module({
   imports: [
     GatewayModule,
@@ -32,11 +34,22 @@ import { PaymentModule } from './payment/payment.module';
     BookingModule,
     PaymentModule
   ],
-  controllers: [AppController],
-  providers: [JwtService, AppService, FuncService],
+  controllers: [AppController,AdminController],
+  providers: [
+    JwtService, 
+    AppService, 
+    FuncService,AdminService
+  ],
 })
 export class AppModule implements NestModule{
   configure(consumer: MiddlewareConsumer) {
-      consumer.apply(CheckTokenMiddleware).forRoutes(AppController, RoomController, BookingController)
+      consumer.apply(CheckTokenMiddleware).forRoutes(
+          AppController, 
+          RoomController, 
+          BookingController, 
+          AdminController)
+        .apply(CheckLoginMiddleware).forRoutes(
+          BookingController,
+        )
   }
 }
