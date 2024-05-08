@@ -1,6 +1,7 @@
 const socket = io('http://localhost:3000');
 let currentUsername = '';
 let roomName = '';
+let currentUsernameBlock = null;
 const chatInput = document.querySelector(".chat_input input");
 const sendChatBtn = document.querySelector(".chat_input span");
 const chatbox = document.querySelector(".chatbox");
@@ -95,6 +96,7 @@ const blocks = document.querySelectorAll('.chatlist .block');
             bElement.remove();
         }
         let username = block.querySelector('.listHead h4').innerText;
+        currentUsernameBlock = username;
         // currentUsername = block.querySelector('.listHead h4').innerText;
         // Hiển thị tên người dùng trong chatbox
         // const chatbox = document.querySelector('.chatbox');
@@ -107,9 +109,12 @@ const blocks = document.querySelectorAll('.chatlist .block');
 
     });
 });
-sendChatBtn.addEventListener("click", handleChat(currentUsername));
+sendChatBtn.addEventListener("click", () => {
+    handleChat(currentUsername);
+});
+
 chatInput.addEventListener("keydown", (e) => {
-    if (e.key === "Enter" && !e.shiftKey && window.innerWidth > 800) {
+    if (e.key === "Enter" && !e.shiftKey) {
         e.preventDefault();
         handleChat(currentUsername);
     }

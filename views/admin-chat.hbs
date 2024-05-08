@@ -54,7 +54,6 @@
 }
     });
 
-    let currentUsernameBlock = null;
     
     const chatLists = {{{ chatList }}};
 
@@ -97,10 +96,20 @@
       const username = document.createElement('h4');
       username.textContent = item.user.username; // Thay username bằng trường tương ứng trong đối tượng user
 
+        const timestamp = item.latestMessage.timestamp;
+        const timestampWithoutMilliseconds = timestamp.slice(0, -5);
+
+        const [datePart, timePart] = timestampWithoutMilliseconds.split('T');
+        const [hours, minutes, seconds] = timePart.split(':');
+        const [year, month, day] = datePart.split('-');
+
+        // Định dạng lại thành chuỗi theo định dạng "hh:mm:ss dd-mm-yyyy"
+        const formattedTime = `${hours}:${minutes}:${seconds} ${day}-${month}-${year}`;
+
+
       const time = document.createElement('p');
       time.classList.add('time');
-      // Thực hiện xử lý định dạng thời gian nếu cần thiết
-      time.textContent = item.latestMessage.timestamp; // Thay timestamp bằng trường tương ứng trong đối tượng tin nhắn
+      time.textContent = formattedTime; // Thay timestamp bằng trường tương ứng trong đối tượng tin nhắn
 
       listHead.appendChild(username);
       listHead.appendChild(time);

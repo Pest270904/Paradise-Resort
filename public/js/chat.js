@@ -3,9 +3,6 @@ const socket = io('http://localhost:3000');
 let roomName = '';
 let username = '';
 
-
-      
-
 // Xử lý khi mở hộp chat
 function openChatBox() {
     document.body.classList.toggle('show-chatbox');
@@ -50,12 +47,11 @@ function openChatBox() {
       .then(data => {
         username = data.username;
         roomName = `admin_${username}`;
+        socket.emit('joinRoom', roomName);
       })
       .catch(error => {
         console.error(error.message);
       });
-
-      socket.emit('joinRoom', roomName);
   }
   
 
@@ -114,7 +110,7 @@ chatInput.addEventListener("input", () => {
     chatInput.style.height = `${chatInput.scrollHeight}px`
 });
 chatInput.addEventListener("keydown", (e) => {
-    if (e.key === "Enter" && !e.shiftKey && window.innerWidth > 800) {
+    if (e.key === "Enter" && !e.shiftKey) {
         e.preventDefault();
         handleChat();
     }
