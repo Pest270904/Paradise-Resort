@@ -105,15 +105,12 @@ export class AuthService {
     }
 
     // --------------------------------- Other functions ---------------------------------
-    async signToken(username: string, email: string) {
-        // Khởi tạo payload với vai trò mặc định là 'user'
+    async signToken(username: string, email: string){
         const payload = {
             username: username,
             email: email,
-            role: 'user' // Mặc định, người dùng có vai trò là 'user'
+            role: 'user'
         };
-    
-        // Truy vấn cơ sở dữ liệu để kiểm tra xem người dùng có phải là admin không
         const user = await this.prisma.user.findUnique({
             where: {
                 username: username
@@ -122,19 +119,18 @@ export class AuthService {
                 isAdmin: true
             }
         });
-    
-        // Nếu người dùng là admin, cập nhật trường role trong payload thành 'admin'
         if (user && user.isAdmin) {
             payload.role = 'admin';
         }
-    
-        // Tạo mã JWT với payload đã được mở rộng
-        const secret = this.config.get('JWT_SECRET');
+
+        const secret = this.config.get('JWT_SECRET')
+
         const token = await this.jwt.signAsync(payload, {
-            expiresIn: '15m',
-            secret: secret
-        });
-    
-        return token;
+              expiresIn: '15m',
+              secret: secret,
+            },
+          )
+
+        return  token;
     }
 }

@@ -21,7 +21,6 @@ import { AdminController } from './admin/admin.controller';
 import { ReservationModule } from './reservation/reservation.module';
 import { ReservationController } from './reservation/reservation.controller';
 import { AdminService } from './admin/admin.service';
-
 @Module({
   imports: [
     GatewayModule,
@@ -42,7 +41,8 @@ import { AdminService } from './admin/admin.service';
   providers: [
     JwtService, 
     AppService, 
-    FuncService,AdminService
+    FuncService,
+    AdminService
   ],
 })
 export class AppModule implements NestModule{

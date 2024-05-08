@@ -20,7 +20,11 @@ export class AdminController {
     return this.funcService.getUsernameFromJwt_Req(req)
   }
 
-    
+  @Get('create')
+  async createAdmin() {
+    return await this.adminService.createAdmin(); 
+  }
+
 
     @Get('admin-chat')
     async adminChatPage(@Req() req: Request, @Res() res: Response) {

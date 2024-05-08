@@ -42,44 +42,25 @@ export class FuncService {
      */
     getUsernameFromJwt_Req(req : Request) {
       const userToken = this.getTokenFromHeader_Req(req);
-        if (userToken) {
-            try {
-                const decoded = jwt.verify(userToken, this.config.get('JWT_SECRET')) as DecodedToken;
-                return decoded.username;
-            } catch (error) {
-                console.error('Error decoding JWT token:', error);
-                return null;
-            }
-        } else {
-            return null;
-        }
+      if (userToken != undefined) {
+        const decoded = jwt.verify( userToken, this.config.get('JWT_SECRET')) as DecodedToken;
+        return { username: decoded.username };
+      } else
+          return { username: null }
     }
 
-    async getUserFromUsername(req: Request) {
-      const username_token = await this.getUsernameFromJwt_Req(req);
-      if (username_token !== null) {
-          const user = await this.prisma.user.findFirst({
-              where: {
-                  username: username_token
-              }
-          });
-          return { user: user };
-      } else {
-          return null; // Trả về null hoặc xử lý lỗi ở đây
+    async getUserFromUsername(req : Request) {
+      const username_token = await this.getUsernameFromJwt_Req(req).username
+      if(username_token !== null) {
+        const user = await this.prisma.user.findFirst({
+          where: {
+            username : username_token
+          }
+        })
+        return {user : user}
       }
-  }
-    async isAdmin(req: Request): Promise<boolean> {
-      const username = await this.getUsernameFromJwt_Req(req);
-      if (username) {
-          const user = await this.prisma.user.findUnique({
-              where: { username },
-              select: { isAdmin: true } // Chỉ chọn trường isAdmin
-          });
-          return user?.isAdmin || false; // Nếu user không tồn tại hoặc không có trường isAdmin, trả về false
-      } else {
-          return false; // Nếu không có username, không thể xác định vai trò
-      }
-  }
+    }
+    
 }
     
 interface DecodedToken {
