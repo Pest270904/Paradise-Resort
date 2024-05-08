@@ -11,22 +11,13 @@ export class AppController {
   root(@Req() req: Request, @Res() res: Response) {
     return this.funcService.getUsernameFromJwt_Req(req);
   }
-  @Get('/logout')
-  async logout(@Req() req: Request, @Res() res: Response) {
-    // Xóa hoặc hủy token ở đây
-    console.log("admin has logged out ");
-    res.clearCookie('jwt').redirect('/'); // Xóa cookie chứa token và chuyển hướng đến trang chủ
-  }
+
   @Get('facilities')
   @Render('facilities')
   facilities(@Req() req: Request) {
     return this.funcService.getUsernameFromJwt_Req(req);
   }
-  @Get('reservation')
-  @Render('reservation')
-  reservation(@Req() req: Request) {
-    return this.funcService.getUsernameFromJwt_Req(req);
-  }
+
   @Get('rooms')
   @Render('rooms')
   rooms(@Req() req: Request) {
@@ -62,6 +53,7 @@ export class AppController {
   reservationRegulations(@Req() req: Request) {
     return this.funcService.getUsernameFromJwt_Req(req);
   }
+
   @Get('payment')
   Payment(@Res() res: Response) {
     return res.render('payment', {
@@ -69,6 +61,7 @@ export class AppController {
       message: 'Hello world!!',
     });
   }
+  
   @Get('return')
   ReturnCheckout(@Res() res: Response) {
     return res.render('return', {

@@ -1,5 +1,5 @@
-import { Body, Controller, Get, Post, Render, Req } from '@nestjs/common'
-import { Request } from 'express';
+import { Body, Controller, Get, Post, Render, Req, Res } from '@nestjs/common'
+import { Request, Response } from 'express';
 import { FuncService } from 'src/func/func.service';
 import { ReservationService } from './reservation.service';
 
@@ -13,13 +13,20 @@ export class ReservationController {
     @Get()
     @Render('reservation')
     async reservation(@Req() req: Request) {
-      return {...this.funcService.getUsernameFromJwt_Req(req), 
+        console.log(await this.reservationService.getAllReservation(req) )
+        return {...this.funcService.getUsernameFromJwt_Req(req), 
             ...await this.reservationService.getAllReservation(req) 
         }
     }
 
+    // This route is from booking form's destination (booking.hbs)
+    @Post('create')
+    async createReservation(@Body() data : any, @Res() res : Response) {
+        await this.reservationService.create(data, res)
+    }
+
     @Post('cancel')
-    async cancel(@Body() body : any) {
+    async cancelReservation(@Body() body : any) {
         return await this.reservationService.cancel(body.res_id)
     }
 }

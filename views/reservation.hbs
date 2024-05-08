@@ -8,26 +8,27 @@
     <div class="upcoming-inf-line">
         <img class="res-img" src="{{this.imgSrc}}" alt="single-room" width="150" height="100">
         <div>
-            <h3 class="name-room">{{this.roomName}}</h3>
-            <p id="firstline">Check In: {{this.start}}</p>
-            <p id="firstline">Duration: {{this.days}} days</p>
+            <h3 class="name-room"><u>{{this.roomName}}</u></h3>
+            <p id="firstline"><b>Booking time: &nbsp</b> {{this.booking_time_display}}</p>
+            <p id="firstline"><b>Check In: &nbsp</b> {{this.start}}</p>
+            <p id="firstline"><b>Duration: &nbsp</b> {{this.days}} days</p>
             <p id="secondline">$ {{this.total_cost}}</p>
         </div>
         {{#if this.Pending}}
         <div class="btn-res">
-            <button type="button" class="btn-res-pending">Waiting for payment</button>
+            <button type="button" class="btn-res-pending">Pending</button>
         </div>
         {{/if}}
         
         {{#if this.Active}}
         <div class="btn-res">
-            <button type="button" class="btn-res-cancel" onclick="cancel_reservation('{{this.res_id}}')">Cancel Reservation</button>
+            <button type="button" class="btn-res-cancel" onclick="cancel_reservation('{{this.res_id}}')">Cancel</button>
         </div>
         {{/if}}
 
         {{#if this.End}}
         <div class="btn-res">
-            <p>This reservation ended.</p>
+            <p style="margin-top: 2%;"><u><i>Ended reservation</i></u></p>
         </div>
         {{/if}}
 

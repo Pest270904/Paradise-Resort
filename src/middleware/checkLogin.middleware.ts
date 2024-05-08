@@ -9,8 +9,8 @@ export class CheckLoginMiddleware implements NestMiddleware {
         
         // If not login then return to login page
         if( token === undefined ) {
-            res.cookie('error', 'Please login to reach this page').redirect(`/auth/login`)
-            throw new UnauthorizedException('Please login to reach this page')
+            res.cookie('error', 'Please login to use this feature').redirect(`/auth/login`)
+            throw new UnauthorizedException('Please login to use this feature')
         }     
         
         next();
