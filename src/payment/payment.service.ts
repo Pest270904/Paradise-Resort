@@ -5,7 +5,7 @@ import { format } from 'date-fns';
 
 @Injectable()
 export class PaymentService {
-  async VNPayCheckoutUrl() {
+  async VNPayCheckoutUrl(resId, cost) {
     let date = new Date();
 
     // This should in config file
@@ -13,12 +13,12 @@ export class PaymentService {
     let secretKey = 'TBWZANCWBXNATETKLUEOLFHTKPNBSPBM';
     let vnpUrl = 'https://sandbox.vnpayment.vn/paymentv2/vpcpay.html';
 
-    let returnUrl = 'http://localhost:3000/payment/return';
+    let returnUrl = 'http://localhost:3000/reservation/';
     let createDate = format(date, 'yyyyMMddHHmmss');
     let orderId = date.getTime();
 
     // The amount need to paid
-    let amount = 50000;
+    let amount = cost;
 
     // VNPAYQR - VNBANK - INTCARD
     let bankCode = 'VNBANK';
@@ -103,5 +103,6 @@ export class PaymentService {
     } else {
       return { code: '97', message: 'Chữ ký không hợp lệ' };
     }
+    
   }
 }

@@ -3,10 +3,8 @@ import { PaymentController } from './payment.controller';
 import { PaymentService } from './payment.service';
 
 @Module({
-    controllers: [PaymentController],
-    providers: [PaymentService],
-    exports: [PaymentService],
+  controllers: [PaymentController], // Chỉ inject PaymentController
+  providers: [PaymentService], // Inject cả PaymentService và ReservationService
+  exports: [PaymentService],
 })
 export class PaymentModule {}
-
-

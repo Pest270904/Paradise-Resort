@@ -1,44 +1,64 @@
 <body>
-    <div class="res-body">
-        <h1 class="res-header">Reservation</h1>
-    </div>
+  <div class='res-body'>
+    <h1 class='res-header'>Reservation</h1>
+  </div>
 
-    {{#each reservations}}
+  {{#each reservations}}
     <!-- Reservation {{this.res_id}} -->
-    <div class="upcoming-inf-line">
-        <img class="res-img" src="{{this.imgSrc}}" alt="single-room" width="150" height="100">
-        <div>
-            <h3 class="name-room"><u>{{this.roomName}}</u></h3>
-            <p id="firstline"><b>Booking time: &nbsp</b> {{this.booking_time_display}}</p>
-            <p id="firstline"><b>Check In: &nbsp</b> {{this.start}}</p>
-            <p id="firstline"><b>Duration: &nbsp</b> {{this.days}} days</p>
-            <p id="secondline">$ {{this.total_cost}}</p>
+    <div class='upcoming-inf-line'>
+      <img
+        class='res-img'
+        src='{{this.imgSrc}}'
+        alt='single-room'
+        width='150'
+        height='100'
+      />
+      <div>
+        <h3 class='name-room'><u>{{this.roomName}}</u></h3>
+        <p id='firstline'><b>Booking time: &nbsp</b>
+          {{this.booking_time_display}}</p>
+        <p id='firstline'><b>Check In: &nbsp</b> {{this.start}}</p>
+        <p id='firstline'><b>Duration: &nbsp</b> {{this.days}} days</p>
+        <p id='secondline'>{{this.total_cost}} VNĐ</p>
+      </div>
+      {{#if this.Pending}}
+        <div class='btn-res'>
+          <button
+            type='button'
+            class='btn-res-pending'
+            onclick="payment('{{this.res_id}}', {{this.total_cost}} )"
+          >Pending</button>
         </div>
-        {{#if this.Pending}}
-        <div class="btn-res">
-            <button type="button" class="btn-res-pending">Pending</button>
-        </div>
-        {{/if}}
-        
-        {{#if this.Active}}
-        <div class="btn-res">
-            <button type="button" class="btn-res-cancel" onclick="cancel_reservation('{{this.res_id}}')">Cancel</button>
-        </div>
-        {{/if}}
+      {{/if}}
 
-        {{#if this.End}}
-        <div class="btn-res">
-            <p style="margin-top: 2%;"><u><i>Ended reservation</i></u></p>
+      {{#if this.Active}}
+        <div class='btn-res'>
+          <button
+            type='button'
+            class='btn-res-cancel'
+            onclick="cancel_reservation('{{this.res_id}}')"
+          >Cancel</button>
         </div>
-        {{/if}}
+      {{/if}}
 
-        <br>
+      {{#if this.End}}
+        <div class='btn-res'>
+          <p style='margin-top: 2%;'><u><i>Ended reservation</i></u></p>
+        </div>
+      {{/if}}
+      {{#if this.Completed}}
+        <div class='btn-res'>
+          <p class='btn-res-completed'>Paid</p>
+        </div>
+      {{/if}}
+      <br />
     </div>
-    {{/each}}
-    <hr>
-    <div class="body-end" style="margin-top: 3%;">
-        <b><p class="body-end-header">Testimonials</p></b>
-        <p class="body-end-text-1">"Calm, Serene, Retro - What a way to relax and enjoy"</p>
-        <p class="body-end-text-2">Mr. and Mrs.Baxter, UK</p>
-    </div>
+  {{/each}}
+  <hr />
+  <div class='body-end' style='margin-top: 3%;'>
+    <b><p class='body-end-header'>Testimonials</p></b>
+    <p class='body-end-text-1'>"Calm, Serene, Retro - What a way to relax and
+      enjoy"</p>
+    <p class='body-end-text-2'>Mr. and Mrs.Baxter, UK</p>
+  </div>
 </body>
