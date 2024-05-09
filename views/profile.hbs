@@ -1,0 +1,85 @@
+<body class='profile-body'>
+  <div class='profile-container'>
+    <button onclick="profile_logout()" class="profile-btn">Logout</button>
+
+    {{#if error}}
+      <div class='error'>{{error}}, please try again.</div>
+    {{/if}}
+
+    <h1 id="profile-h1">User Profile</h1>
+    <div class='profile'>
+      <img src='/img/general/user.png' alt='Profile Picture' class='profile-img' />
+      <div class='profile-info'> <!-- Removed clearfix class -->
+        <!-- First row of inputs -->
+        <div class="input-group">
+          <label for="username"><b>Username:</b> </label>
+          <input type="text" name="username" value="{{user.username}}" class="profile-control" disabled>
+        </div>
+
+        <div class="input-group">
+          <label for="name"><b>Name: </b></label>
+          <input type="text" name="name" value="{{user.fullName}}" class="profile-control" id="name">
+        </div>
+
+        <!-- Second row of inputs -->
+        <div class="input-group">
+          <label for="email"><b>Email:</b> </label>
+          <input type="text" name="email" value="{{user.email}}" class="profile-control" id="email">
+        </div>
+
+        <div class="input-group">
+          <label for="phoneNumber"><b>Phone Number:</b> </label>
+          <input type="text" name="phoneNumber" value="{{user.phoneNumber}}" class="profile-control" id="phoneNumber">
+        </div>
+
+        <!-- Button container -->
+        <div class="button-container-2">
+            <button class="profile-btn" onclick="confirmSave('{{username}}')">Save Changes</button>
+        </div>
+        <!-- Button container -->
+        <div class="button-container-2" id="changePwd">
+            <button class="profile-btn">Change password</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Password container -->
+  <div class='password-container' style="display: none;" id="pwd-div">
+    <h1 style="margin-bottom: 5%;">Change password</h1>
+
+    <div class="password-input-group">
+      <label for="old-pwd"><b>Old password:</b> </label>
+      <div class="input-with-icon">
+        <input type="password" name="old-pwd" class="profile-control" id="old-pwd">
+        <span class="toggle-password" onclick="togglePasswordVisibility('old-pwd')">
+            <i class="fas fa-eye"></i>
+        </span>
+      </div>
+    </div>
+
+    <div class="password-input-group">
+      <label for="new-pwd"><b>New password: </b></label>
+      <div class="input-with-icon">
+        <input type="password" name="new-pwd" class="profile-control" id="new-pwd">
+        <span class="toggle-password" onclick="togglePasswordVisibility('new-pwd')">
+          <i class="fas fa-eye"></i>
+        </span>
+      </div>
+    </div>
+
+    <div class="password-input-group">
+      <label for="confirm-pwd"><b>Confirmation password: </b></label>
+      <div class="input-with-icon">
+        <input type="password" name="confirm-pwd" class="profile-control" id="confirm-pwd">
+        <span class="toggle-password" onclick="togglePasswordVisibility('confirm-pwd')">
+            <i class="fas fa-eye"></i>
+        </span>
+      </div>
+    </div>
+
+    <div class="button-container-2" id="confirmPwd">
+      <button class="profile-btn" onclick="confirmPwd('{{username}}')">Confirm</button>
+    </div>
+  </div>
+</body>

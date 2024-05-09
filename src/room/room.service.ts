@@ -26,12 +26,6 @@ export class RoomService {
         return {room : foundRoom}
     }
 
-    async getError(req: Request, res: Response) {
-        const error = req.cookies.error
-        res.clearCookie('error')
-        return {error : error}
-    }
-
     async createRoom() {
         await this.prisma.room.createMany({
             data: [

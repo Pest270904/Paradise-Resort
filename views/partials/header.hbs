@@ -13,7 +13,7 @@
     </ul>
     <nav>
         {{#if username}}
-            <a href="/auth/logout">{{username}}</a>
+            <a href="/user/{{username}}">{{username}}</a>
         {{else}}
             <a href='/auth/login' class="login-button"><button class='btn-login'><i
           class='fa-solid fa-arrow-right-to-bracket'></i> Login</button></a>

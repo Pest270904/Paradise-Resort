@@ -28,7 +28,7 @@ export class RoomController {
       return {...this.funcService.getUsernameFromJwt_Req(req), 
         ...await this.roomService.getRoomById(param.id), 
         ...await this.funcService.getUserFromUsername(req),
-        ...await this.roomService.getError(req, res)
+        ...await this.funcService.getError(req, res)
       }
     }
 }

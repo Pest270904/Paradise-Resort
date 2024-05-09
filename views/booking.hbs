@@ -55,11 +55,11 @@
             <input type="hidden" name="userId" value="{{user.id}}">
 
             <div class="booking-input-first">
-                <label for='fullName'><b>Your fullname: &nbsp</b></label>
-                <input id='fullName' name='fullName' type='text' placeholder='VD: Nguyễn Văn A' value="{{user.fullName}}" class='form-control'/> <br>
+                <label for='fullName'><b>Your fullname: &nbsp</b> {{user.fullName}}</label>
+                <input id='fullName' name='fullName' type='text' placeholder='VD: Nguyễn Văn A' value="{{user.fullName}}" class='form-control' style="display:none"> <br>
 
-                <label for='phoneNumber'><b>Phone number: &nbsp</b></label>
-                <input id='phoneNumber' name='phoneNumber' type='text' placeholder='VD: 01234567890' value="{{user.phoneNumber}}" class="form-control"/> <br>
+                <label for='phoneNumber'><b>Phone number: &nbsp</b> {{user.phoneNumber}}</label>
+                <input id='phoneNumber' name='phoneNumber' type='text' placeholder='VD: 01234567890' value="{{user.phoneNumber}}" class="form-control" style="display:none"> <br>
 
                 <label for='start'><b>Pick your booking date: &nbsp</b></label>
                 <input type="date" name="start" id="booking-date" class='form-control'> <br>

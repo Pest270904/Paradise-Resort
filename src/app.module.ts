@@ -20,6 +20,8 @@ import { ReservationModule } from './reservation/reservation.module';
 import { ReservationController } from './reservation/reservation.controller';
 import { AdminService } from './admin/admin.service';
 import { AuthController } from './auth/auth.controller';
+import { UserModule } from './user/user.module';
+import { UserController } from './user/user.controller';
 @Module({
   imports: [
     GatewayModule,
@@ -34,6 +36,7 @@ import { AuthController } from './auth/auth.controller';
     ChatModule,
     PaymentModule,
     ReservationModule,
+    UserModule,
   ],
   controllers: [AppController,AdminController],
   providers: [
@@ -50,10 +53,12 @@ export class AppModule implements NestModule{
           AppController, 
           RoomController, 
           ReservationController, 
-          AdminController
+          AdminController,
+          UserController
         )
         .apply(CheckLoginMiddleware).forRoutes(
           ReservationController,
+          UserController
         )
   }
 }

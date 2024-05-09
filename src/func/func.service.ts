@@ -49,6 +49,12 @@ export class FuncService {
           return { username: null }
     }
 
+    async getError(req: Request, res: Response) {
+      const error = req.cookies.error
+      res.clearCookie('error')
+      return {error : error}
+    }
+
     async getUserFromUsername(req : Request) {
       const username_token = await this.getUsernameFromJwt_Req(req).username
       if(username_token !== null) {

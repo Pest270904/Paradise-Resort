@@ -13,7 +13,6 @@ export class ReservationController {
     @Get()
     @Render('reservation')
     async reservation(@Req() req: Request) {
-        console.log(await this.reservationService.getAllReservation(req) )
         return {...this.funcService.getUsernameFromJwt_Req(req), 
             ...await this.reservationService.getAllReservation(req) 
         }

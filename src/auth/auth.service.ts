@@ -1,4 +1,4 @@
-import { ForbiddenException, Injectable, Res } from '@nestjs/common';
+import { BadRequestException, ForbiddenException, Injectable, Res } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateUserDto } from './dto/user.dto';
 import * as argon from 'argon2'
@@ -38,8 +38,11 @@ export class AuthService {
             if(userData.username === "" || userData.fullName === "" || userData.email === "" || userData.password === "" || userData.password_confirmation === "")
                 throw new ForbiddenException("Look like you are missing something")
 
-            if(!userData.username.match(/^(?=.{5,20}$)(?![_.])(?!.*[_.]{2})[a-z0-9._]+(?<![_.])$/))
-                throw new ForbiddenException("Username must has at least 5 letters, can only contain lowercase letters and numbers")
+            if(!userData.username.match(/^(?=.{6,20}$)(?![_.])(?!.*[_.]{2})[a-z0-9._]+(?<![_.])$/))
+                throw new ForbiddenException("Username must has at least 6 letters, can only contain lowercase letters and numbers")
+
+            if(!userData.password.match(/^(?=.*[A-Z])[a-zA-Z0-9]{8,}$/))
+                throw new BadRequestException('Your password should only contain alphanumeric character, at least 6 chars, at least 1 uppercase')
 
             if(userData.password !== userData.password_confirmation) 
                 throw new ForbiddenException("Your confirm password is not correct")

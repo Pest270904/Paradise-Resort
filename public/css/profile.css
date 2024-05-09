@@ -1,0 +1,139 @@
+.profile-body {
+  font-family: Arial, sans-serif;
+  margin: 10% 0 10% 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+.profile-container {
+  max-width: 800px;
+  margin: 20px auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #e0b973;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 8%;
+}
+
+#profile-h1 {
+  text-align: center;
+}
+
+.profile {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 5%;
+}
+
+.profile-img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+.profile-info {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two columns */
+  gap: 10px; /* Gap between grid items */
+}
+
+.profile-info p {
+  margin: 5px 0;
+}
+
+.profile-control {
+  height: 35px;
+  padding: 10px;
+  border-radius: 4px;
+  border: solid 1px #333;
+  transition: all 0.8s;
+  width: 100%; /* Adjusted width for better alignment */
+}
+
+.profile-control:hover {
+  border-color: var(--primary-color);
+}
+
+/* New CSS for input groups */
+.input-group {
+  /* Removed width and margin properties */
+}
+
+/* New CSS for buttons */
+.button-container-1 {
+  width: 100%;
+  display: flex;
+  justify-content: space-between; /* Adjusted alignment */
+  margin-top: 20px;
+}
+
+.button-container-2 {
+  width: 100%;
+  display: flex;
+  justify-content: center; /* Adjusted alignment */
+  margin-top: 20px;
+}
+
+.profile-btn {
+  border: 2px solid #e0b973;
+  background-color: #e0b973;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 15px;
+  border-radius: 8px;
+  padding: 10px 24px;
+}
+
+.profile-btn:hover{
+  background-color: white;
+  color: black;  
+}
+
+.button-container button:hover {
+  background-color: #555;
+}
+
+.error {
+  margin: 3% 10%;
+  padding: 3% 2%;
+  color: black;
+  font-size: 1rem;
+  font-style: italic;
+  background-color: rgb(228, 146, 162);
+  border-radius: 4px;
+  text-align: center;
+}
+
+.password-container {
+  max-width: 500px;
+  margin: 20px auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #e0b973;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 8%;
+}
+
+.password-input-group {
+  margin: 3% 20%;
+}
+
+.input-with-icon {
+  position: relative;
+}
+
+.input-with-icon .toggle-password {
+  position: absolute;
+  top: 50%;
+  right: 15px; /* Adjust as needed */
+  transform: translateY(-50%);
+  cursor: pointer;
+}
