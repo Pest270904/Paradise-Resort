@@ -2,7 +2,7 @@ import { Body, Controller, Get, Param, Post, Req, Res, UseGuards } from '@nestjs
 import { AdminService } from './admin.service';
 import { FuncService } from 'src/func/func.service';
 import { Response, Request } from 'express'
-import { Message } from '@prisma/client';
+import { Message,Reservation } from '@prisma/client';
 import { CheckTokenMiddleware } from 'src/middleware/checkToken.middleware';
 import { AdminGuard } from './admin.guard';
 @Controller('admin')
@@ -46,4 +46,16 @@ export class AdminController {
   async sendMessage(@Param('username') username: string ,@Req() req: Request, @Body() messageData: any) {
     await this.adminService.sendMessage(req, messageData, username);
   }
+  @Get('admin-reservation')
+  adminReservationPage(@Req() req: Request, @Res() res: Response) {
+  res.render('admin-reservation', {
+    layout: 'admin-layout'
+  })
+  return this.funcService.getUsernameFromJwt_Req(req)
+}
+  @Get('data')
+  async getData() {
+    const data = await this.adminService.getAllReservations();
+    return { data}; 
+}
 }

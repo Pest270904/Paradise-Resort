@@ -1,7 +1,7 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { hash } from 'argon2'
-import { Message, User } from '@prisma/client';
+import { Message,User,Reservation } from '@prisma/client';
 import { NextFunction, Request, Response } from 'express';
 import { FuncService } from 'src/func/func.service';
 
@@ -149,4 +149,14 @@ export class AdminService {
       throw new Error(`Failed to get chat history by username: ${error.message}`);
     }
   }
+        // Lấy lịch sử đặt phòng 
+        async getAllReservations(): Promise<Reservation[]> {
+          try {
+              // Sử dụng Prisma để lấy tất cả dữ liệu từ bảng reservations
+              console.log(this.prisma.reservation.findMany())
+              return await this.prisma.reservation.findMany();
+          } catch (error) {
+              throw new Error(`Failed to fetch reservations: ${error.message}`);
+          }
+        }
 }
