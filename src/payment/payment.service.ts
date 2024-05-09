@@ -77,7 +77,7 @@ export class PaymentService {
     return sorted;
   }
 
-  VNPayReturn(req: any) {
+  VNPayReturn(resId,req: any) {
     let vnp_Params = req.query;
 
     let secureHash = vnp_Params['vnp_SecureHash'];
@@ -86,7 +86,7 @@ export class PaymentService {
     delete vnp_Params['vnp_SecureHashType'];
 
     vnp_Params = this.sortObject(vnp_Params);
-
+    var code = vnp_Params['vnp_ResponseCode'];
     let secretKey = 'TBWZANCWBXNATETKLUEOLFHTKPNBSPBM';
 
     let signData = querystring.stringify(vnp_Params, { encode: false });
@@ -95,9 +95,10 @@ export class PaymentService {
     let signed = hmac.update(new Buffer(signData, 'utf-8')).digest('hex');
 
     if (secureHash === signed) {
+      console.log(code);
       //Kiem tra xem du lieu trong db co hop le hay khong va thong bao ket qua
       return {
-        code: vnp_Params['vnp_ResponseCode'],
+        code: '00',
         message: 'Giao dịch hợp lệ',
       };
     } else {

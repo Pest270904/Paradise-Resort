@@ -175,7 +175,7 @@ export class ReservationService {
             res_id: Number(reservation_id)
         },
         data: {
-            status: 3
+            status: 0
         }
     })
 

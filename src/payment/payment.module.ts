@@ -1,10 +1,12 @@
 import { Module } from '@nestjs/common';
 import { PaymentController } from './payment.controller';
 import { PaymentService } from './payment.service';
+import { JwtService } from '@nestjs/jwt';
+import { ReservationService } from 'src/reservation/reservation.service';
 
 @Module({
-  controllers: [PaymentController], // Chỉ inject PaymentController
-  providers: [PaymentService], // Inject cả PaymentService và ReservationService
+  controllers: [PaymentController], 
+  providers: [PaymentService,JwtService, ReservationService],
   exports: [PaymentService],
 })
 export class PaymentModule {}
