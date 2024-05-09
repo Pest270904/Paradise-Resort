@@ -6,6 +6,6 @@ import { JwtService } from '@nestjs/jwt';
 
 @Module({
   providers: [ReservationService, FuncService, JwtService],
-  controllers: [ReservationController]
+  controllers: [ReservationController],
 })
 export class ReservationModule {}

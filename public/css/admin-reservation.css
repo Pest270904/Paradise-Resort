@@ -1,0 +1,136 @@
+.reservation {
+    position: relative;
+    width: 100vw;
+    max-width: 100%;
+    height: 100vh;
+    background: #fff;
+    display: flex;
+    border-left: 1px solid #dbc7c7;
+  }
+.reservation .leftSide {
+    position: relative;
+    flex: 30%;
+    background: #fff;
+}
+.reservation .rightSide {
+    position: relative;
+    flex: 70%;
+    background: #edeae7;
+}
+.header {
+    position: relative;
+    width: 100%;
+    height: 60px;
+    background: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+  }
+.reservation .leftSide .header-left {
+    height: 60px;
+    padding: 0 15px;
+}
+/* search */
+.search_reservation {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    background: #f6f6f6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 15px;
+  }
+  
+  .search_reservation div {
+    width: 100%;
+  }
+  
+  .search_reservation div input {
+    width: 100%;
+    outline: none;
+    border: none;
+    background: #fff;
+    padding: 6px;
+    height: 38px;
+    border-radius: 30px;
+    font-size: 14px;
+    padding-left: 40px;
+  }
+  
+  .search_reservation div input::placeholder {
+    color: #bbb;
+  }
+
+  .search_reservation div i {
+    position: absolute;
+    left: 30px;
+    top: 14px;
+    font-size: 1.2em;
+  }
+  .row
+  {
+    background-color: black;
+    color: white;
+  }
+  .row .header-bigtext-first
+  {
+    display: inline-block;
+    padding-top: 10px;
+    padding-left: 70px;
+    text-align: center;
+  }
+
+  .header-bigtext
+  {
+    display: inline-block;
+    padding-top: 20px;
+    padding-left: 170px;
+    text-align: center;
+  }
+  .booking-list {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+/* Định dạng tiêu đề bảng */
+.booking-list thead {
+    background-color: #f0f0f0;
+}
+
+.booking-list th,
+.booking-list td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+/* Định dạng cho nút */
+.btn-accept {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.btn-accept:hover {
+    background-color: #0056b3;
+}
+
+.btn-delete {
+  padding: 5px 10px;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-left: 20px;
+}
+.btn-delete:hover {
+  background-color:#700d0d;
+}
+
+  
