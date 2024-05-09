@@ -6,38 +6,42 @@
   {{#each reservations}}
     <!-- Reservation {{this.res_id}} -->
     <div class='upcoming-inf-line'>
-      <img
-        class='res-img'
-        src='{{this.imgSrc}}'
-        alt='single-room'
-        width='150'
-        height='100'
-      />
+      <img class='res-img' src='{{this.imgSrc}}' alt='single-room' width='150' height='100'/>
       <div>
         <h3 class='name-room'><u>{{this.roomName}}</u></h3>
-        <p id='firstline'><b>Booking time: &nbsp</b>
-          {{this.booking_time_display}}</p>
+        <p id='firstline'><b>Booking time: &nbsp</b> {{this.booking_time_display}}</p>
         <p id='firstline'><b>Check In: &nbsp</b> {{this.start}}</p>
         <p id='firstline'><b>Duration: &nbsp</b> {{this.days}} days</p>
         <p id='secondline'>{{this.total_cost}} VNĐ</p>
       </div>
-      {{#if this.Pending}}
+
+      {{#ifEquals status 0}}
         <div class='btn-res'>
-          <button
-            type='button'
-            class='btn-res-pending'
-            onclick="payment('{{this.res_id}}', {{this.total_cost}} )"
-          >Pending</button>
+          <button type='button' class='btn-res-cancel' onclick="cancel_reservation('{{this.res_id}}')">Cancel</button>
+        </div>
+      {{else ifEquals status 1}}
+        <div class='btn-res'>
+          <button type='button' class='btn-res-pending' onclick="payment('{{this.res_id}}', {{this.total_cost}})">Pending</button>
+        </div>
+      {{else ifEquals status 2}}
+        <div class='btn-res'>
+          <p style='margin-top: 2%;'><u><i>Ended reservation</i></u></p>
+        </div>
+      {{else ifEquals status 3}}
+        <div class='btn-res'>
+          <p class='btn-res-completed'>Paid</p>
+        </div>
+      {{/ifEquals}}
+
+      {{!-- {{#if this.Pending}}
+        <div class='btn-res'>
+          <button type='button' class='btn-res-pending' onclick="payment('{{this.res_id}}', {{this.total_cost}})">Pending</button>
         </div>
       {{/if}}
 
       {{#if this.Active}}
         <div class='btn-res'>
-          <button
-            type='button'
-            class='btn-res-cancel'
-            onclick="cancel_reservation('{{this.res_id}}')"
-          >Cancel</button>
+          <button type='button' class='btn-res-cancel' onclick="cancel_reservation('{{this.res_id}}')">Cancel</button>
         </div>
       {{/if}}
 
@@ -50,7 +54,7 @@
         <div class='btn-res'>
           <p class='btn-res-completed'>Paid</p>
         </div>
-      {{/if}}
+      {{/if}} --}}
       <br />
     </div>
   {{/each}}

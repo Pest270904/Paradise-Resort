@@ -13,24 +13,23 @@ export class ReservationController {
   @Get()
   @Render('reservation')
   async reservation(@Req() req: Request) {
-    return {
-      ...this.funcService.getUsernameFromJwt_Req(req),
-      ...(await this.reservationService.getAllReservation(req)),
-    };
+    return { ...this.funcService.getUsernameFromJwt_Req(req),
+      ...await this.reservationService.getAllReservation(req)
+    }
   }
 
   // This route is from booking form's destination (booking.hbs)
   @Post('create')
   async createReservation(@Body() data: any, @Res() res: Response) {
-    await this.reservationService.create(data, res);
+    await this.reservationService.create(data, res)
   }
 
   @Post('cancel')
   async cancelReservation(@Body() body: any) {
-    return await this.reservationService.cancel(body.res_id);
+    return await this.reservationService.cancel(body.res_id)
   }
   @Post('success')
   async successReservation(@Body() body: any) {
-    return await this.reservationService.success(body.res_id);
+    return await this.reservationService.success(body.res_id)
   }
 }

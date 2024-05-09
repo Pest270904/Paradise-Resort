@@ -22,7 +22,6 @@ export class PaymentController {
       data.cost,
     );
     // Trả về URL redirect hoặc thực hiện redirect tại đây
-    console.log(url);
     return res.json({ url: url });
   }
   @Get('return')

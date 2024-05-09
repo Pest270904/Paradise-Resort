@@ -1,15 +1,18 @@
 .res-body {
   margin-top: 200px;
 }
+
 .res-header {
   margin-left: 50px;
 }
+
 .res-opt {
   list-style-type: none;
   overflow: hidden;
   background-color: white;
   margin-left: 30px;
 }
+
 .res-opt li {
   display: inline;
   color: black;
@@ -17,33 +20,41 @@
   text-decoration: none;
   justify-content: space-between;
 }
+
 .res-opt li:hover {
   border-bottom: solid;
 }
+
 .res-img {
   margin-left: 50px;
   border-radius: 4px;
 }
+
 .upcoming-inf-line {
   margin: 2% 3%;
   display: inline-flex;
   width: 100%;
 }
+
 .name-room {
   padding-left: 20px;
 }
+
 #firstline {
   display: inline-flex;
   padding-left: 5%;
 }
+
 #secondline {
   padding-left: 5%;
 }
+
 .btn-res {
   position: absolute;
   right: 8%;
   margin-top: 2%;
 }
+
 .btn-res-cancel {
   height: 30px;
   width: 130px;
@@ -54,6 +65,7 @@
   border-radius: 20px;
   border: 2px solid #e0b973;
 }
+
 .btn-res-cancel:hover {
   background-color: white;
   color: black;
@@ -69,10 +81,12 @@
   border-radius: 20px;
   border: 2px solid black;
 }
+
 .btn-res-pending:hover {
   background-color: white;
   color: black;
 }
+
 .btn-res-completed {
   height: 30px;
   width: 130px;

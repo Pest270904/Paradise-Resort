@@ -5,6 +5,7 @@ import { AppModule } from './app.module';
 import * as hbs from 'express-handlebars';
 import { ValidationPipe } from '@nestjs/common';
 import * as cookieParser from 'cookie-parser';
+import Handlebars from 'handlebars';
 
 declare const module: any;
 
@@ -33,6 +34,10 @@ async function bootstrap() {
       defaultLayout: 'main.hbs',
     }),
   );
+
+  Handlebars.registerHelper('ifEquals', function(arg1, arg2, options) {
+    return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
+  });
 
   app.setViewEngine('hbs');
 

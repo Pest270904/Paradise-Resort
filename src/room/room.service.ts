@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { Response, Request } from 'express';
 
 @Injectable()
 export class RoomService {
@@ -8,19 +7,19 @@ export class RoomService {
 
   async getAllRoom() {
     const foundRoom = await this.prisma.room.findMany();
-    return { room: foundRoom };
+    return { room: foundRoom }
   }
 
   async getRoomById(roomId: any) {
     const foundRoom = await this.prisma.room.findUnique({
-      where: {
-        id: Number(roomId),
-      },
+        where: {
+          id: Number(roomId),
+        },
     });
 
     if (!foundRoom) return { error_noRoom: 'Room not found' };
 
-    return { room: foundRoom };
+    return { room: foundRoom }
   }
 
   async createRoom() {
@@ -71,6 +70,6 @@ export class RoomService {
           available: 3,
         },
       ],
-    });
+    })
   }
 }
