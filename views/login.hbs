@@ -1,10 +1,10 @@
 <!-- LOGIN FORM -->
 <html>
   <body>
-    <a href="/"><img src='/img/header-footer/Group2.svg' alt="login" /></a>
-    <div class='login-form'>
+    <a href="/"><img class= "logo" src='/img/header-footer/Group2.svg' alt="login" /></a>
+    <div class='login-form' id="login-form">
       <form action='' method='post' class='form' id='form-1'>
-        <h2 class='heading'>ĐĂNG NHẬP TÀI KHOẢN</h2>
+        <h2 class='heading'>ĐĂNG NHẬP</h2>
 
         {{#if error}}
             <div class='error'>{{error}}, please try again.</div>
@@ -15,13 +15,13 @@
         {{!-- username --}}
         <div class='form-group'>
             <label for='username' class='form-label'>Username</label>
-            <input id='username' name='username' type='text' placeholder='VD: username1' class='form-control' />
+            <input id='username' name='username' type='text' placeholder='Enter your username' class='form-control' />
             <span class='form-message'></span>
         </div>
         {{!-- password --}}
         <div class='form-group'>
           <label for='password' class='form-label'>Mật khẩu</label>
-          <input id='password' name='password' type='text' placeholder='Nhập mật khẩu' class='form-control' />
+          <input id='password' name='password' type='password' placeholder='Enter your password' class='form-control' />
           <span class='form-message'></span>
         </div>
         {{!-- button for submit --}}

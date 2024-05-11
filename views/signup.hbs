@@ -1,12 +1,10 @@
 <!-- REGISTER FORM -->
 <html>
   <body>
-    <div class="logo"><a href='/' class='logo'><img src='/img/header-footer/Group2.svg' alt='logo' /></a>
-    </div>    
-    <div class='login-form'>
+    <a href="/"><img class= "logo" src='/img/header-footer/Group2.svg' alt="login" /></a>   
+    <div class='login-form' id="signup-form">
       <form action='' method='post' class='form' id='form-1'>
-        <h2 class='heading'>ĐĂNG KÝ TÀI KHOẢN</h2>
-
+        <h2 class='heading'>ĐĂNG KÝ</h2>
         {{#if error}}
             <div class='error'>{{error}}, please try again.</div>
         {{else}}
@@ -16,35 +14,35 @@
         {{!-- username --}}
         <div class='form-group'>
           <label for='username' class='form-label'>Username</label>
-          <input id='username' name='username' type='text' placeholder='VD: username1' class='form-control'/>
+          <input id='username' name='username' type='text' placeholder='Ex: paradiseuit' class='form-control'/>
           <span class='form-message'></span>
         </div>
 
         {{!-- full name --}}
         <div class='form-group'>
-          <label for='fullName' class='form-label'>Tên đầy đủ</label>
-          <input id='fullName' name='fullName' type='text' placeholder='VD: Nguyen Van A' class='form-control'/>
+          <label for='fullName' class='form-label'>Fullname</label>
+          <input id='fullName' name='fullName' type='text' placeholder='Ex: Nguyen Van A' class='form-control'/>
           <span class='form-message'></span>
         </div>
 
         {{!-- email --}}
         <div class='form-group'>
           <label for='email' class='form-label'>Email</label>
-          <input id='email' name='email' type='text' placeholder='VD: abc@gmail.com' class='form-control'/>
+          <input id='email' name='email' type='text' placeholder='Ex: abc@gmail.com' class='form-control'/>
           <span class='form-message'></span>
         </div>
 
         {{!-- phoneNumber --}}
         <div class='form-group'>
           <label for='phoneNumber' class='form-label'>Phone number</label>
-          <input id='phoneNumber' name='phoneNumber' type='text' placeholder='VD: 01234567890'class='form-control'/>
+          <input id='phoneNumber' name='phoneNumber' type='number' placeholder='Ex: 0123456789'class='form-control'/>
           <span class='form-message'></span>
         </div>
 
         {{!-- password --}}
         <div class='form-group'>
           <label for='password' class='form-label'>Mật khẩu</label>
-          <input id='password' name='password' type='text' placeholder='Nhập mật khẩu' class='form-control'
+          <input id='password' name='password' type='password' placeholder='Nhập mật khẩu' class='form-control'
           />
           <span class='form-message'></span>
         </div>
@@ -53,7 +51,7 @@
         <div class='form-group'>
           <label for='password-confirmation' class='form-label'>Nhập lại mật
             khẩu</label>
-          <input id='password_confirmation' name='password_confirmation' type='text' placeholder='Nhập lại mật khẩu' class='form-control'/>
+          <input id='password_confirmation' name='password_confirmation' type='password' placeholder='Nhập lại mật khẩu' class='form-control'/>
           <span class='form-message'></span>
         </div>
 

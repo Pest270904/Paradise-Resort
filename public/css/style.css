@@ -154,7 +154,7 @@ button {
   font-size: 15px;
   padding: 10px 20px;
   background: #e0b973;
-  color: 060404;
+  color: #060404;
   border-radius: 4px;
   transition: ease 0.4s;
 }
@@ -237,10 +237,11 @@ section {
 }
 svg {
   font-family: 'Russo One', sans-serif;
-  width: 110%;
+  width: 115%;
   height: 100%;
 }
 svg text {
+ 
   animation: stroke 2s infinite alternate;
   stroke-width: 2;
   stroke: var(--primary-color);
@@ -279,7 +280,7 @@ svg text {
   font-size: 16px;
   padding: 15px 30px;
   background: #e0b973;
-  color: 060404;
+  color: #060404;
   border-radius: 4px;
   transition: ease 0.4s;
 }
