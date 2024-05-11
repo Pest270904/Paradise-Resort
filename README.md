@@ -1,6 +1,8 @@
 <!-- (**_This site was built using_**: [GitHub Pages](https://pest270904.github.io/Project-Web-App/) 👈) -->
 
 # Website quản lý đặt phòng khách sạn
+**Giảng viên hướng dẫn:** Trần Tuấn Dũng
+
 
 **Nhóm 3:**
 
@@ -10,7 +12,6 @@
 - Nguyễn Hồ Nhật Khoa - 22520677 ([@NKhoauit](https://github.com/NKhoauit))
 - Nguyễn Tuấn Phát - 22521076 ([@Pest270904](https://github.com/Pest270904))
 
-**Giảng viên:** Trần Tuấn Dũng
 
 ## A. Mô tả đề tài
 

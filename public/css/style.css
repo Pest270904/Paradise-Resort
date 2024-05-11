@@ -41,19 +41,9 @@
 /*Slogan annimation*/
 @import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
 
-svg {
-  font-family: 'Russo One', sans-serif;
-  width: 110%;
-  height: 100%;
-}
-svg text {
-  animation: stroke 5s infinite alternate;
-  stroke-width: 2;
-  stroke: var(--primary-color);
-  font-size: 100px;
-}
+
 @media only screen and (min-width: 740px) and (max-width: 1023px) {
-  svg text {
+  svg h1 text {
     font-size: 70px;
   }
 }
@@ -164,7 +154,7 @@ button {
   font-size: 15px;
   padding: 10px 20px;
   background: #e0b973;
-  color: white;
+  color: 060404;
   border-radius: 4px;
   transition: ease 0.4s;
 }
@@ -245,6 +235,17 @@ section {
   margin-bottom: 20px;
   font-weight: 600;
 }
+svg {
+  font-family: 'Russo One', sans-serif;
+  width: 110%;
+  height: 100%;
+}
+svg text {
+  animation: stroke 2s infinite alternate;
+  stroke-width: 2;
+  stroke: var(--primary-color);
+  font-size: 100px;
+}
 .home-text p {
   color: white;
   font-size: 20px;
@@ -278,7 +279,7 @@ section {
   font-size: 16px;
   padding: 15px 30px;
   background: #e0b973;
-  color: white;
+  color: 060404;
   border-radius: 4px;
   transition: ease 0.4s;
 }

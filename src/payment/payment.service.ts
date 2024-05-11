@@ -2,9 +2,10 @@ import { Injectable } from '@nestjs/common';
 import * as querystring from 'qs';
 import * as crypto from 'crypto';
 import { format } from 'date-fns';
-
+import { ConfigService } from '@nestjs/config';
 @Injectable()
 export class PaymentService {
+  constructor(private readonly configService: ConfigService) {}
   async VNPayCheckoutUrl(resId, cost) {
     let date = new Date();
 
@@ -41,7 +42,7 @@ export class PaymentService {
     vnp_Params['vnp_TxnRef'] = orderId;
     vnp_Params['vnp_OrderInfo'] = 'Thanh toan cho ma GD:' + orderId;
     vnp_Params['vnp_OrderType'] = 'other';
-    vnp_Params['vnp_Amount'] = amount * 100; // The amount need to mutiple with 100
+    vnp_Params['vnp_Amount'] = cost * 100; // The amount need to mutiple with 100
     vnp_Params['vnp_ReturnUrl'] = returnUrl;
     vnp_Params['vnp_IpAddr'] = '118.70.192.52'; // this is ip address of cilent
     vnp_Params['vnp_CreateDate'] = createDate;
@@ -57,8 +58,8 @@ export class PaymentService {
     let signed = hmac.update(new Buffer(signData, 'utf-8')).digest('hex');
     vnp_Params['vnp_SecureHash'] = signed;
     vnpUrl += '?' + querystring.stringify(vnp_Params, { encode: false });
-
-    return vnpUrl;
+    var code = vnp_Params['vnp_ResponseCode'];
+    return {vnpUrl,code};
   }
 
   sortObject(obj) {
@@ -106,4 +107,34 @@ export class PaymentService {
     }
     
   }
+  handleVNPayIPN(vnpParams: any) {
+    const secureHash = vnpParams['vnp_SecureHash'];
+
+    // Loại bỏ các tham số không cần thiết
+    delete vnpParams['vnp_SecureHash'];
+    delete vnpParams['vnp_SecureHashType'];
+
+    // Sắp xếp các tham số theo thứ tự alphabet
+    const sortedParams = this.sortObject(vnpParams);
+
+    // Đọc secretKey từ file cấu hình
+    const secretKey = this.configService.get<string>('vnp_HashSecret');
+
+    // Tạo chuỗi ký tự cần ký và tạo chữ ký
+    const queryString = querystring.stringify(sortedParams, { encode: false });
+    const hmac = crypto.createHmac('sha512', secretKey);
+    const signed = hmac.update(new Buffer(queryString, 'utf-8')).digest('hex');
+
+    // Kiểm tra chữ ký
+    if (secureHash === signed) {
+      const orderId = vnpParams['vnp_TxnRef'];
+      const rspCode = vnpParams['vnp_ResponseCode'];
+      // Kiểm tra dữ liệu và cập nhật trạng thái đơn hàng (nếu cần)
+      return { RspCode: '00', Message: 'success' };
+    } else {
+      return { RspCode: '97', Message: 'Fail checksum' };
+    }
+  }
+
+  // Phương thức sắp xếp các tham số theo thứ tự alphabet
 }

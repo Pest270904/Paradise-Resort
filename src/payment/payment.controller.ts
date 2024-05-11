@@ -25,8 +25,8 @@
       );
       this.reservationService.success(data.res_id);
       // Trả về URL redirect hoặc thực hiện redirect tại đây
-      console.log(url);
-      return res.json({ url: url });
+      console.log(url.vnpUrl);
+      return res.json({ url: url.vnpUrl });
     }
     @Get('return')
     async handlerReturn(@Body() data: any,@Req() req, @Res() res: Response) {
@@ -38,4 +38,8 @@
       // Trả về thông báo kết quả
       res.json({ result });
     }
+    @Post('vnpay_ipn')
+    handleVNPayIPN(@Body() vnpParams: any) {
+    return this.paymentService.handleVNPayIPN(vnpParams);
+  }
   }
