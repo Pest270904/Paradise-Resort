@@ -24,9 +24,9 @@ export class AppController {
     return this.funcService.getUsernameFromJwt_Req(req);
   }
 
-  @Get('contact')
-  @Render('contact')
-  contact(@Req() req: Request) {
+  @Get('review')
+  @Render('review')
+  review(@Req() req: Request) {
     return this.funcService.getUsernameFromJwt_Req(req);
   }
 

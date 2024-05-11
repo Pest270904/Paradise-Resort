@@ -47,10 +47,21 @@ CREATE TABLE "reservation" (
     "booking_time" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "start" TEXT NOT NULL,
     "days" INTEGER NOT NULL,
-    "kind_of_payment" BOOLEAN NOT NULL,
+    "total_cost" DOUBLE PRECISION NOT NULL,
     "status" INTEGER NOT NULL,
 
     CONSTRAINT "reservation_pkey" PRIMARY KEY ("res_id")
+);
+
+-- CreateTable
+CREATE TABLE "review" (
+    "review_id" SERIAL NOT NULL,
+    "userIdName" TEXT NOT NULL,
+    "rating" INTEGER NOT NULL,
+    "opinion" TEXT NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "review_pkey" PRIMARY KEY ("review_id")
 );
 
 -- CreateIndex
@@ -76,3 +87,6 @@ ALTER TABLE "reservation" ADD CONSTRAINT "reservation_user_id_fkey" FOREIGN KEY 
 
 -- AddForeignKey
 ALTER TABLE "reservation" ADD CONSTRAINT "reservation_room_id_fkey" FOREIGN KEY ("room_id") REFERENCES "room"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "review" ADD CONSTRAINT "review_userIdName_fkey" FOREIGN KEY ("userIdName") REFERENCES "user"("username") ON DELETE RESTRICT ON UPDATE CASCADE;

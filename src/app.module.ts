@@ -22,6 +22,10 @@ import { AdminService } from './admin/admin.service';
 import { AuthController } from './auth/auth.controller';
 import { UserModule } from './user/user.module';
 import { UserController } from './user/user.controller';
+import { ReviewService } from './review/review.service';
+import { ReviewModule } from './review/review.module';
+import { ReviewController } from './review/review.controller';
+import { PrismaService } from './prisma/prisma.service';
 @Module({
   imports: [
     GatewayModule,
@@ -37,13 +41,17 @@ import { UserController } from './user/user.controller';
     PaymentModule,
     ReservationModule,
     UserModule,
+    ReviewModule,
   ],
-  controllers: [AppController,AdminController],
+  controllers: [AppController,AdminController,ReviewController],
   providers: [
     JwtService, 
     AppService, 
     FuncService,
-    AdminService
+    AdminService,
+    AdminService,
+    ReviewService,
+    PrismaService
   ],
 })
 export class AppModule implements NestModule{

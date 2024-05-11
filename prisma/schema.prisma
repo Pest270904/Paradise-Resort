@@ -25,7 +25,7 @@ model User {
   sentMessages   Message[] @relation("SentMessages") 
   receivedMessages Message[] @relation("ReceivedMessages")
   Reservation Reservation[]
-
+  reviews Review[]
   @@map("user")
 }
 
@@ -75,4 +75,13 @@ model Reservation {
   room Room @relation(fields: [room_id], references: [id])
 
   @@map("reservation")
+}
+model Review {
+  review_id  Int      @id @default(autoincrement())
+  userIdName     String      // This will store the relation to the User model
+  rating     Int
+  opinion    String
+  createdAt  DateTime @default(now())
+  user       User     @relation(fields: [userIdName], references: [username])
+  @@map("review")
 }

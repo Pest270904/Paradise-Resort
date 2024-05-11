@@ -1,0 +1,140 @@
+:root {
+	--yellow: #dfa73f;
+	--star: #FFBD13;
+	--light: #F5F5F5;
+	--white: #FFF;
+	--shadow: 8px 8px 30px rgba(0,0,0,.3);
+}
+
+.wrapper {
+	background: var(--white);
+	padding: 2rem;
+	max-width: 576px;
+	width: 100%;
+	border-radius: .75rem;
+	box-shadow: var(--shadow);
+	text-align: center;
+	margin: auto;
+}
+.wrapper h3 {
+	font-size: 1.5rem;
+	font-weight: 600;
+	margin-bottom: 1rem;
+}
+.rating {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	grid-gap: .5rem;
+	font-size: 2rem;
+	color: var(--star);
+	margin-bottom: 2rem;
+}
+.rating .star {
+	cursor: pointer;
+}
+.rating .star.active {
+	opacity: 0;
+	animation: animate .5s calc(var(--i) * .1s) ease-in-out forwards;
+}
+
+@keyframes animate {
+	0% {
+		opacity: 0;
+		transform: scale(1);
+	}
+	50% {
+		opacity: 1;
+		transform: scale(1.2);
+	}
+	100% {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+
+.rating .star:hover {
+	transform: scale(1.1);
+}
+textarea {
+	width: 100%;
+	background: var(--light);
+	padding: 1rem;
+	border-radius: .5rem;
+	border: none;
+	outline: none;
+	resize: none;
+	margin-bottom: .5rem;
+}
+.btn-group {
+	display: flex;
+	grid-gap: .5rem;
+	align-items: center;
+}
+.btn-group .btn {
+	padding: .75rem 1rem;
+	border-radius: .5rem;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	font-size: .875rem;
+	font-weight: 500;
+}
+.btn-group .btn.submit {
+	background: var(--yellow);
+	color: var(--white);
+}
+.btn-group .btn.submit:hover {
+	background-color: #c49237;
+}
+.btn-group .btn.cancel {
+	background: var(--white);
+	color: var(--yellow);
+}
+.btn-group .btn.cancel:hover {
+	background: var(--light);
+}
+.notification {
+  background-color: #3ad53f;
+  color: white;
+  text-align: center;
+  padding: 16px;
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  display: none; /* Ban đầu ẩn đi */
+}
+
+.show {
+  display: block;
+}
+
+#review {
+	padding: 20px;
+	background-color: #f4f4f4;
+	border-radius: 5px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.review-item {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.review-content {
+    margin-bottom: 10px;
+}
+
+.review-content p {
+    margin: 5px 0;
+}
+
+.review-content p strong {
+    margin-right: 5px;
+}
