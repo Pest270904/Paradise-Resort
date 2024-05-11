@@ -29,11 +29,11 @@ function loadBookingInformation() {
                     {
                         const row = document.createElement('tr');
                         const resIdCell = document.createElement('td');
-                        resIdCell.textContent = booking[i].res_id;
+                        resIdCell.textContent = booking[i].res_id
                         row.appendChild(resIdCell);
                         
                         const fullNameCell = document.createElement('td');
-                        fullNameCell.textContent = booking[i].fullName;
+                        fullNameCell.innerHTML = `${booking[i].fullName} <br> Phone: ${booking[i].phoneNumber} `
                         row.appendChild(fullNameCell);
                         
                         const roomIdCell = document.createElement('td');
@@ -53,26 +53,14 @@ function loadBookingInformation() {
                                 break;
                         }
                         row.appendChild(roomIdCell);
-                        
+
                         const bookingInfoCell = document.createElement('td');
-                        bookingInfoCell.innerHTML = `Check-in: ${booking[i].start}`;
+                        // Tạo đối tượng Date với thời gian chuẩn UTC
+                        // const utcDate = new Date(booking[i].booking_time);
+                        // const bookingtime = utcDate.getTime();
+                        // console.log(bookingtime)
+                        bookingInfoCell.innerHTML = `Check-in: ${booking[i].start} <br> Duration: ${booking[i].days} `;
                         row.appendChild(bookingInfoCell);
-                        
-                        // Tạo ô chứa các nút hành động
-                        const actionCell = document.createElement('td');
-                        
-                        // Tạo nút Chấp nhận
-                        const acceptButton = document.createElement('button');
-                        acceptButton.textContent = 'Accept';
-                        acceptButton.className = 'btn-accept';
-                        actionCell.appendChild(acceptButton);
-                        
-                        // Tạo nút Xóa
-                        const deleteButton = document.createElement('button');
-                        deleteButton.textContent = 'Delete';
-                        deleteButton.className = 'btn-delete';
-                        actionCell.appendChild(deleteButton);
-                        row.appendChild(actionCell);
                         
                         // Tạo ô trạng thái
                         const statusCell = document.createElement('td');
@@ -80,11 +68,30 @@ function loadBookingInformation() {
                             {
                                 statusCell.textContent = "Pending";
                             }
+                            else if (booking[i].status == 0)
+                                {
+                                    statusCell.textContent = "Paid";
+                                }
+                            else
+                            {
+                                statusCell.textContent = "Ended Reservation";
+                            }
                         row.appendChild(statusCell);
                         listBooking.appendChild(row);
+
+                        // Tạo ô chứa các nút hành động
+                        const actionCell = document.createElement('td');
+
+                        // Tạo nút Xóa
+                        const deleteButton = document.createElement('button');
+                        deleteButton.textContent = 'Delete';
+                        deleteButton.className = 'btn-delete';
+                        actionCell.appendChild(deleteButton);
+                        row.appendChild(actionCell);
                     }
             });
         })
     })
 }
-window.addEventListener('load', loadBookingInformation);
+
+window.addEventListener('load', loadBookingInformation);    

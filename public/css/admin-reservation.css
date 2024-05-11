@@ -34,17 +34,19 @@
 /* search */
 .search_reservation {
     position: relative;
-    width: 100%;
+    width: 95%;
     height: 50px;
     background: #f6f6f6;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 0 15px;
+    margin-left: 1%;
   }
   
   .search_reservation div {
-    width: 100%;
+    width: 95%;
+    margin-left:1% ;
   }
   
   .search_reservation div input {
@@ -90,14 +92,16 @@
     text-align: center;
   }
   .booking-list {
-    width: 100%;
+    margin-left: 1%;
+    width: 95%;
     border-collapse: collapse;
     margin-top: 20px;
 }
 
 /* Định dạng tiêu đề bảng */
-.booking-list thead {
+.booking-list thead th {
     background-color: #f0f0f0;
+    text-align: center;
 }
 
 .booking-list th,
@@ -127,7 +131,8 @@
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  margin-left: 20px;
+  margin-left: 50px;
+  text-align: center;
 }
 .btn-delete:hover {
   background-color:#700d0d;
