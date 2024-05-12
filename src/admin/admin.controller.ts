@@ -58,4 +58,5 @@ export class AdminController {
     const data = await this.adminService.getAllReservations();
     return { data}; 
 }
+  
 }
