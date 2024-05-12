@@ -35,7 +35,7 @@
         {{!-- phoneNumber --}}
         <div class='form-group'>
           <label for='phoneNumber' class='form-label'>Phone number</label>
-          <input id='phoneNumber' name='phoneNumber' type='number' placeholder='Ex: 0123456789'class='form-control'/>
+          <input id='phoneNumber' name='phoneNumber' type='text' placeholder='Ex: 0123456789'class='form-control'/>
           <span class='form-message'></span>
         </div>
 
@@ -64,8 +64,14 @@
     </div>
     <script src='/js/form-validation.js'></script>
     <script>
-      Validator({ form: '#form-1', rules: [ Validator.isRequired('#fullName'),
-      Validator.isEmail('#email'), ] });
+      Validator({ 
+        form: '#form-1', 
+        rules: [ 
+          Validator.isRequired('#username'),
+          Validator.isRequired('#password'), 
+          Validator.isEmail('#email')
+        ] 
+      });
     </script>
   </body>
 </html>

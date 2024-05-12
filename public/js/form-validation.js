@@ -29,6 +29,13 @@ Validator.isRequired = function (selector) {
 Validator.isEmail = function (selector) {
   return {
     selector: selector,
-    test: function () {},
+    test: function (value) {
+      var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (regex.test(value)) {
+        return undefined;
+      } else {
+        return 'Vui lòng nhập địa chỉ email hợp lệ'; 
+      }
+    },
   };
 };

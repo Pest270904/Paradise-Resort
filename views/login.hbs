@@ -33,8 +33,13 @@
     </div>
     <script src='/js/form-validation.js'></script>
     <script>
-      Validator({ form: '#form-1', rules: [ Validator.isRequired('#fullName'),
-      Validator.isEmail('#email'), ] });
-    </script>
+      Validator({ 
+        form: '#form-1', 
+        rules: [ 
+          Validator.isRequired('#username'),
+          Validator.isRequired('#password'), 
+          Validator.isEmail('#email')
+        ] 
+      });
   </body>
 </html>
