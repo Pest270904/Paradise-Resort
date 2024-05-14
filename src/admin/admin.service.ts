@@ -159,4 +159,10 @@ export class AdminService {
               throw new Error(`Failed to fetch reservations: ${error.message}`);
           }
         }
-}
+        // Lấy thông tin phòng
+        async getAllRoom() {
+          const foundRoom = await this.prisma.room.findMany();
+          return { room: foundRoom }
+        }
+      }        
+

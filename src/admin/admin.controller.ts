@@ -2,7 +2,7 @@ import { Body, Controller, Get, Param, Post, Req, Res, UseGuards } from '@nestjs
 import { AdminService } from './admin.service';
 import { FuncService } from 'src/func/func.service';
 import { Response, Request } from 'express'
-import { Message,Reservation } from '@prisma/client';
+import { Message,Reservation,Room } from '@prisma/client';
 import { CheckTokenMiddleware } from 'src/middleware/checkToken.middleware';
 import { AdminGuard } from './admin.guard';
 @Controller('admin')
@@ -58,5 +58,14 @@ export class AdminController {
     const data = await this.adminService.getAllReservations();
     return { data}; 
 }
-  
+  @Get('admin-home')
+  adminHome(@Req() req: Request, @Res() res: Response) {
+  res.render('admin-home', {
+    layout: 'admin-layout'
+  }) 
+}
+@Get('dataRoom')
+async getDataRoom() {
+  return this.adminService.getAllRoom();
+}
 }
