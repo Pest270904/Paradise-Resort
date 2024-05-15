@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 		
-		let rating =parseInt(document.querySelector('input[name="rating"]').value);
+		let rating = parseInt(document.querySelector('input[name="rating"]').value);
 		const opinionTextarea = document.querySelector('textarea[name="opinion"]');
         const opinion = opinionTextarea.value.trim();
 		if (opinion === '') {
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 		
 		// Gửi dữ liệu đến server
-		fetch('/reviews', {
+		fetch('/review', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -65,15 +65,16 @@ document.addEventListener('DOMContentLoaded', function () {
 			notification.textContent = data.message;
        		notification.classList.add('show');
 			setTimeout(function() {
-           	notification.classList.remove('show');
-        }, 3000);
+           		notification.classList.remove('show');
+        	}, 3000);
 			return response.json();
 		})
 		.catch(handleRequestError);
 	});
 });
+
 document.addEventListener('DOMContentLoaded', function () {
-    fetch('reviews')
+    fetch('review/getAll')
     .then(response => response.json())
     .then(review => {
         const reviewsContainer = document.getElementById('review');
@@ -98,7 +99,6 @@ document.addEventListener('DOMContentLoaded', function () {
     .catch(error => console.error('Error fetching reviews:', error));
 });
 
-
 function getCookie(name) {
     const cookies = document.cookie.split(';');
     for (let cookie of cookies) {
@@ -109,6 +109,7 @@ function getCookie(name) {
     }
     return null;
 }
+
 function handleRequestError(error) {
     if (error.name === 'TokenExpiredError') {
         alert('Phiên đăng nhập của bạn đã hết hạn. Vui lòng đăng nhập lại.');

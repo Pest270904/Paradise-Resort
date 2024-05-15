@@ -1,6 +1,6 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { Prisma, Message } from '@prisma/client';
+import { Message } from '@prisma/client';
 import { FuncService } from 'src/func/func.service';
 import { Request } from 'express';
 

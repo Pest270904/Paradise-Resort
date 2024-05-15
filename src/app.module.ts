@@ -26,6 +26,7 @@ import { ReviewService } from './review/review.service';
 import { ReviewModule } from './review/review.module';
 import { ReviewController } from './review/review.controller';
 import { PrismaService } from './prisma/prisma.service';
+import { PaymentController } from './payment/payment.controller';
 @Module({
   imports: [
     GatewayModule,
@@ -43,7 +44,7 @@ import { PrismaService } from './prisma/prisma.service';
     UserModule,
     ReviewModule,
   ],
-  controllers: [AppController,AdminController,ReviewController],
+  controllers: [AppController],
   providers: [
     JwtService, 
     AppService, 
@@ -62,11 +63,14 @@ export class AppModule implements NestModule{
           RoomController, 
           ReservationController, 
           AdminController,
-          UserController
+          UserController,
+          ReviewController,
+          PaymentController
         )
         .apply(CheckLoginMiddleware).forRoutes(
           ReservationController,
-          UserController
+          UserController,
+          AdminController
         )
   }
 }

@@ -9,7 +9,6 @@ import {
     ConnectedSocket,
   } from '@nestjs/websockets';
   import { Server, Socket } from 'socket.io'; 
-  import { Request } from 'express';
   import { FuncService } from 'src/func/func.service';
   import { AdminService } from 'src/admin/admin.service';
   @WebSocketGateway({

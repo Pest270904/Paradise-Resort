@@ -1,7 +1,6 @@
-  import {Module, Controller, Get, Post, Req, Res, Body } from '@nestjs/common';
-  import { Request, Response } from 'express';
+  import { Controller, Get, Post, Req, Res, Body } from '@nestjs/common';
+  import { Response } from 'express';
   import { PaymentService } from './payment.service';
-  import { FuncService } from 'src/func/func.service';
   import { ReservationService } from 'src/reservation/reservation.service';
   @Controller('payment')
   export class PaymentController {
@@ -17,6 +16,23 @@
     //   return res.redirect(url);
     // }
     //
+
+    @Get()
+    Payment(@Res() res: Response) {
+      return res.render('payment', {
+        layout: 'login-layout',
+        message: 'Hello world!!',
+      });
+    }
+
+    @Get('return')
+    ReturnCheckout(@Res() res: Response) {
+      return res.render('return', {
+        layout: 'login-layout',
+        message: 'Hello world!!',
+      });
+    }
+
     @Post('checkout')
     async payment(@Body() data: any, @Res() res: Response) {
       const url = await this.paymentService.VNPayCheckoutUrl(

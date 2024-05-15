@@ -13,3 +13,7 @@ login_display.addEventListener('click', function () {
 modal_container.addEventListener('click', function (event) {
   event.stopPropagation();
 });
+
+function bookNow() {
+  window.location.href = '/room'
+}
