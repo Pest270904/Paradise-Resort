@@ -1,4 +1,8 @@
-const socket = io('http://localhost:3000');
+function getCurrentURL () {
+    return window.location.href
+  }
+  const url = getCurrentURL()
+  const socket = io('https://251b-113-161-66-12.ngrok-free.app');
 let currentUsername = '';
 let roomName = '';
 let currentUsernameBlock = null;

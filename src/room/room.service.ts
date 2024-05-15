@@ -17,7 +17,8 @@ export class RoomService {
         },
     });
 
-    if (!foundRoom) return { error_noRoom: 'Room not found' };
+    if (!foundRoom) 
+      return { error_noRoom: 'Room not found' };
 
     return { room: foundRoom }
   }

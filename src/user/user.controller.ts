@@ -13,7 +13,8 @@ export class UserController {
     @Get(':id')
     @Render('profile')
     async getProfile(@Param() param: any, @Req() req: Request, @Res() res: Response){
-        return {...this.funcService.getUsernameFromJwt_Req(req),
+        return {
+            ...this.funcService.getUsernameFromJwt_Req(req),
             ...await this.userService.getUserInfo(param.id),
             ...await this.funcService.getError(req, res)
         }

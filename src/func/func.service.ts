@@ -2,13 +2,14 @@ import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { Request, Response } from 'express';
 import * as jwt from 'jsonwebtoken';
+import { DecodedToken } from 'src/interface/decodedToken.interface';
 import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()
 export class FuncService {
     constructor(
         private config: ConfigService,
-        private prisma : PrismaService,
+        private prisma: PrismaService,
       ) {}
 
     /**
@@ -49,12 +50,26 @@ export class FuncService {
           return { username: null }
     }
 
+    /**
+     * Get error from cookies, then clear the 'error' cookies
+     * 
+     * Info: 
+     * - `Param`:   Request, Response
+     * - `returns`: object {error}
+     */
     async getError(req: Request, res: Response) {
       const error = req.cookies.error
       res.clearCookie('error')
       return {error : error}
     }
 
+    /**
+     * Get user from username
+     * 
+     * Info: 
+     * - `Param`:   Request
+     * - `returns`: object {user}
+     */
     async getUserFromUsername(req : Request) {
       const username_token = await this.getUsernameFromJwt_Req(req).username
       if(username_token !== null) {
@@ -67,12 +82,4 @@ export class FuncService {
       }
     }
     
-}
-    
-interface DecodedToken {
-    username: string
-    email: string
-    iat: number
-    exp: number
-    // other properties if present in your token payload
 }
