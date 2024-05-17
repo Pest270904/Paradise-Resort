@@ -22,7 +22,13 @@ allStar.forEach((item, idx)=> {
 		}
 	})
 })
-
+const form = document.querySelector('form');
+form.addEventListener('keydown', function(event) {
+if(event.key === 'Enter') {
+	event.preventDefault();
+	form.querySelector('button[type= "submit"]').click();
+}
+});
 document.addEventListener('DOMContentLoaded', function () {
 	const form = document.querySelector('form');
 	const notification = document.getElementById('notification');
@@ -62,11 +68,12 @@ document.addEventListener('DOMContentLoaded', function () {
 				throw new Error(response.statusText);
 			}
 			const data = { message: 'Review submitted successfully!' };
+			window.location.reload();
 			notification.textContent = data.message;
        		notification.classList.add('show');
 			setTimeout(function() {
            		notification.classList.remove('show');
-        	}, 3000);
+        	}, 2500);
 			return response.json();
 		})
 		.catch(handleRequestError);
@@ -88,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         <p><strong>Rating:</strong> ${review.rating}</p>
                         <i class='fa-solid fa-star' style="margin-top: 0.9px; margin-l"></i>
                     </div>
-					<p><strong>Opinion:</strong> ${review.opinion}</p>
+					<p><strong>Opinion:</strong> ${escapeHTML(review.opinion)}</p>
 					<p><strong>Created At:</strong> ${review.createdAt}</p>
 			</div>
 		<hr>
@@ -117,4 +124,15 @@ function handleRequestError(error) {
     } else {
         alert('Error:', error);
     }
+}
+function escapeHTML(input) {
+    return input.replace(/[&<>"']/g, function(match) {
+        return {
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            '"': '&quot;',
+            "'": '&#39;'
+        }[match];
+    });
 }
