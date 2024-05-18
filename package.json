@@ -2,7 +2,7 @@
   "name": "paradise_resort",
   "version": "0.0.1",
   "description": "",
-  "author": "LeQuocNgo TranTienNhat TranAnhyenHoNhatKhoa NguyenTuanPhat",
+  "author": "LeQuocNgo TranTienNhat TranAnhKhoi NguyenHoNhatKhoa NguyenTuanPhat",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
@@ -10,7 +10,7 @@
     "db:dev:rm": "docker compose rm dev-db -s -f -v",
     "db:dev:up": "docker compose up dev-db -d",
     "db:dev:restart": "npm run db:dev:rm && npm run db:dev:up && sleep 1 && npm run prisma:dev:deploy",
-    "build": "nest build",
+    "build": "prisma generate && nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest build --webpack --webpackPath webpack-hmr.config.js --watch",
