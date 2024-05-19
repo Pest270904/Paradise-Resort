@@ -26,6 +26,7 @@ import { ReviewModule } from './review/review.module';
 import { ReviewController } from './review/review.controller';
 import { PrismaService } from './prisma/prisma.service';
 import { PaymentController } from './payment/payment.controller';
+import { Gateway } from './gateway/gateway';
 @Module({
   imports: [
     AuthModule, 
@@ -44,6 +45,7 @@ import { PaymentController } from './payment/payment.controller';
   ],
   controllers: [AppController],
   providers: [
+    Gateway,
     JwtService, 
     AppService, 
     FuncService,
