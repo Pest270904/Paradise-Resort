@@ -11,11 +11,14 @@ import {
   import { Server, Socket } from 'socket.io'; 
   import { FuncService } from 'src/func/func.service';
   import { AdminService } from 'src/admin/admin.service';
+import { Injectable } from '@nestjs/common';
   @WebSocketGateway({
     cors: {
       origin: '*',
     },
   })
+
+  @Injectable()
   export class Gateway
     implements OnGatewayInit, OnGatewayConnection, OnGatewayDisconnect
   {
