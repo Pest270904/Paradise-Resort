@@ -26,10 +26,10 @@ import { ReviewModule } from './review/review.module';
 import { ReviewController } from './review/review.controller';
 import { PrismaService } from './prisma/prisma.service';
 import { PaymentController } from './payment/payment.controller';
-import { Gateway } from './gateway/gateway';
+import { GatewayModule } from './gateway/gateway.module';
 @Module({
   imports: [
-    Gateway,
+    GatewayModule,
     AuthModule, 
     PrismaModule,
     ConfigModule.forRoot({
@@ -46,7 +46,6 @@ import { Gateway } from './gateway/gateway';
   ],
   controllers: [AppController],
   providers: [
-    Gateway,
     JwtService, 
     AppService, 
     FuncService,
