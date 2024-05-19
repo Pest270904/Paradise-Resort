@@ -12,7 +12,6 @@ import { RoomModule } from './room/room.module';
 import { RoomController } from './room/room.controller';
 import { AdminModule } from './admin/admin.module';
 import { ChatModule } from './chat/chat.module';
-import { GatewayModule } from './gateway/gateway.module';
 import { PaymentModule } from './payment/payment.module';
 import { CheckLoginMiddleware } from './middleware/checkLogin.middleware';
 import { AdminController } from './admin/admin.controller';
@@ -29,7 +28,6 @@ import { PrismaService } from './prisma/prisma.service';
 import { PaymentController } from './payment/payment.controller';
 @Module({
   imports: [
-    GatewayModule,
     AuthModule, 
     PrismaModule,
     ConfigModule.forRoot({
