@@ -29,6 +29,7 @@ import { PaymentController } from './payment/payment.controller';
 import { Gateway } from './gateway/gateway';
 @Module({
   imports: [
+    Gateway,
     AuthModule, 
     PrismaModule,
     ConfigModule.forRoot({
