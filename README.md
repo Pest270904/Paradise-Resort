@@ -1,7 +1,12 @@
-# Website quản lý đặt phòng khách sạn
-**_<u>Bạn có thể xem thử web tại đây_**: [Paradise Resort](https://paradise-resort-bice.vercel.app/) 👈
+# <p align="center">Website quản lý đặt phòng khách sạn</p>
 
-## <u>A. Thông tin môn học, giảng viên, thành viên nhóm
+<br />
+
+<p align="center"> <b><ins>Bạn có thể xem thử web tại đây</ins></b>: <a href="https://paradise-resort-bice.vercel.app/">Paradise Resort</a> 👈</p>
+
+<br />
+
+## <ins><p align="center">A. Thông tin môn học, giảng viên, thành viên nhóm</p></ins>
 
 **- Giảng viên hướng dẫn:** Trần Tuấn Dũng
 
@@ -21,8 +26,9 @@
 
 **- Video giới thiệu về framework backend NestJS:** [Youtube](https://youtu.be/-4oWuhSvy28?si=Uo2Ou3I4M9AucQ9l)
 
-## <u>B. Mô tả đề tài
-<p align="center"> <b><u>Web đặt phòng khách sạn Paradise Resort</p>
+## <ins><p align="center">B. Mô tả đề tài</p> </ins>
+
+<ins><p align="center">Mindmap của đề tài</p></ins>
 
 ![](https://i.postimg.cc/FzQyq0gh/B-n-t-duy-l-m-t-s-t-ch-c-th-ng-tin-m-t-c-ch-tr-c-quan-N-cho-th-y-m-i-quan-h-gi-a-c-c-ph.jpg)
 
@@ -32,20 +38,25 @@
 
 - **Người dùng:** thay đổi thông tin cá nhân, đặt phòng, chat, thanh toán trực tuyến, đánh giá, review,...
 
-### <u>Database Diagram:
+<br />
+
+<ins><p align="center">Database Diagram</p></ins>
+
 ![](https://i.postimg.cc/Dyvfg8ks/aaaa.webp)
 
-### <u>Công nghệ sử dụng:
+<br />
 
-- Frontend:  HTML, CSS, JS, render page bằng [Express-handlebars](https://www.npmjs.com/package/express-handlebars)
+### <ins>Công nghệ sử dụng</ins>
 
-- Backend: [Nest.js](https://nestjs.com/) - TypeScript
+- **Frontend:**  HTML, CSS, JS, render page bằng [Express-handlebars](https://www.npmjs.com/package/express-handlebars)
 
-- Database: PostgreSQL hỗ trợ bằng Docker và [Prisma](https://www.prisma.io/)
+- **Backend:** [Nest.js](https://nestjs.com/) - TypeScript
 
-## <u>C. Setup và Build
+- **Database:** PostgreSQL hỗ trợ bằng Docker và [Prisma](https://www.prisma.io/)
 
-### <u>C.1 Yêu cầu:
+## <ins><p align="center">C. Setup và Build</p></ins>
+
+### <ins>C.1 Yêu cầu:</ins>
 
 1. Hệ điều hành: Window, Linux, MacOS
 
@@ -53,7 +64,9 @@
 
 3. (**Optional**) [Docker](https://www.docker.com/) để lưu database ở local 
 
-### <u>C.2 Setup
+<br />
+
+### <ins>C.2 Setup</ins>
 
 - Git clone
 
@@ -79,18 +92,22 @@
 
 ```
 - Change some codes in ``/src/main.ts`` to be able to compile code locally:
+<br />
+
 ![](https://i.postimg.cc/pLJPnjL3/a.png)
 
-- **<u>(Optional when you want to use your own database on server)** Go to file ``/.env``  then replace the default docker's path of ``DATABASE_URL`` to your own database url, for example:
+- **<ins>(Optional when you want to use your own database on server)</ins>** Go to file ``/.env``  then replace the default docker's path of ``DATABASE_URL`` to your own database url, for example:
+<br />
+
 ![](https://i.postimg.cc/PJJBNLRs/docker.png)
 
 - Set up database
 
 ```console
 
-		------ Start Postgres in Docker and push migrations of database ------
+		------ Start Postgres in Docker and push migrations to database ------
 
-			(Run this command in new terminal if you want to reset the databases or when you haven't started database before)
+			(Run this command in new terminal if you want to reset the database or when you haven't started database before)
 
 	$ npm run db:dev:restart
 
