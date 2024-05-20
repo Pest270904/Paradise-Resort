@@ -22,7 +22,6 @@ footer a {
 }
 footer h3 {
   margin-bottom: 1em;
-  
 }
 footer .container {
   max-width: 100%;
@@ -45,13 +44,11 @@ footer .container {
 .footer .container {
   position: relative;
 }
-.footer .footer-top .container, .footer .col2   {
+.footer .footer-top .container, .footer .col2 {
   display: flex;
   justify-content: space-between;
   gap: 2em;
-
 }
-
 .footer .menu li {
   margin-bottom: 0.6rem;
 }
@@ -61,7 +58,6 @@ footer .container {
 #logo {
   width: 20em;
   height: 16em;
-
 }
 .qr-img {
   width: 6.4em;
@@ -99,4 +95,67 @@ footer .container {
   background: transparent;
   border: 0;
   outline: none;
+}
+/* Responsive design */
+/* tablet */
+@media only screen and (min-width: 740px) and (max-width: 1023px) {
+  .footer .footer-top .container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .footer .col1, .footer .col2, .footer .col3 {
+    width: 100%;
+    margin-bottom: 1.5em;
+    text-align: center;
+  }
+  .footer .col2 {
+    flex-direction: column;
+    align-items: center;
+  }
+  .footer .col2 ul {
+    margin-bottom: 1em;
+  }
+  #logo {
+    width: 15em;
+    height: 12em;
+  }
+  .qr-img {
+    width: 5em;
+    height: 5em;
+    margin: 1em auto;
+  }
+  .media-icons li {
+    margin: 0.3rem;
+  }
+}
+/* mobile */
+@media only screen and (max-width: 739px) {
+  .footer .footer-top .container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .footer .col1, .footer .col2, .footer .col3 {
+    width: 100%;
+    margin-bottom: 1.5em;
+    text-align: center;
+  }
+  .footer .col2 {
+    flex-direction: column;
+    align-items: center;
+  }
+  .footer .col2 ul {
+    margin-bottom: 1em;
+  }
+  #logo {
+    width: 10em;
+    height: 8em;
+  }
+  .qr-img {
+    width: 4em;
+    height: 4em;
+    margin: 1em auto;
+  }
+  .media-icons li {
+    margin: 0.2rem;
+  }
 }

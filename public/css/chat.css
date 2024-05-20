@@ -134,3 +134,33 @@
 .chat-input textarea:valid ~ span {
     visibility: visible;
 }
+
+/* Responsive Design */
+/* Mobile */
+@media only screen and (max-width: 767px) {
+    .chatbox-toggler {
+        right: 10px;
+        bottom: 10px;
+    }
+    .chatbox {
+        width: 90%;
+        right: 5%;
+        bottom: 50px;
+    }
+    .chat-head h2 {
+        font-size: 1.2rem;
+    }
+    .chatbox .message {
+        height: 200px;
+    }
+    .chatbox .chat p {
+        font-size: 0.85rem;
+    }
+    .chat-input textarea {
+        height: 40px;
+        font-size: 0.85rem;
+    }
+    .chat-input span {
+        font-size: 1rem;
+    }
+}
