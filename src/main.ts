@@ -9,7 +9,7 @@ import Handlebars from 'handlebars'
 // import * as exphbs from 'express-handlebars';
 // import * as cookieParser from 'cookie-parser';
 
-// For hosting on vercel
+// For hosting o n vercel
 import exphbs from 'express-handlebars';
 import cookieParser from 'cookie-parser';
 

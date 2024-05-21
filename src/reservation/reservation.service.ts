@@ -171,7 +171,7 @@ export class ReservationService {
   async success(reservation_id) {
     await this.prisma.reservation.update({
         where: {
-            res_id: Number(reservation_id)
+            res_id:  Number(reservation_id)
         },
         data: {
             status: 0
