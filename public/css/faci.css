@@ -86,34 +86,61 @@
  /* Tablet */
  @media only screen and (min-width: 740px) and (max-width: 1023px) {
     .home-faci {
-      height: max-content;
+        height: max-content;
+      }
+      .faci-first-description-bigtext {
+          font-size: 30px;
+      }
+      .faci-first-description-smalltext {
+          font-size: 15px;
+      }
+      .faci-detail {
+          width: 90%;
+          margin: 5% 5%;
+      }
+      .faci-background-gym,
+      .faci-background-poolsidebar,
+      .faci-background-spa,
+      .faci-background-swimmingpool,
+      .faci-background-restaurant,
+      .faci-background-laundry {
+          height: 400px;
+      }
+      .faci-detail-text {
+          font-size: 20px;
+          left: 10%;
+          width: 80%;
+      }
+}
+/* mobile */
+@media only screen and (max-width: 739px) {
+    .home-faci {
+        height: max-content;
+    }
+    .faci-first-description {
+        margin: 3% 5%;
     }
     .faci-first-description-bigtext {
-        font-size: 30px;
+        font-size: 25px;
     }
     .faci-first-description-smalltext {
         font-size: 12px;
     }
-    .faci-background-gym {
-        height: 500px;
+    .faci-detail {
+        width: 90%;
+        margin: 5% 5%;
     }
-    .faci-background-poolsidebar {
-        height: 500px;
-    }
-    .faci-background-spa {
-        height: 500px;
-    }
-    .faci-background-swimmingpool {
-        height: 500px;
-    }
-    .faci-background-restaurant {
-        height: 500px;
-    }
+    .faci-background-gym,
+    .faci-background-poolsidebar,
+    .faci-background-spa,
+    .faci-background-swimmingpool,
+    .faci-background-restaurant,
     .faci-background-laundry {
-        height: 500px;
+        height: 300px;
     }
     .faci-detail-text {
-        font-size: 20px;
-        left: 30%;
+        font-size: 16px;
+        left: 10%;
+        width: 80%;
     }
 }

@@ -1,4 +1,8 @@
-const socket = io('http://localhost:3000');
+function getCurrentURL () {
+    return window.location.href
+  }
+  const url = getCurrentURL()
+  const socket = io('paradise-resort-bice.vercel.app');
 let currentUsername = '';
 let roomName = '';
 let currentUsernameBlock = null;

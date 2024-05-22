@@ -117,3 +117,59 @@
 .form-control:hover {
     border-color: var(--primary-color);
 }
+
+/* Tablet */
+@media only screen and (max-width: 1023px) {
+    .booking {
+        margin: 10% 5%;
+    }
+    .booking-room-img {
+        height: auto;
+    }
+    .booking-room-name {
+        font-size: 22px;
+    }
+    .booking-input {
+        flex-direction: column;
+    }
+    .booking-input-first {
+        margin: 0;
+    }
+    .booking-input-second {
+        margin: 0;
+        width: 100%;
+    }
+    .booking-btn-post {
+        width: 100%;
+    }
+}
+
+/* Mobile */
+@media only screen and (max-width: 767px) {
+    .booking {
+        margin: 10% 3%;
+    }
+    .booking-room-name {
+        font-size: 20px;
+    }
+    .booking-room-img {
+        height: auto;
+    }
+    .booking-input {
+        flex-direction: column;
+    }
+    .booking-input-first,
+    .booking-input-second {
+        margin: 0;
+    }
+    .booking-btn-post {
+        width: 100%;
+        font-size: 14px;
+    }
+    .booking-available-room {
+        font-size: 10px;
+    }
+    .error-text {
+        font-size: 20px;
+    }
+}

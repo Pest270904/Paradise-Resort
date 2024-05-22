@@ -13,6 +13,6 @@ export class CheckLoginMiddleware implements NestMiddleware {
             throw new UnauthorizedException('Please login to use this feature')
         }     
         
-        next();
+        next()
     }
 }

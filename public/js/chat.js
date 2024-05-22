@@ -1,5 +1,8 @@
-// Kết nối vào máy chủ Socket.IO
-const socket = io('http://localhost:3000');
+function getCurrentURL () {
+  return window.location.href
+}
+const url = getCurrentURL()
+const socket = io('paradise-resort-bice.vercel.app');
 let roomName = '';
 let username = '';
 

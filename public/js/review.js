@@ -22,7 +22,13 @@ allStar.forEach((item, idx)=> {
 		}
 	})
 })
-
+const form = document.querySelector('form');
+form.addEventListener('keydown', function(event) {
+if(event.key === 'Enter') {
+	event.preventDefault();
+	form.querySelector('button[type= "submit"]').click();
+}
+});
 document.addEventListener('DOMContentLoaded', function () {
 	const form = document.querySelector('form');
 	const notification = document.getElementById('notification');
@@ -37,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 		
-		let rating =parseInt(document.querySelector('input[name="rating"]').value);
+		let rating = parseInt(document.querySelector('input[name="rating"]').value);
 		const opinionTextarea = document.querySelector('textarea[name="opinion"]');
         const opinion = opinionTextarea.value.trim();
 		if (opinion === '') {
@@ -49,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 		
 		// Gửi dữ liệu đến server
-		fetch('/reviews', {
+		fetch('/review', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -62,18 +68,20 @@ document.addEventListener('DOMContentLoaded', function () {
 				throw new Error(response.statusText);
 			}
 			const data = { message: 'Review submitted successfully!' };
+			window.location.reload();
 			notification.textContent = data.message;
        		notification.classList.add('show');
 			setTimeout(function() {
-           	notification.classList.remove('show');
-        }, 3000);
+           		notification.classList.remove('show');
+        	}, 2500);
 			return response.json();
 		})
 		.catch(handleRequestError);
 	});
 });
+
 document.addEventListener('DOMContentLoaded', function () {
-    fetch('reviews')
+    fetch('review/getAll')
     .then(response => response.json())
     .then(review => {
         const reviewsContainer = document.getElementById('review');
@@ -87,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         <p><strong>Rating:</strong> ${review.rating}</p>
                         <i class='fa-solid fa-star' style="margin-top: 0.9px; margin-l"></i>
                     </div>
-					<p><strong>Opinion:</strong> ${review.opinion}</p>
+					<p><strong>Opinion:</strong> ${escapeHTML(review.opinion)}</p>
 					<p><strong>Created At:</strong> ${review.createdAt}</p>
 			</div>
 		<hr>
@@ -97,7 +105,6 @@ document.addEventListener('DOMContentLoaded', function () {
     })
     .catch(error => console.error('Error fetching reviews:', error));
 });
-
 
 function getCookie(name) {
     const cookies = document.cookie.split(';');
@@ -109,6 +116,7 @@ function getCookie(name) {
     }
     return null;
 }
+
 function handleRequestError(error) {
     if (error.name === 'TokenExpiredError') {
         alert('Phiên đăng nhập của bạn đã hết hạn. Vui lòng đăng nhập lại.');
@@ -116,4 +124,15 @@ function handleRequestError(error) {
     } else {
         alert('Error:', error);
     }
+}
+function escapeHTML(input) {
+    return input.replace(/[&<>"']/g, function(match) {
+        return {
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            '"': '&quot;',
+            "'": '&#39;'
+        }[match];
+    });
 }

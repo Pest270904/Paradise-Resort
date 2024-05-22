@@ -3,6 +3,7 @@ import * as querystring from 'qs';
 import * as crypto from 'crypto';
 import { format } from 'date-fns';
 import { ConfigService } from '@nestjs/config';
+import { Render } from '@nestjs/common';
 @Injectable()
 export class PaymentService {
   constructor(private readonly configService: ConfigService) {}
@@ -14,7 +15,7 @@ export class PaymentService {
     let secretKey = 'TBWZANCWBXNATETKLUEOLFHTKPNBSPBM';
     let vnpUrl = 'https://sandbox.vnpayment.vn/paymentv2/vpcpay.html';
 
-    let returnUrl = 'http://localhost:3000/reservation/';
+    let returnUrl = `http://localhost:3000/payment/vnpay_return?resId=${resId}`;
     let createDate = format(date, 'yyyyMMddHHmmss');
     let orderId = date.getTime();
 
@@ -41,7 +42,7 @@ export class PaymentService {
     vnp_Params['vnp_CurrCode'] = currCode;
     vnp_Params['vnp_TxnRef'] = orderId;
     vnp_Params['vnp_OrderInfo'] = 'Thanh toan cho ma GD:' + orderId;
-    vnp_Params['vnp_OrderType'] = 'other';
+    vnp_Params['vnp_OrderType'] = resId;
     vnp_Params['vnp_Amount'] = cost * 100; // The amount need to mutiple with 100
     vnp_Params['vnp_ReturnUrl'] = returnUrl;
     vnp_Params['vnp_IpAddr'] = '118.70.192.52'; // this is ip address of cilent
@@ -78,35 +79,35 @@ export class PaymentService {
     return sorted;
   }
 
-  VNPayReturn(resId,req: any) {
+  VNPayReturn(req: any, res: any) {
     let vnp_Params = req.query;
-
     let secureHash = vnp_Params['vnp_SecureHash'];
-
+    let resId = vnp_Params['resId'];
     delete vnp_Params['vnp_SecureHash'];
     delete vnp_Params['vnp_SecureHashType'];
-
+    delete vnp_Params['resId'];
     vnp_Params = this.sortObject(vnp_Params);
-    var code = vnp_Params['vnp_ResponseCode'];
+
     let secretKey = 'TBWZANCWBXNATETKLUEOLFHTKPNBSPBM';
-
     let signData = querystring.stringify(vnp_Params, { encode: false });
-
     let hmac = crypto.createHmac('sha512', secretKey);
-    let signed = hmac.update(new Buffer(signData, 'utf-8')).digest('hex');
+    let signed = hmac.update(Buffer.from(signData, 'utf-8')).digest('hex');
 
     if (secureHash === signed) {
-      console.log(code);
-      //Kiem tra xem du lieu trong db co hop le hay khong va thong bao ket qua
-      return {
-        code: '00',
-        message: 'Giao dịch hợp lệ',
-      };
+      
+      const orderId = vnp_Params['vnp_TxnRef'];
+      const amount = vnp_Params['vnp_Amount'] / 100; // Chia cho 100 để lấy giá trị gốc
+      const rspCode = vnp_Params['vnp_ResponseCode'];
+      if (orderId && amount) {
+        return { code: '00', transactionId: orderId, amount, rspCode, resId };
+      } else {
+        return { code: '97', message: 'Thông tin không hợp lệ', rspCode };
+      }
     } else {
       return { code: '97', message: 'Chữ ký không hợp lệ' };
     }
-    
   }
+
   handleVNPayIPN(vnpParams: any) {
     const secureHash = vnpParams['vnp_SecureHash'];
 

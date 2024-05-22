@@ -1,83 +1,154 @@
-<!-- (**_This site was built using_**: [GitHub Pages](https://pest270904.github.io/Project-Web-App/) 👈) -->
+# <p align="center">Website quản lý đặt phòng khách sạn</p>
 
-# Website quản lý đặt phòng khách sạn
-**Giảng viên hướng dẫn:** Trần Tuấn Dũng
+<br />
 
+<p align="center"> <b><ins>Bạn có thể xem thử web tại đây</ins></b>: <a href="https://paradise-resort-bice.vercel.app/">Paradise Resort</a> 👈</p>
 
-**Nhóm 3:**
+<br />
 
-- **Trưởng nhóm:** Lê Quốc Ngô - 22520951 ([@lengo0951](https://github.com/lengo0951))
+## <ins><p align="center">A. Thông tin môn học, giảng viên, thành viên nhóm</p></ins>
+
+**- Giảng viên hướng dẫn:** Trần Tuấn Dũng
+
+**- Môn học:** Lập trình ứng dụng Web - NT208.O23.ANTT
+
+**- Nhóm 3:**
+
+-  **Trưởng nhóm:** Lê Quốc Ngô - 22520951 ([@lengo0951](https://github.com/lengo0951))
+
 - Trần Tiễn Nhật - 22521030 ([@tnh47](https://github.com/tnh47))
+
 - Trần Anh Khôi - 22520701 ([@anhkhoi312](https://github.com/anhkhoi312))
+
 - Nguyễn Hồ Nhật Khoa - 22520677 ([@NKhoauit](https://github.com/NKhoauit))
+
 - Nguyễn Tuấn Phát - 22521076 ([@Pest270904](https://github.com/Pest270904))
 
+**- Video giới thiệu về framework backend NestJS:** [Youtube](https://youtu.be/-4oWuhSvy28?si=Uo2Ou3I4M9AucQ9l)
 
-## A. Mô tả đề tài
+## <ins><p align="center">B. Mô tả đề tài</p> </ins>
 
-![](/public/img/general/mindmap.jpg)
+<ins><p align="center">Mindmap của đề tài</p></ins>
 
-- Một trang web khách sạn cung cấp những chức năng cơ bản: đăng ký/đăng nhập, hiển thị danh sách phòng, cơ sở vật chất, chat,...
-- Chủ khách sạn: giới thiệu phòng, lên bài quảng cáo, quản lý phòng, kết nối với hệ thống hoạt động xung quanh(du lịch, nhà hàng, di chuyển).
-- Người dùng: tìm phòng theo từng hạng mục, đặt phòng, chat, thanh toán trực tuyến, đánh giá.
+![](https://i.postimg.cc/FzQyq0gh/B-n-t-duy-l-m-t-s-t-ch-c-th-ng-tin-m-t-c-ch-tr-c-quan-N-cho-th-y-m-i-quan-h-gi-a-c-c-ph.jpg)
 
-### Công nghệ sử dụng:
+- Một trang web khách sạn cung cấp những chức năng cơ bản: đăng ký/đăng nhập, hiển thị danh sách phòng, đặt phòng, thanh toán, cơ sở vật chất, chat,...
 
-- Ngôn ngữ sử dụng: HTML, CSS, JS, TS
-- Framework: [Nest.js](https://nestjs.com/), [Express-handlebars](https://www.npmjs.com/package/express-handlebars), [ExpressJS](https://expressjs.com/)
-- Database: PostgreSQL with Docker and [Prisma](https://www.prisma.io/)
+- **Admin:** giới thiệu phòng, quản lý account người dùng, quản lý phòng, quản lý các đơn đặt phòng, chat với từng user,...
 
-## B. Setup và Build
+- **Người dùng:** thay đổi thông tin cá nhân, đặt phòng, chat, thanh toán trực tuyến, đánh giá, review,...
 
-### B.1 Yêu cầu:
+<br />
 
-1.  Hệ điều hành: Window, Linux, MacOS
-2.  Runtime enviroment [Nodejs](https://nodejs.org/en)
-3.  [Docker](https://www.docker.com/) for hosting database
+<ins><p align="center">Database Diagram</p></ins>
 
-### B.2 Setup
+![](https://i.postimg.cc/Dyvfg8ks/aaaa.webp)
+
+<br />
+
+### <ins>Công nghệ sử dụng</ins>
+
+- **Frontend:**  HTML, CSS, JS, render page bằng [Express-handlebars](https://www.npmjs.com/package/express-handlebars)
+
+- **Backend:** [Nest.js](https://nestjs.com/) - TypeScript
+
+- **Database:** PostgreSQL hỗ trợ bằng Docker và [Prisma](https://www.prisma.io/)
+
+## <ins><p align="center">C. Setup và Build</p></ins>
+
+### <ins>C.1 Yêu cầu:</ins>
+
+1. Hệ điều hành: Window, Linux, MacOS
+
+2. Runtime enviroment for [Nodejs](https://nodejs.org/en)
+
+3. (**Optional**) [Docker](https://www.docker.com/) để lưu database ở local 
+
+<br />
+
+### <ins>C.2 Setup</ins>
+
 - Git clone
+
 ```console
-    $ git clone https://github.com/Pest270904/Project-Web-App.git
+
+	$ git clone https://github.com/Pest270904/Paradise-Resort.git
+
 ```
 
 - Change Directory
+
 ```console
-    $ cd .\Project-Web-App\
+
+	$ cd .\Paradise-Resort\
+
 ```
 
 - Dowload package needed for the project
+
 ```console
-    $ npm i
+
+	$ npm i
+
 ```
+- Change some codes in ``/src/main.ts`` to be able to compile code locally:
+<br />
 
-- Set up database (using docker with prisma)
+![](https://i.postimg.cc/pLJPnjL3/a.png)
+
+- **<ins>(Optional when you want to use your own database on server)</ins>** Go to file ``/.env``  then replace the default docker's path of ``DATABASE_URL`` to your own database url, for example:
+<br />
+
+![](https://i.postimg.cc/PJJBNLRs/docker.png)
+
+- Set up database
+
 ```console
-        ------ 1. Start Postgres in Docker and push migrations of database ------
-            (Run this command in new terminal if you want to reset the databases)
 
-    $ npm run db:dev:restart
+		------ Start Postgres in Docker and push migrations to database ------
 
-        ------ 2. Host database ------
+			(Run this command in new terminal if you want to reset the database or when you haven't started database before)
 
-    $ npx prisma studio
+	$ npm run db:dev:restart
 
-        ---------------------------- FOR DEV ----------------------------
-            (Run this command when you change the code in databases)
+		---------------------------- FOR DEV ----------------------------
 
-    $ npx prisma migrate dev
-    $ npx prisma generate
+			(Run these commands when you change the code in databases)
+
+	$ npx prisma migrate dev
+
+	$ npx prisma generate
+
 ```
 
 - Compile and build
+
 ```console
-    ---- (!) Open new terminal seperate from terminal running database (!) ----
 
-    $ npm run start
+	$ npm run start
 
-            ------ Or ------
-            
-    $ npm run start:dev (start api in dev mode)
+		------ Or ------
+
+	$ npm run start:dev (start api in dev mode)
+
 ```
 
-- Lên browser vào link: http://localhost:3000/ để vào website
+- **(Optional)** To preview the database :
+``` console
+		------ To preview data in database ------
+
+	$ npx prisma studio
+```
+
+- Lên browser vào link: http://localhost:3000/ để vào preview website
+  ### <ins>Thẻ test</ins>
+
+	Ngân hàng	NCB
+
+	Số thẻ	9704198526191432198
+
+	Tên chủ thẻ	NGUYEN VAN A
+
+	Ngày phát hành	07/15
+
+	Mật khẩu OTP	123456

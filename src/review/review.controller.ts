@@ -1,13 +1,22 @@
 import { Body, Controller, Post,Get, Req, Render } from '@nestjs/common';
 import { ReviewService } from './review.service';
 import { Request } from 'express';
-import { Prisma } from '@prisma/client';
+import { FuncService } from 'src/func/func.service';
 
-@Controller('reviews')
+@Controller('review')
 export class ReviewController {
-  constructor(private reviewService: ReviewService) {}
+  constructor(
+    private readonly reviewService: ReviewService,
+    private readonly funcService: FuncService
+  ) {}
   
   @Get()
+  @Render('review')
+  review(@Req() req: Request) {
+    return this.funcService.getUsernameFromJwt_Req(req);
+  }
+
+  @Get('getAll')
   async getAllReviews() {
     return this.reviewService.getAllReviews();
   }

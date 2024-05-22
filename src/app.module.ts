@@ -12,7 +12,6 @@ import { RoomModule } from './room/room.module';
 import { RoomController } from './room/room.controller';
 import { AdminModule } from './admin/admin.module';
 import { ChatModule } from './chat/chat.module';
-import { GatewayModule } from './gateway/gateway.module';
 import { PaymentModule } from './payment/payment.module';
 import { CheckLoginMiddleware } from './middleware/checkLogin.middleware';
 import { AdminController } from './admin/admin.controller';
@@ -26,6 +25,8 @@ import { ReviewService } from './review/review.service';
 import { ReviewModule } from './review/review.module';
 import { ReviewController } from './review/review.controller';
 import { PrismaService } from './prisma/prisma.service';
+import { PaymentController } from './payment/payment.controller';
+import { GatewayModule } from './gateway/gateway.module';
 @Module({
   imports: [
     GatewayModule,
@@ -43,7 +44,7 @@ import { PrismaService } from './prisma/prisma.service';
     UserModule,
     ReviewModule,
   ],
-  controllers: [AppController,AdminController,ReviewController],
+  controllers: [AppController],
   providers: [
     JwtService, 
     AppService, 
@@ -62,11 +63,14 @@ export class AppModule implements NestModule{
           RoomController, 
           ReservationController, 
           AdminController,
-          UserController
+          UserController,
+          ReviewController,
+          PaymentController
         )
-        .apply(CheckLoginMiddleware).forRoutes(
+        .apply(CheckLoginMiddleware).exclude({path:'/admin/create', method: RequestMethod.GET}).forRoutes(
           ReservationController,
-          UserController
+          UserController,
+          AdminController
         )
   }
 }

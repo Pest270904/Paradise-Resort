@@ -1,4 +1,4 @@
-import { BadRequestException, ForbiddenException, Injectable, Res } from '@nestjs/common';
+import { ForbiddenException, Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateUserDto } from './dto/user.dto';
 import * as argon from 'argon2'
@@ -19,17 +19,19 @@ export class AuthService {
     // --------------------------------- Main functions ---------------------------------
     getSignup(req : Request, res : Response) {
         const error = req.cookies.error
-        res.clearCookie('error').render('signup', {
-            layout: 'login-layout',
-            error: error
+        res.clearCookie('error').clearCookie('jwt') // clear jwt to avoid some bugs
+            .render('signup', {
+                layout: 'login-layout',
+                error: error
         })
     }
 
     getLogin(req : Request, res : Response) {
         const error = req.cookies.error
-        res.clearCookie('error').render('login', {
-            layout: 'login-layout',
-            error: error
+        res.clearCookie('error').clearCookie('jwt') // clear jwt to avoid some bugs
+            .render('login', {
+                layout: 'login-layout',
+                error: error
         })
     }
 
@@ -38,14 +40,16 @@ export class AuthService {
             if(userData.username === "" || userData.fullName === "" || userData.email === "" || userData.password === "" || userData.password_confirmation === "")
                 throw new ForbiddenException("Look like you are missing something")
 
-            if(!userData.username.match(/^(?=.{6,20}$)(?![_.])(?!.*[_.]{2})[a-z0-9._]+(?<![_.])$/))
-                throw new ForbiddenException("Username must has at least 6 letters, can only contain lowercase letters and numbers")
+            // ---------------------------- Remove these regex temporarily for testing ----------------------------
+            // if(!userData.username.match(/^(?=.{6,20}$)(?![_.])(?!.*[_.]{2})[a-z0-9._]+(?<![_.])$/))
+            //     throw new ForbiddenException("Username must has at least 6 letters, can only contain lowercase letters and numbers")
 
-            if(!userData.password.match(/^(?=.*[A-Z])[a-zA-Z0-9]{8,}$/))
-                throw new BadRequestException('Your password should only contain alphanumeric character, at least 6 chars, at least 1 uppercase')
+            // if(!userData.password.match(/^(?=.*[A-Z])[a-zA-Z0-9]{8,}$/))
+            //     throw new BadRequestException('Your password should only contain alphanumeric character, at least 6 chars, at least 1 uppercase')
 
-            if(userData.password !== userData.password_confirmation) 
-                throw new ForbiddenException("Your confirm password is not correct")
+            // if(userData.password !== userData.password_confirmation) 
+            //     throw new ForbiddenException("Your confirm password is not correct")
+            // ------------------------------------------------------------------------------------------------------
 
             // generate hashed password
             const hash = await argon.hash(userData.password)

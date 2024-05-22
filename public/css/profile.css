@@ -137,3 +137,55 @@
   transform: translateY(-50%);
   cursor: pointer;
 }
+
+@media only screen and (max-width: 767px) {
+  .profile-body {
+    padding-top: 20px; /* Duy trì khoảng cách từ đỉnh màn hình */
+  }
+
+  .profile-container {
+    padding: 0 10px; /* Giảm khoảng cách lề bên trái và phải */
+  }
+
+
+  .profile-img {
+    width: 100px; /* Giảm kích thước ảnh đại diện */
+  }
+
+  .profile-info {
+    padding: 0; /* Xóa padding */
+  }
+
+  .input-group {
+    flex-direction: column; /* Hiển thị các nhóm dữ liệu dưới dạng cột */
+    margin-bottom: 15px; /* Khoảng cách giữa các nhóm dữ liệu */
+  }
+
+  .profile-control {
+    width: 100%; /* Input chiếm toàn bộ chiều rộng */
+  }
+
+  .button-container-2 {
+    width: 100%;
+  }
+
+  .password-container {
+    width: 100%; 
+    padding: 0 10px;
+  }
+}
+
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .profile-body {
+    padding-top: 50px; 
+  }
+
+  .profile-container {
+    padding: 0 20px;
+  }
+
+  .profile-img {
+    width: 150px; 
+  }
+}

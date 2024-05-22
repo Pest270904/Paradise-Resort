@@ -147,23 +147,101 @@
  /* Tablet */
  @media only screen and (min-width: 740px) and (max-width: 1023px) {
     .home-rooms {
-      height: max-content;
+        height: max-content;
+    }
+    .rooms-first-description {
+        margin: 3% 10%;
+    }
+    .rooms-first-description-bigtext {
+        font-size: 25px;
+    }
+    .rooms-first-description-smalltext {
+        font-size: 15px;
+    }
+    .room-desc {
+        margin: 3% 5% 5% 5%;
+    }
+    .room-desc-detail-button-more {
+        margin-left: 15%;
     }
     .room-desc-detail-button-cost {
-        font-size: 15px;
-        border-radius: 8px;
-        padding: 10px 24px;
-        margin-left: 20%;
+        font-size: 13px;
+        padding: 8px 20px;
+        margin-left: 15%;
+    }
+    .room-desc-detail-text {
+        font-size: 12px;
+        width: 150px;
+    }
+    .room-description-bigtext {
+        font-size: 18px;
+        padding-left: 5px;
     }
     .room-description-smalltext {
-        font-size: 14px;
+        font-size: 13px;
+        padding: 8px;
     }
     .room-description-icon {
         margin-top: 5px;
-        margin-left: 45px;
+        margin-left: 40px;
         width: 18%;
-        font-size: 13px;
-        display: inline-block;
-        padding: 0px;
+        font-size: 10px;
     }
  }
+ /* mobile */
+@media only screen and (max-width: 739px) {
+    .home-rooms {
+        height: max-content;
+    }
+    .rooms-first-description {
+        margin: 3% 5%;
+    }
+    .rooms-first-description-bigtext {
+        font-size: 20px;
+    }
+    .rooms-first-description-smalltext {
+        font-size: 12px;
+    }
+    .room-desc {
+        margin: 3% 5% 5% 5%;
+    }
+    .room-desc-detail-button-more {
+        margin-left: 10%;
+    }
+    .room-desc-detail-button-cost {
+        font-size: 10px;
+        padding: 6px 15px;
+        margin-left: 10%;
+    }
+    .room-desc-detail-text {
+        font-size: 10px;
+        width: 100px;
+    }
+    .room-description-bigtext {
+        font-size: 18px;
+        padding-left: 3px;
+    }
+    .room-description-smalltext {
+        font-size: 10px;
+        padding: 6px;
+    }
+    .room-description-icon {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* Chia thành 2 cột có độ rộng bằng nhau */
+        gap: 10px; /* Khoảng cách giữa các biểu tượng */
+        width: 100%;
+        padding: 0 10px; /* Căn đều hai bên */
+        box-sizing: border-box;
+    }    
+    .room-description-smallicon {
+        width: 24px; /* Độ rộng của biểu tượng */
+        height: 24px; /* Độ cao của biểu tượng */
+        margin-right: 10px; /* Khoảng cách giữa biểu tượng và văn bản */
+        vertical-align: middle; /* Căn giữa theo chiều dọc với văn bản */
+    }    
+    .room-description-icon div {
+        display: flex;
+        align-items: center;
+        font-size: 7px;
+    }    
+}

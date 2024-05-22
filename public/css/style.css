@@ -195,12 +195,12 @@ button {
 }
 /* Responsive design */
 @media only screen and (max-width: 1024px) {
-  .navbar .navlinks, .navbar .btn-login {
+  .navbar .navlinks {
     display: none;
   }
   .navbar .menu {
     display: block;
-    padding-right: 2rem;
+    padding-right: 3rem;
   }
   .dropdown-menu {
     display: block;
@@ -245,7 +245,7 @@ svg text {
   animation: stroke 2s infinite alternate;
   stroke-width: 2;
   stroke: var(--primary-color);
-  font-size: 100px;
+  font-size: 100px;  
 }
 .home-text p {
   color: white;
@@ -294,6 +294,9 @@ svg text {
   }
 }
 @media only screen and (min-width: 740px) and (max-width: 1023px) {
+  .home {
+    height: max-content;
+  }
   .body-end-header {
     font-size: 20px;
   }
@@ -302,6 +305,17 @@ svg text {
   }
   .body-end-text-2 {
     font-size: 12px;
+  }
+}
+@media only screen and (max-width: 739px) {
+  .body-end-header {
+    font-size: 15px;
+  }
+  .body-end-text-1 {
+    font-size: 10px;
+  }
+  .body-end-text-2 {
+    font-size: 13px;
   }
 }
 /* -------header-------- */
