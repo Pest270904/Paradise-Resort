@@ -30,7 +30,14 @@ function loadDataPageAdminHome() {
         .then(databooking => {
             const arrayDatabooking = Object.values(databooking);
             arrayDatabooking.forEach(booking => {
-                    let total_booked_room = booking.length  ;
+                    let total_booked_room = 0;
+                    for (let i = 0 ; i < booking.length ; i++)
+                        { 
+                            if (booking[i].status != 2)
+                                {
+                                    total_booked_room += 1;
+                                }
+                        }
                     let total_revenue = 0;
                     for (let i = 0 ; i < booking.length ; i++)
                         { 

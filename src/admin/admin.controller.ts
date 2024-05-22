@@ -2,7 +2,7 @@ import { Body, Controller, Get, Param, Post, Req, Res, UseGuards } from '@nestjs
 import { AdminService } from './admin.service';
 import { FuncService } from 'src/func/func.service';
 import { Response, Request } from 'express'
-import { Message,Reservation,Room } from '@prisma/client';
+import { Message,Reservation,Room,User } from '@prisma/client';
 import { CheckTokenMiddleware } from 'src/middleware/checkToken.middleware';
 import { AdminGuard } from './admin.guard';
 @Controller('admin')
@@ -64,8 +64,20 @@ export class AdminController {
     layout: 'admin-layout'
   }) 
 }
-@Get('dataRoom')
-async getDataRoom() {
-  return this.adminService.getAllRoom();
-}
+  @Get('dataRoom')
+  async getDataRoom() {
+    return this.adminService.getAllRoom();
+  }
+  @Get('admin-users')
+  adminUser(@Req() req: Request, @Res() res: Response) {
+  res.render('admin-users', {
+    layout: 'admin-layout'
+  }) 
+  }
+  @Get('dataUser')
+  async getDataUser()
+  {
+    return this.adminService.getDataUser();
+  }
+
 }

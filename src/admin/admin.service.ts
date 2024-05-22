@@ -164,5 +164,17 @@ export class AdminService {
           const foundRoom = await this.prisma.room.findMany();
           return { room: foundRoom }
         }
-      }        
-
+        async getDataUser() {
+          const foundUser = await this.prisma.user.findMany({
+            select: {
+              id: true,
+              username: true,
+              fullName:true,
+              phoneNumber: true,
+              email:true,
+            }
+          });
+          return foundUser;
+        }
+}
+  

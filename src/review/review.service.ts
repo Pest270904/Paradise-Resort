@@ -33,9 +33,9 @@ async createReview(req: Request, opinion: string, rating: number) {
 }
 async getAllReviews() {
   return this.prisma.review.findMany({
-    include: {
-      user: true,
-    },
+    // include: {
+    //   user: true,
+    // },
     orderBy: {
       createdAt: 'desc',
     },

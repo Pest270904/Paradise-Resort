@@ -79,25 +79,30 @@ function loadBookingInformation() {
                         const actionCell = document.createElement('td');
 
                         // Tạo nút Xóa
-                        const cancelButton = document.createElement('button');
-                        cancelButton.textContent = 'Cancel Reservation';
-                        cancelButton.className = 'btn-delete';
-                        actionCell.appendChild(cancelButton);
-                        row.appendChild(actionCell);
+                        if (booking[i].status!=2)
+                            {
+                                const cancelButton = document.createElement('button');
+                                cancelButton.textContent = 'Cancel Reservation';
+                                cancelButton.className = 'btn-delete';
+                                actionCell.appendChild(cancelButton);
+                                row.appendChild(actionCell);
+                                cancelButton.addEventListener('click', function () {
 
-                        cancelButton.addEventListener('click', function () {
-
-                            cancel_admin_reservation(booking[i].res_id)
-                        })
-
-                        
+                                cancel_admin_reservation(booking[i].res_id)
+                                    })
+                            }
+                        else
+                            {
+                                actionCell.textContent = ""
+                                row.appendChild(actionCell);
+                            }
                     }
             });
         })
     })
 }
 function cancel_admin_reservation(reservationId) {
-    var confirmCancel = confirm("Are you sure you want to cancel this reservation?");
+    var confirmCancel = confirm("Are you sure about canceling this reservation?");
     if (confirmCancel)
     {
         var xhr = new XMLHttpRequest();
