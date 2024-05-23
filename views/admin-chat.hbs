@@ -37,7 +37,7 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.1/socket.io.js"></script>
 <script>
-    socket = io('http://localhost:3000');
+    socket = io('paradise-resort-bice.vercel.app');
     socket.on('receichatlist', (chatList) => {
         renderChatList(chatList);
         attachClickEventToBlocks();
