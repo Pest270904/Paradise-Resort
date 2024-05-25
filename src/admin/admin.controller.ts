@@ -2,8 +2,7 @@ import { Body, Controller, Get, Param, Post, Req, Res, UseGuards } from '@nestjs
 import { AdminService } from './admin.service';
 import { FuncService } from 'src/func/func.service';
 import { Response, Request } from 'express'
-import { Message,Reservation,Room,User } from '@prisma/client';
-import { CheckTokenMiddleware } from 'src/middleware/checkToken.middleware';
+import { Message } from '@prisma/client';
 import { AdminGuard } from './admin.guard';
 @Controller('admin')
 export class AdminController {

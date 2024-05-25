@@ -15,7 +15,8 @@ export class ReservationController {
   async reservation(@Req() req: Request) {
     return {
       ...this.funcService.getUsernameFromJwt_Req(req),
-      ...await this.reservationService.getAllReservation(req)
+      ...await this.reservationService.getAllReservation(req),
+      css: ['reservation']
     }
   }
 

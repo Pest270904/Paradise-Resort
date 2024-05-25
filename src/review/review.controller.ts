@@ -13,7 +13,10 @@ export class ReviewController {
   @Get()
   @Render('review')
   review(@Req() req: Request) {
-    return this.funcService.getUsernameFromJwt_Req(req);
+    return {
+      ...this.funcService.getUsernameFromJwt_Req(req),
+      css: ['review']
+    }
   }
 
   @Get('getAll')

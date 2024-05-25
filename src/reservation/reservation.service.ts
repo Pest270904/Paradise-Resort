@@ -50,6 +50,15 @@ export class ReservationService {
         element['imgSrc'] = room.imgSrc
         element['roomName'] = room.roomName
 
+        // Add the specified number of days
+        const [day, month, year] = element['start'].split('-');
+        const date = new Date(`${year}-${month}-${day}`);
+        date.setDate(date.getDate() + element['days']);
+        const newDay = String(date.getDate()).padStart(2, '0');
+        const newMonth = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based in JS
+        const newYear = date.getFullYear();
+        element['end'] =  `${newDay}-${newMonth}-${newYear}`;
+
         // add field to display status for each reservation
         if (element.status === 0) 
             element['Active'] = 1
@@ -161,7 +170,7 @@ export class ReservationService {
         },
         data: {
             available: {
-            increment: 1
+                increment: 1
             }
         }
     })

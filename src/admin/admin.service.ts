@@ -2,7 +2,7 @@ import { BadRequestException, Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { hash } from 'argon2'
 import { Message,User,Reservation } from '@prisma/client';
-import { NextFunction, Request, Response } from 'express';
+import { Request } from 'express';
 import { FuncService } from 'src/func/func.service';
 
 @Injectable()
@@ -13,12 +13,12 @@ export class AdminService {
       const hashedPassword = await hash('112233');
       await this.prisma.user.create({
           data: {
-                  username: 'admin',
-                  fullName: 'Admin User',
-                  email: 'admin@example.com',
-                  phoneNumber: '0000000000',
-                  hash: hashedPassword,
-                  isAdmin: true
+            username: 'admin',
+            fullName: 'Admin User',
+            email: 'admin@example.com',
+            phoneNumber: '0000000000',
+            hash: hashedPassword,
+            isAdmin: true
           } 
       })
   }
@@ -149,32 +149,35 @@ export class AdminService {
       throw new Error(`Failed to get chat history by username: ${error.message}`);
     }
   }
-        // Lấy lịch sử đặt phòng 
-        async getAllReservations(): Promise<Reservation[]> {
-          try {
-              // Sử dụng Prisma để lấy tất cả dữ liệu từ bảng reservations
-              console.log(this.prisma.reservation.findMany())
-              return await this.prisma.reservation.findMany();
-          } catch (error) {
-              throw new Error(`Failed to fetch reservations: ${error.message}`);
-          }
-        }
-        // Lấy thông tin phòng
-        async getAllRoom() {
-          const foundRoom = await this.prisma.room.findMany();
-          return { room: foundRoom }
-        }
-        async getDataUser() {
-          const foundUser = await this.prisma.user.findMany({
-            select: {
-              id: true,
-              username: true,
-              fullName:true,
-              phoneNumber: true,
-              email:true,
-            }
-          });
-          return foundUser;
-        }
+
+  // Lấy lịch sử đặt phòng 
+  async getAllReservations(): Promise<Reservation[]> {
+    try {
+        // Sử dụng Prisma để lấy tất cả dữ liệu từ bảng reservations
+        console.log(this.prisma.reservation.findMany())
+        return await this.prisma.reservation.findMany();
+    } catch (error) {
+        throw new Error(`Failed to fetch reservations: ${error.message}`);
+    }
+  }
+
+  // Lấy thông tin phòng
+  async getAllRoom() {
+    const foundRoom = await this.prisma.room.findMany();
+    return { room: foundRoom }
+  }
+  
+  async getDataUser() {
+    const foundUser = await this.prisma.user.findMany({
+      select: {
+        id: true,
+        username: true,
+        fullName:true,
+        phoneNumber: true,
+        email:true,
+      }
+    });
+    return foundUser;
+  }
 }
   
