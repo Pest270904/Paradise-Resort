@@ -6,12 +6,12 @@ import { ValidationPipe } from '@nestjs/common'
 import Handlebars from 'handlebars'
 
 // For dev local
-// import * as exphbs from 'express-handlebars';
-// import * as cookieParser from 'cookie-parser';
+import * as exphbs from 'express-handlebars';
+import * as cookieParser from 'cookie-parser';
 
 // For hosting on vercel
-import exphbs from 'express-handlebars';
-import cookieParser from 'cookie-parser';
+// import exphbs from 'express-handlebars';
+// import cookieParser from 'cookie-parser';
 
 declare const module: any;
 
