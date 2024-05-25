@@ -16,7 +16,8 @@ export class UserController {
         return {
             ...this.funcService.getUsernameFromJwt_Req(req),
             ...await this.userService.getUserInfo(param.id),
-            ...await this.funcService.getError(req, res)
+            ...await this.funcService.getError(req, res),
+            css: ['profile']
         }
     } 
 

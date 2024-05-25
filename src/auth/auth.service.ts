@@ -118,6 +118,7 @@ export class AuthService {
             email: email,
             role: 'user'
         };
+        
         const user = await this.prisma.user.findUnique({
             where: {
                 username: username
@@ -126,6 +127,7 @@ export class AuthService {
                 isAdmin: true
             }
         });
+
         if (user && user.isAdmin) {
             payload.role = 'admin';
         }

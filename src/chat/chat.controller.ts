@@ -11,10 +11,12 @@ export class ChatController {
   async getChatHistory(@Req() req: Request): Promise<Message[]> {
     return await this.chatService.getChatHistory(req);
   }
+
   @Get('username-chat')
   async getUsername(@Req() req: Request) {
     return await this.chatService.getUsername(req);
   }
+  
   @Post('message')
   async sendMessage(@Req() req: Request, @Body() messageData: any) {
     await this.chatService.sendMessage(req, messageData); 

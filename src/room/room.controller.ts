@@ -15,7 +15,8 @@ export class RoomController {
     async room(@Req() req: Request) {
       return {
         ...this.funcService.getUsernameFromJwt_Req(req), 
-        ...await this.roomService.getAllRoom()
+        ...await this.roomService.getAllRoom(),
+        css: ['room']
       }
     }
 
@@ -32,7 +33,8 @@ export class RoomController {
         ...this.funcService.getUsernameFromJwt_Req(req),   // for display username on menu-bar
         ...await this.roomService.getRoomById(param.id), 
         ...await this.funcService.getUserFromUsername(req), // get user information for rendering in booking.hbs
-        ...await this.funcService.getError(req, res)
+        ...await this.funcService.getError(req, res),
+        css: ['booking']
       }
     }
 }

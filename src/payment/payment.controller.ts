@@ -53,7 +53,7 @@
     async handlerReturn(@Req() req, @Res() res: Response) {
       const result = await this.paymentService.VNPayReturn(req, res);
       // thay đổi thông báo kết quả dựa vào result
-      console.log(result);
+      // console.log(result);
       if (result.rspCode === '00') {
         this.reservationService.success(result.resId);
         return res.render('vnpay_success', {

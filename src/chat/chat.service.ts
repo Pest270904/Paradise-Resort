@@ -59,6 +59,7 @@ export class ChatService {
       throw new Error(`Error sending message: ${error.message}`);
     }
   }
+
   async getUsername(req: Request){
     try {
       return this.funcService.getUsernameFromJwt_Req(req);
@@ -66,6 +67,7 @@ export class ChatService {
       throw new Error('Error sending message: Please log in before chatting');
     }
   }
+
   async getChatHistory(req: Request): Promise<Message[]> {
     try {
       const { username } = await this.funcService.getUsernameFromJwt_Req(req);      
@@ -89,6 +91,4 @@ export class ChatService {
       throw new Error(`Failed to fetch chat history: ${error.message}`);
     }
   }
-  
-  
 }

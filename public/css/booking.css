@@ -144,6 +144,21 @@
     }
 }
 
+.room-description-icon
+{
+    margin-top: 5px;
+    margin-left: 70px;
+    width: 18%;
+    font-size: 16px;
+    display: inline-block;
+    padding: 10px;
+}
+.room-description-smallicon
+{
+    width: 19x;
+    height: 18px;
+}
+
 /* Mobile */
 @media only screen and (max-width: 767px) {
     .booking {
