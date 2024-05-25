@@ -10,13 +10,33 @@
 <body>
     <div class="container">
         <div class="message">
-            <h1>Thanh toán thành công!</h1>
-            <p><strong>Mã phòng:</strong> RoomCode123</p>
-            <p><strong>Số phòng:</strong> 101</p>
-            <p><strong>Tên người đặt:</strong> John Doe</p>
-            <p><strong>Số tiền:</strong> $100</p>
-            <p><strong>Ngày đặt phòng:</strong> 2024-05-23</p>
+            <h1>Thông tin thanh toán</h1>
+            <p><strong>Mã đơn hàng:</strong> <span id="resId"></span></p>
+            <p><strong>Số tiền:</strong> <span id="amount"></span></p>
+            <p><strong>Mã ngân hàng:</strong> <span id="bankCode"></span></p>
+            <p><strong>Mã giao dịch:</strong> <span id="transactionId"></span></p>
+            <button id="backToReservationBtn" class="button">Quay về trang đặt phòng</button>
         </div>
     </div>
+    <script src="/js/vnpay_return.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Lấy tham số từ URL
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+
+            // Trích xuất các thông tin từ tham số URL
+            const resId = urlParams.get('resId');
+            const amount = urlParams.get('vnp_Amount');
+            const bankCode = urlParams.get('vnp_BankCode');
+            const transactionId = urlParams.get('vnp_TransactionNo');
+
+            // Hiển thị thông tin trên trang
+            document.getElementById('resId').innerText = resId;
+            document.getElementById('amount').innerText = amount;
+            document.getElementById('bankCode').innerText = bankCode;
+            document.getElementById('transactionId').innerText = transactionId;
+        });
+    </script>
 </body>
 </html>

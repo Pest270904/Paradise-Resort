@@ -29,3 +29,21 @@ body {
 .message p {
     margin: 10px 0;
 }
+
+.button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.button.red {
+    background-color: #bb0808;
+}
+
+#red-text {
+    color: #bb0808;
+}

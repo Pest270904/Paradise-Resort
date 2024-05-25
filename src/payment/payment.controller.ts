@@ -12,28 +12,22 @@
     @Get()
     Payment(@Res() res: Response) {
       return res.render('payment', {
-        layout: 'login-layout',
-        message: 'Hello world!!',
-      });
-    }
-
-    @Get('vnpay_return')
-    ReturnCheckout(@Res() res: Response) {
-      return res.render('vnpay_return', {
         layout: false,
         message: 'Hello world!!',
       });
     }
-    
-    @Get('vnpay_return/vnpay_failure')
-    GetFailure(@Res() res: Response) {
+
+    //Dung de chinh sua giao dien return, ko lam gi thi tat di
+    @Get('vnpay_failure')
+    ReturnCheckout(@Res() res: Response) {
       return res.render('vnpay_failure', {
         layout: false,
         message: 'Hello world!!',
       });
     }
     
-    @Get('vnpay_return/vnpay_success')
+    // Dung de chinh sua giao dien success, ko lam gi thi tat di
+    @Get('vnpay_success')
     GetSuccess(@Res() res: Response) {
       return res.render('vnpay_success', {
         layout: false,
@@ -45,17 +39,16 @@
     async payment(@Body() data: any, @Res() res: Response) {
       const url = await this.paymentService.VNPayCheckoutUrl(
         data.res_id,
-        data.cost,
-      );
+        data.cost)
       return res.json({ url: url.vnpUrl });
     }
     @Get('vnpay_return')
     async handlerReturn(@Req() req, @Res() res: Response) {
       const result = await this.paymentService.VNPayReturn(req, res);
       // thay đổi thông báo kết quả dựa vào result
-      console.log(result);
-      if (result.rspCode === '00') {
-        this.reservationService.success(result.resId);
+      console.log('ket qua cua vnpay return',result);
+      if (result.responseObject.rspCode == '00') {
+        this.reservationService.success(result.responseObject.resId);
         return res.render('vnpay_success', {
           layout: false,
           message: 'Payment Successful',

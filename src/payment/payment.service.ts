@@ -14,8 +14,10 @@ export class PaymentService {
     let tmnCode = 'I6EZX61U';
     let secretKey = 'TBWZANCWBXNATETKLUEOLFHTKPNBSPBM';
     let vnpUrl = 'https://sandbox.vnpayment.vn/paymentv2/vpcpay.html';
-
-    let returnUrl = `http://localhost:3000/payment/vnpay_return?resId=${resId}`;
+    // returnUrl for localhost
+    //let returnUrl = `http://localhost:3000/payment/vnpay_return?resId=${resId}`
+    // returnUrl for vercel
+    let returnUrl = ` https://paradise-resort-bice.vercel.app/payment/vnpay_return?resId=${resId}`
     let createDate = format(date, 'yyyyMMddHHmmss');
     let orderId = date.getTime();
 
@@ -82,9 +84,11 @@ export class PaymentService {
   VNPayReturn(req: any, res: any) {
     let vnp_Params = req.query;
     let secureHash = vnp_Params['vnp_SecureHash'];
-    let resId = vnp_Params['resId'];
     delete vnp_Params['vnp_SecureHash'];
     delete vnp_Params['vnp_SecureHashType'];
+     // Extract additional parameters
+    let resId = vnp_Params['resId'];
+    //Delete
     delete vnp_Params['resId'];
     vnp_Params = this.sortObject(vnp_Params);
 
@@ -99,9 +103,16 @@ export class PaymentService {
       const amount = vnp_Params['vnp_Amount'] / 100; // Chia cho 100 để lấy giá trị gốc
       const rspCode = vnp_Params['vnp_ResponseCode'];
       if (orderId && amount) {
-        return { code: '00', transactionId: orderId, amount, rspCode, resId };
+        const responseObject = {
+          code: '00',
+          transactionId: orderId,
+          amount: amount,
+          rspCode: rspCode,
+          resId: resId,
+      };
+        return {responseObject};
       } else {
-        return { code: '97', message: 'Thông tin không hợp lệ', rspCode };
+        return { code: '97', message: 'Thông tin không hợp lệ',rspCode };
       }
     } else {
       return { code: '97', message: 'Chữ ký không hợp lệ' };
