@@ -4,7 +4,7 @@
     <a href="/"><img class= "logo" src='/img/header-footer/Group2.svg' alt="login" /></a>
     <div class='login-form' id="login-form">
       <form action='' method='post' class='form' id='form-1'>
-        <h2 class='heading'>ĐĂNG NHẬP</h2>
+        <h2 class='heading'>LOGIN</h2>
 
         {{#if error}}
             <div class='error'>{{error}}, please try again.</div>
@@ -20,7 +20,7 @@
         </div>
         {{!-- password --}}
         <div class='form-group'>
-          <label for='password' class='form-label'>Mật khẩu</label>
+          <label for='password' class='form-label'>Password</label>
           <input id='password' name='password' type='password' placeholder='Enter your password' class='form-control' />
           <span class='form-message'></span>
         </div>

@@ -15,7 +15,7 @@ export class PaymentService {
     let secretKey = 'TBWZANCWBXNATETKLUEOLFHTKPNBSPBM';
     let vnpUrl = 'https://sandbox.vnpayment.vn/paymentv2/vpcpay.html';
     // returnUrl for localhost
-    //let returnUrl = `http://localhost:3000/payment/vnpay_return?resId=${resId}`
+    // let returnUrl = `http://localhost:3000/payment/vnpay_return?resId=${resId}`
     // returnUrl for vercel
     let returnUrl = ` https://paradise-resort-bice.vercel.app/payment/vnpay_return?resId=${resId}`
     let createDate = format(date, 'yyyyMMddHHmmss');
