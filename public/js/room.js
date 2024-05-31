@@ -23,3 +23,6 @@ function room_booking(roomId) {
     window.location.href = url
     xhr.send()
 }
+function formatCurrency(cost) {
+    return cost.toLocaleString('de-DE');
+}

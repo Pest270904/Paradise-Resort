@@ -31,7 +31,7 @@
             <button class="room-desc-detail-button-more" id="{{this.btnExpId}}" onclick="roomExpand('{{this.btnExpId}}', '{{this.divExpId}}', '{{this.parExpId}}');">+</button>
             <p class="room-desc-detail-text" id="{{this.parExpId}}">VIEW ROOM DETAILS</p>
             <div class="room-desc-detail-booking">
-                <button class="room-desc-detail-button-cost" onclick="room_booking('{{this.id}}')">${{this.cost}} Avg/night</button>
+                <button class="room-desc-detail-button-cost" onclick="room_booking('{{this.id}}')">formatCurrency('{{this.cost}}')' VND/Night</button>
                 <p class="room-desc-detail-available">Available: {{this.available}}</p>
             </div>
         </div>
