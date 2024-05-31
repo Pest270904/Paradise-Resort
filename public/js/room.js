@@ -24,5 +24,5 @@ function room_booking(roomId) {
     xhr.send()
 }
 function formatCurrency(cost) {
-    return cost.toLocaleString('de-DE');
+    return cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 }
