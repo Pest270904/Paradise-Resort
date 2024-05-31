@@ -4,10 +4,6 @@ import { PrismaService } from 'src/prisma/prisma.service';
 @Injectable()
 export class RoomService {
   constructor(private prisma: PrismaService) {}
-
-  formatCurrency(cost: number): string {
-    return cost.toLocaleString('de-DE');
-  }
   async getAllRoom() {
     const foundRoom = await this.prisma.room.findMany();
     return { room: foundRoom }
