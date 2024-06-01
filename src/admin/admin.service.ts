@@ -179,5 +179,9 @@ export class AdminService {
     });
     return foundUser;
   }
+  async getAllReviews() {
+    return this.prisma.review.findMany({
+    });
+  }
 }
   

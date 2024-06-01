@@ -78,5 +78,9 @@ export class AdminController {
   {
     return this.adminService.getDataUser();
   }
+  @Get('data-review')
+  async getAllReviews() {
+    return this.adminService.getAllReviews();
+  }
 
 }

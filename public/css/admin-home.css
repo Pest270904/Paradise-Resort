@@ -81,4 +81,17 @@
     font-size: 40px;
     color: forestgreen;
 }
-
+#stat-smalltext-review
+{
+    --fa-style-family-classic: "Font Awesome 6 Free";
+    font-weight: bold;
+    font-size: 40px;
+    color: forestgreen;
+}
+#stat-smalltext-user
+{
+    --fa-style-family-classic: "Font Awesome 6 Free";
+    font-weight: bold;
+    font-size: 40px;
+    color: forestgreen;
+}
