@@ -202,3 +202,162 @@
 | Mật khẩu OTP    | 123456				 |
 
 </div>
+
+## <ins><p align="center">E. Câu hỏi</p></ins>
+### <ins>Câu 1: NestJS có ưu điểm gì, và NestJS có phổ biến không ? NestJS có ưu điểm gì so với tiền thân Angular?<ins>
+- NestJS là một framework phát triển ứng dụng backend dựa trên Node.js và TypeScript, nổi bật với nhiều ưu điểm và đang ngày càng trở nên phổ biến trong cộng đồng phát triển phần mềm.
+
+**<ins>1.1 Ưu điểm của NestJS<ins>**
++ **Kiến trúc mô-đun:** NestJS cho phép phát triển ứng dụng theo kiến trúc mô-đun, giúp dễ dàng quản lý và mở rộng. Mỗi module có thể được phát triển và kiểm thử độc lập, sau đó kết hợp lại thành một ứng dụng hoàn chỉnh.
++ **Hỗ trợ TypeScript:** NestJS được viết hoàn toàn bằng TypeScript, cung cấp các tính năng như kiểm tra kiểu tĩnh, hỗ trợ hiện đại và tích hợp tốt với các công cụ TypeScript khác, giúp tăng năng suất và chất lượng mã nguồn.
++ **Tích hợp dễ dàng với các thư viện khác:** NestJS tích hợp tốt với các thư viện và framework của Node.js như Express, Fastify, Mongoose, TypeORM, và nhiều thư viện khác, giúp dễ dàng mở rộng và tùy chỉnh ứng dụng.
++ **Tính mở rộng và tái sử dụng:** Với việc hỗ trợ Dependency Injection (DI), NestJS cho phép tái sử dụng mã nguồn và dễ dàng mở rộng ứng dụng. DI giúp quản lý các phụ thuộc một cách hiệu quả và giảm sự phụ thuộc chặt chẽ giữa các thành phần.
++ **Hỗ trợ tích hợp testing:** NestJS cung cấp các công cụ tích hợp sẵn cho việc viết unit test và e2e test, giúp đảm bảo chất lượng mã nguồn và phát hiện sớm các lỗi trong quá trình phát triển.
++ **Cộng đồng và tài liệu phong phú:**: NestJS có cộng đồng phát triển lớn và tài liệu phong phú, bao gồm cả các tài liệu chính thức và các tài liệu từ cộng đồng, giúp lập trình viên dễ dàng học tập và giải quyết các vấn đề gặp phải.
+
+**<ins>1.2 Độ phổ biến của NestJS<ins>**
++ NestJS đang ngày càng trở nên phổ biến trong cộng đồng phát triển phần mềm, đặc biệt là trong các dự án cần xây dựng ứng dụng backend. Sự phổ biến của NestJS được thể hiện qua:
++ Dự án NestJS trên GitHub có số lượng sao (stars) lớn, cho thấy sự quan tâm và sử dụng rộng rãi từ cộng đồng.
++ Cộng đồng phát triển của NestJS trên các nền tảng như Stack Overflow, Reddit, và các diễn đàn lập trình khác đang ngày càng lớn mạnh, với nhiều bài viết, thảo luận, và giải đáp vấn đề.
++ Có nhiều tài liệu, bài viết blog, video hướng dẫn, và khóa học trực tuyến về NestJS, từ cơ bản đến nâng cao, giúp lập trình viên dễ dàng tiếp cận và học tập.
++ Nhiều công ty và dự án lớn đã và đang sử dụng NestJS cho các ứng dụng backend của họ, cho thấy sự tin tưởng vào khả năng và hiệu suất của framework này.
+
+**<ins>1.3 So sánh về ưu điểm của NestJS so với Angular<ins>**
++ **1.3.1 Thiết kế cho Backend:**
+	- NestJS: Được thiết kế đặc biệt cho việc phát triển ứng dụng backend, với trọng tâm là xây dựng API RESTful, GraphQL, và microservices.
+	- Angular: Là framework frontend dùng để xây dựng các ứng dụng web tương tác phía người dùng.
+
++ **1.3.2 Dependency Injection (DI) mạnh mẽ:** NestJS áp dụng mô hình Dependency Injection tương tự như Angular, nhưng tối ưu hóa cho môi trường backend. DI trong NestJS giúp quản lý các dịch vụ và mô-đun dễ dàng, nâng cao khả năng tái sử dụng và bảo trì mã nguồn.
+
++ **1.3.3. Kiến trúc mô-đun:** Cả hai framework đều hỗ trợ kiến trúc mô-đun, nhưng NestJS ứng dụng mô-đun hóa ở cấp độ backend. Điều này giúp dễ dàng quản lý và mở rộng các thành phần của ứng dụng backend.
+
++ **1.3.4 Hỗ trợ cho Microservices:**
+	- NestJS: Có sẵn các công cụ và thư viện hỗ trợ phát triển microservices, như tích hợp với RabbitMQ, Kafka, và gRPC. Điều này giúp xây dựng các hệ thống phân tán và khả năng mở rộng cao.
+	- Angular: Không được thiết kế để hỗ trợ trực tiếp microservices vì nó chủ yếu tập trung vào giao diện người dùng.
+
++ **1.3.5 Tích hợp với cơ sở dữ liệu:** NestJS tích hợp dễ dàng với nhiều ORM và ODM như TypeORM, Sequelize, và Mongoose, giúp quản lý kết nối và tương tác với cơ sở dữ liệu hiệu quả. Angular không có tính năng này vì nó không liên quan đến backend.
+
++ **1.3.6 Tính mở rộng và tùy chỉnh cao:** NestJS cung cấp các cơ chế linh hoạt để mở rộng và tùy chỉnh ứng dụng backend thông qua middleware, guards, interceptors, và filters. Những tính năng này giúp xây dựng các logic phức tạp và bảo mật.
+
++ **1.3.7 Tóm tắt:**
+	- **NestJS**: Tập trung vào backend, cung cấp các công cụ và tính năng mạnh mẽ để phát triển API, microservices, và quản lý cơ sở dữ liệu. Nó thừa hưởng nhiều nguyên tắc thiết kế từ Angular nhưng tối ưu hóa cho môi trường server-side.
+	- **Angular**: Tập trung vào frontend, giúp xây dựng giao diện người dùng phong phú và tương tác. Nó phù hợp cho việc phát triển các ứng dụng web đơn trang (SPA) và cung cấp các công cụ mạnh mẽ để quản lý trạng thái giao diện và tương tác người dùng.
+
+### <ins>Câu 2: NestJS có gì nổi bật hơn các framework khác? Làm thế nào để tích hợp và sử dụng WebSocker để tạo các ứng dụng realtime.<ins>
+
+**<ins>2.1 Đặc điểm nổi bật của NestJS<ins>**
++ **Kiến trúc mô-đun:** NestJS cho phép phát triển ứng dụng theo kiến trúc mô-đun, giúp mã nguồn dễ quản lý, mở rộng và bảo trì. Mỗi module có thể được phát triển và kiểm thử độc lập.
++ **Sử dụng TypeScript:** NestJS được xây dựng hoàn toàn trên TypeScript, mang lại các lợi ích về kiểm tra kiểu tĩnh, hỗ trợ IDE tốt hơn, và giảm thiểu lỗi khi lập trình.
++ **Hỗ trợ Dependency Injection (DI):** NestJS tích hợp sẵn cơ chế DI mạnh mẽ, giúp quản lý các dịch vụ và phụ thuộc dễ dàng, tăng khả năng tái sử dụng và mở rộng mã nguồn.
++ **Tích hợp tốt với các thư viện và framework khác:** NestJS hỗ trợ tích hợp dễ dàng với các thư viện và framework của Node.js như Express, Fastify, TypeORM, Mongoose, và nhiều hơn nữa.
++ **Hỗ trợ mạnh mẽ cho các kỹ thuật và mô hình phát triển hiện đại:** NestJS hỗ trợ xây dựng các ứng dụng microservices, các mô hình event-driven, và các hệ thống phân tán. Nó cũng tích hợp tốt với các công nghệ như GraphQL, WebSocket, và CQRS.
++ **Dễ dàng viết unit test và e2e test:** NestJS cung cấp các công cụ tích hợp sẵn cho việc viết và chạy unit test và e2e test, giúp đảm bảo chất lượng mã nguồn và phát hiện lỗi sớm.
+
+**<ins>2.2 Tích hợp và sử dụng WebSocker để tạo các ứng dụng realtime<ins>**
+- NestJS có hỗ trợ tích hợp WebSocket một cách dễ dàng thông qua @nestjs/websockets package
+- Các bước thực hiện (demo) 
+	-**Bước 1**: Tải package WebSocket
+	```console
+	npm install --save @nestjs/websockets @nestjs/platform-socket.io	
+	```
+	- **Bước 2:** Tạo một Gateway WebSocket
+	``` js
+	import { WebSocketGateway, WebSocketServer, SubscribeMessage, MessageBody } from '@nestjs/websockets';
+	import { Server, Socket } from 'socket.io';
+
+	@WebSocketGateway()
+	export class ChatGateway {
+		@WebSocketServer()
+		server: Server;
+
+		@SubscribeMessage('message')
+		handleMessage(@MessageBody() message: string, client: Socket): void {
+			this.server.emit('message', message);
+		}
+	}
+	```
+	- **Bước 3:** Đăng kí chat.gateway.js vào module chính(mặc định là app.module.ts)
+	- **Bước 4:** Viết code HTML và JavaScript
+	``` html
+	<script>
+		const socket = io('http://localhost:3000')
+
+		socket.on('connect', () => {
+			console.log('Connected to server')
+		})
+
+		socket.on('message', () => {
+			console.log('Message from server', data)
+		})
+
+		function sendMessage() {
+			const message = document.getElementById('messageInput').value
+			socket.emit('message', message)
+		}
+	</script>	
+	```
+
+### <ins>Câu 3: Authomodule của NestJS vận hành như thế nào. Nó có công cụ gì, hay nó là công cụ. Tại sao dùng NestJS thay vì ExpressJS?<ins>
+
+**<ins>3.1 AuthModule, thư viên, công cụ xây dụng AuthModule<ins>**
+- AuthModule trong NestJS thực chất không phải là một công cụ cụ thể mà là một module có thể bạn tạo ra để xử lý xác thực và phân quyền người dùng. NestJS cung cấp các công cụ và thư viện tích hợp sẵn để hỗ trợ việc xây dựng module này một cách dễ dàng và hiệu quả. 
+- Công cụ và Thư viện Chính để Xây dựng AuthModule:
+	- Passport.js:
+		- Passport là một middleware xác thực cho Node.js, hỗ trợ nhiều chiến lược xác thực khác nhau như JWT, OAuth, Local, v.v.
+		- NestJS cung cấp gói @nestjs/passport để tích hợp Passport.js một cách dễ dàng.
+	- JWT (JSON Web Tokens):
+		- JWT được sử dụng phổ biến để tạo token xác thực và phân quyền.
+		- NestJS cung cấp gói @nestjs/jwt để dễ dàng tích hợp JWT vào AuthModule của bạn.
+
+**<ins>3.2 Cấu Trúc AuthModule và Các Thành Phần Chính<ins>**
+- **AuthModule:** Là module chứa các thành phần liên quan đến xác thực như AuthService, AuthController, và các chiến lược xác thực.
+- **AuthService:** Chứa các logic xác thực và tạo token.
+- **AuthController:** Xử lý các yêu cầu HTTP liên quan đến xác thực như đăng nhập, đăng ký.
+- **Guards:** Dùng để bảo vệ các route chỉ cho phép truy cập khi người dùng đã xác thực hoặc có quyền hạn phù hợp.
+- **Decorators:** Dùng để gắn thông tin xác thực vào các route handler một cách rõ ràng và dễ quản lý.
+
+**<ins>3.3 Cách vận hành Authomodule của NestJS<ins>**
+<p align="center"><ins>auth.module.ts</ins></p>
+
+![](https://i.postimg.cc/1t94RQzY/Screenshot-2024-06-12-161557.png)
+
+<br />
+
+<p align="center"><ins>auth.controller.ts</ins></p>
+
+![](https://i.postimg.cc/65D32R3Z/Screenshot-2024-06-12-161629.png)
+
+<br />
+
+<p align="center"><ins>auth.service.ts</ins></p>
+
+![](https://i.postimg.cc/rFtykmJw/Screenshot-2024-06-12-161706.png)
+
+**<ins>3.4 Tại sao dùng NestJS thay vì ExpressJS<ins>**
+- **Kiến trúc mô-đun:** NestJS giúp tổ chức mã nguồn theo kiến trúc mô-đun, giúp quản lý và bảo trì dễ dàng hơn, đặc biệt trong các ứng dụng lớn.
+- **Sử dụng TypeScript:** NestJS tận dụng sức mạnh của TypeScript, cung cấp tính năng kiểm tra kiểu tĩnh và hỗ trợ phát triển mã nguồn an toàn và hiệu quả hơn.
+- **Dependency Injection (DI):** NestJS tích hợp sẵn DI, giúp quản lý các phụ thuộc và cải thiện khả năng tái sử dụng và bảo trì mã nguồn.	
+- **Tích hợp dễ dàng với các thư viện phổ biến:** NestJS tích hợp tốt với các thư viện và công cụ phổ biến như TypeORM, Mongoose, Passport.js, GraphQL, và các thư viện khác.
+- **Tích hợp sẵn các công cụ và tính năng hiện đại:** NestJS hỗ trợ các tính năng hiện đại như microservices, event-driven architecture, WebSockets, và CQRS, giúp xây dựng các ứng dụng phức tạp và hiện đại một cách dễ dàng.
+- **Hỗ trợ mạnh mẽ cho testing:** NestJS cung cấp các công cụ tích hợp sẵn cho việc viết unit test và e2e test, giúp đảm bảo chất lượng mã nguồn.
+
+### <ins>Câu 4: Xử lí xác thực và ủy quyền người dùng trong NestJS bằng cách nào?<ins>
+- Xử lý xác thực và ủy quyền người dùng trong NestJS bao gồm việc xác minh danh tính người dùng (xác thực) và đảm bảo người dùng có quyền thực hiện các hành động nhất định (ủy quyền). NestJS cung cấp các công cụ mạnh mẽ và tích hợp dễ dàng với các thư viện phổ biến như Passport.js và JWT để thực hiện các tác vụ này.
+- Các bước thực hiện: 
+	+ Tạo AuthModule, AuthService, và AuthController( ví dụ ở câu 3 )
+	+ Tích hợp Passport.js và JWT
+	+ Sử dụng Guards và Decorators cho ủy quyền
+- Ở ví dụ bên dưới sẽ dùng Guards để ủy quyền cho người dùng nào là admin và phải đăng nhập vào tài khoản admin mới truy cập được đến trang đó 
+
+<br />
+
+- **Ví dụ về sử dụng Guards trong admin.controller.ts**:
+<p align="center"><ins>admin.guard.ts</ins></p>
+
+![](https://i.postimg.cc/LXXR065R/Screenshot-2024-06-12-161742.png)
+
+<br />
+
+<p align="center"><ins>admin.controller.ts</ins></p>
+
+![](https://i.postimg.cc/8Ph5vcrn/Screenshot-2024-06-12-161813.png)

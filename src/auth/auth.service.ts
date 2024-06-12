@@ -105,7 +105,6 @@ export class AuthService {
             res.cookie('error', err.message).redirect(`/auth/login`)
         }
     }
-    
 
     logOut(res : Response) {
         res.clearCookie('jwt').redirect('/')
